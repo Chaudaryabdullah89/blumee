@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, Send, Phone, Mail, ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PRELOADER_COMPLETE_EVENT } from "./components/Preloader";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -22,11 +23,12 @@ export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   useEffect(() => {
-    // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Context for scoping selectors to prevent selecting outside this page
-    let ctx = gsap.context(() => {
+    let ctx: ReturnType<typeof gsap.context> | undefined;
+
+    const initAnimations = () => {
+      ctx = gsap.context(() => {
       // 1. Hero Animations
       gsap.fromTo(
         ".hero-reveal",
@@ -189,8 +191,18 @@ export default function Home() {
         );
       });
     });
+    };
 
-    return () => ctx.revert();
+    if (document.documentElement.dataset.preloaderDone === "true") {
+      initAnimations();
+    } else {
+      window.addEventListener(PRELOADER_COMPLETE_EVENT, initAnimations, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener(PRELOADER_COMPLETE_EVENT, initAnimations);
+      ctx?.revert();
+    };
   }, []);
 
   const testimonials = [
@@ -259,6 +271,7 @@ export default function Home() {
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover scale-105"
           poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
         >
@@ -283,14 +296,14 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-8 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-12">
           {/* Left Column Text Content */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-[#FCFCFD]">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] w-fit shadow-md hero-reveal">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] w-fit shadow-md hero-reveal opacity-0">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
               <span className="font-sans font-bold text-[10px] md:text-xs uppercase tracking-widest text-brand-gold">
                 Solidus Architectural Standard
               </span>
             </div>
 
-            <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-xl leading-relaxed tracking-wide hero-reveal">
+            <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-xl leading-relaxed tracking-wide hero-reveal opacity-0">
               Blume Technical Services provides premier commercial construction and
               infrastructure solutions for modern enterprises and big visions.
               We build with unbreakable integrity.
@@ -298,8 +311,8 @@ export default function Home() {
 
             {/* Giant Title */}
             <h1 className="font-sans font-black text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-tighter text-white drop-shadow-xl mt-4 overflow-hidden">
-              <span className="block hero-title-line">BUILT</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#cbd5e1] block hero-title-line">
+              <span className="block hero-title-line opacity-0">BUILT</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#cbd5e1] block hero-title-line opacity-0">
                 TOGETHER
               </span>
             </h1>
@@ -318,6 +331,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
+                  preload="auto"
                   controls
                   className="absolute inset-0 w-full h-full object-cover"
                 >
