@@ -59,18 +59,16 @@ export default function Home() {
         }
       });
 
-      // 2. Editorial Text Inline Capsule Animations
+      // 2. Editorial Text Inline Capsule Animations — clipPath reveal (no width conflict)
       gsap.fromTo(
         ".capsule-img",
-        { width: "0em", opacity: 0, scale: 0.4, rotation: -12 },
+        { clipPath: "inset(0 50% 0 50%)", opacity: 0 },
         {
-          width: "3.2em",
+          clipPath: "inset(0 0% 0 0%)",
           opacity: 1,
-          scale: 1,
-          rotation: 0,
-          duration: 1.2,
-          ease: "elastic.out(1, 0.75)",
-          stagger: 0.3,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.25,
           scrollTrigger: {
             trigger: ".editorial-heading",
             start: "top 80%",
@@ -106,18 +104,19 @@ export default function Home() {
       blueprintLines.forEach((line) => {
         const pathEl = line as SVGPathElement | SVGLineElement | SVGRectElement;
         let length = 1000;
-        if ("getTotalLength" in pathEl) {
-          length = pathEl.getTotalLength();
-        } else if (pathEl.tagName === "rect") {
+        const tag = pathEl.tagName.toLowerCase();
+        if (tag === "rect") {
           const w = parseFloat(pathEl.getAttribute("width") || "0");
           const h = parseFloat(pathEl.getAttribute("height") || "0");
           length = (w + h) * 2;
-        } else if (pathEl.tagName === "line") {
+        } else if (tag === "line") {
           const x1 = parseFloat(pathEl.getAttribute("x1") || "0");
           const y1 = parseFloat(pathEl.getAttribute("y1") || "0");
           const x2 = parseFloat(pathEl.getAttribute("x2") || "0");
           const y2 = parseFloat(pathEl.getAttribute("y2") || "0");
           length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        } else {
+          length = pathEl.getTotalLength();
         }
 
         gsap.set(pathEl, { strokeDasharray: length, strokeDashoffset: length });
