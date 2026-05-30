@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export const PRELOADER_COMPLETE_EVENT = "preloader-complete";
-const HERO_VIDEO_SRC = "/hero-video.mov";
-const MIN_DISPLAY_MS = 900;
-const MAX_WAIT_MS = 15000;
+const MIN_DISPLAY_MS = 550;
+const MAX_DISPLAY_MS = 1400;
 
 export default function Preloader() {
   const pathname = usePathname();
@@ -43,45 +42,30 @@ export default function Preloader() {
           setActive(false);
           document.body.style.overflow = "";
           complete();
-        }, 650);
+        }, 500);
       }, remaining);
     };
 
-    const video = document.createElement("video");
-    video.preload = "auto";
-    video.muted = true;
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
+    const progressTimer = window.setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 92) return prev;
+        return prev + 8 + Math.floor(Math.random() * 6);
+      });
+    }, 120);
 
-    const onProgress = () => {
-      if (!video.duration || !Number.isFinite(video.duration)) return;
-      const pct = Math.min(99, Math.round((video.buffered.end(0) / video.duration) * 100));
-      setProgress((prev) => Math.max(prev, pct));
-    };
+    const readyPromise = document.fonts?.ready ?? Promise.resolve();
+    const maxTimer = window.setTimeout(dismiss, MAX_DISPLAY_MS);
 
-    const onReady = () => {
-      setProgress(100);
-      dismiss();
-    };
-
-    video.addEventListener("progress", onProgress);
-    video.addEventListener("canplaythrough", onReady, { once: true });
-    video.addEventListener("loadeddata", onReady, { once: true });
-    video.addEventListener("error", onReady, { once: true });
-
-    video.src = HERO_VIDEO_SRC;
-    video.load();
-
-    const maxTimer = window.setTimeout(onReady, MAX_WAIT_MS);
+    readyPromise
+      .then(() => {
+        window.clearTimeout(maxTimer);
+        dismiss();
+      })
+      .catch(() => dismiss());
 
     return () => {
+      window.clearInterval(progressTimer);
       window.clearTimeout(maxTimer);
-      video.removeEventListener("progress", onProgress);
-      video.removeEventListener("canplaythrough", onReady);
-      video.removeEventListener("loadeddata", onReady);
-      video.removeEventListener("error", onReady);
-      video.removeAttribute("src");
-      video.load();
       document.body.style.overflow = "";
     };
   }, [pathname]);
@@ -90,14 +74,15 @@ export default function Preloader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#0A1128] transition-opacity duration-[650ms] ease-out ${exiting ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#0A1128] transition-opacity duration-500 ease-out ${
+        exiting ? "pointer-events-none opacity-0" : "opacity-100"
+      }`}
       aria-live="polite"
       aria-busy={!exiting}
       aria-label="Loading site"
     >
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
             linear-gradient(to right, #ffffff 1px, transparent 1px),
@@ -109,30 +94,24 @@ export default function Preloader() {
 
       <div className="relative flex flex-col items-center gap-10 px-6">
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.1]">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
-            <span className="font-sans font-bold text-[10px] uppercase tracking-[0.2em] text-brand-gold">
-              Loading experience
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.06] px-4 py-2">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-gold" />
+            <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gold">
+              Blume Technical Services
             </span>
           </span>
-          <p className="font-sans font-black text-xl md:text-4xl tracking-tight text-white">
+          <p className="font-sans text-xl font-black tracking-tight text-white md:text-4xl">
             BLUME TECHNICAL SERVICES
-          </p>
-          <p className="font-sans text-sm text-slate-400 max-w-xs">
-            Preparing cinematic visuals…
           </p>
         </div>
 
         <div className="w-56 md:w-64">
-          <div className="h-[2px] w-full rounded-full bg-white/10 overflow-hidden">
+          <div className="h-[2px] w-full overflow-hidden rounded-full bg-white/10">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-brand-gold via-[#f5e6a8] to-brand-gold transition-[width] duration-300 ease-out"
-              style={{ width: `${progress}%` }}
+              className="h-full rounded-full bg-gradient-to-r from-brand-gold via-[#f5e6a8] to-brand-gold transition-[width] duration-200 ease-out"
+              style={{ width: `${Math.min(progress, 100)}%` }}
             />
           </div>
-          <p className="mt-3 text-center font-sans text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-            {progress}%
-          </p>
         </div>
       </div>
     </div>

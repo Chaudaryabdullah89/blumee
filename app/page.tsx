@@ -6,6 +6,7 @@ import { MapPin, Send, Phone, Mail, ArrowLeft, ArrowRight, Star } from "lucide-r
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PRELOADER_COMPLETE_EVENT } from "./components/Preloader";
+import { HeroBackgroundVideo, HeroVideoCard } from "./components/HeroVideo";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -265,19 +266,7 @@ export default function Home() {
           1. HERO SECTION — Cinematic Video Background
       ───────────────────────────────────────── */}
       <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20 pb-28 hero-section">
-        {/* Full-bleed cinematic video background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-          poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
-        >
-          <source src="/hero-video.mov" type="video/quicktime" />
-          <source src="/hero-video.mov" type="video/mp4" />
-        </video>
+        <HeroBackgroundVideo />
         {/* Cinematic gradient overlay — deep navy top fading to page white */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/70 via-[#0A1128]/40 to-[#FCFCFD]" />
 
@@ -324,21 +313,7 @@ export default function Home() {
               {/* Decorative radial lighting inside card */}
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-brand-gold/20 blur-3xl group-hover:bg-brand-gold/30 transition-colors duration-500" />
 
-              {/* Embedded video player */}
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-white/[0.08] shadow-inner">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  controls
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src="/hero-video.mov" type="video/quicktime" />
-                  <source src="/hero-video.mov" type="video/mp4" />
-                </video>
-              </div>
+              <HeroVideoCard />
 
               {/* Card stats text */}
               <div className="mt-6 flex flex-col gap-2">
