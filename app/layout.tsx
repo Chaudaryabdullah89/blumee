@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
+import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTopOnNavigate from "./components/ScrollToTopOnNavigate";
 import Preloader from "./components/Preloader";
 import { HERO_POSTER_URL } from "@/lib/hero-video";
 
@@ -31,9 +33,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#FCFCFD]">
         <Preloader />
         <SmoothScrollProvider>
+          <ScrollToTopOnNavigate />
           <Navbar />
           <div className="flex-1 flex flex-col">{children}</div>
           <Footer />
+          <ScrollToTop />
         </SmoothScrollProvider>
       </body>
     </html>

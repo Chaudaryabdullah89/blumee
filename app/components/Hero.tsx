@@ -1,11 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Play } from "lucide-react";
-import { HERO_POSTER_URL, HERO_VIDEO_URL } from "@/lib/hero-video";
+import { HERO_POSTER_URL, HERO_VIDEO_WEBM_URL, HERO_VIDEO_MP4_URL } from "@/lib/hero-video";
 
 export function HeroBackground() {
   const [ready, setReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Load video sources only when in viewport
+          video.querySelectorAll("source").forEach((source) => {
+            const s = source as HTMLSourceElement;
+            if (s.dataset.src) {
+              s.src = s.dataset.src;
+            }
+          });
+          video.load();
+          video.play().catch(() => {});
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="absolute inset-0">
@@ -15,16 +42,21 @@ export function HeroBackground() {
         className="absolute inset-0 h-full w-full scale-105 object-cover"
       />
       <video
-        src={HERO_VIDEO_URL}
+        ref={videoRef}
         poster={HERO_POSTER_URL}
         autoPlay
         muted
         loop
         playsInline
+        preload="none"
         onCanPlay={() => setReady(true)}
-        className={`absolute inset-0 h-full w-full scale-105 object-cover transition-opacity duration-700 ${ready ? "opacity-100" : "opacity-0"
-          }`}
-      />
+        className={`absolute inset-0 h-full w-full scale-105 object-cover transition-opacity duration-700 ${
+          ready ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <source data-src={HERO_VIDEO_WEBM_URL} type="video/webm" />
+        <source data-src={HERO_VIDEO_MP4_URL} type="video/mp4" />
+      </video>
     </div>
   );
 }
