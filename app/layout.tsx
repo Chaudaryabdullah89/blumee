@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import Preloader from "./components/Preloader";
-import HeroVideoHead from "./components/HeroVideoHead";
+import { HERO_POSTER_URL } from "@/lib/hero-video";
 
 export const metadata: Metadata = {
   title: "Blume Technical Services — Premium Construction & Development",
@@ -26,7 +26,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-        <HeroVideoHead />
+        <link rel="preload" as="image" href={HERO_POSTER_URL} />
       </head>
       <body className="min-h-full flex flex-col bg-[#FCFCFD]">
         <Preloader />

@@ -5,8 +5,7 @@ import Link from "next/link";
 import { MapPin, Send, Phone, Mail, ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PRELOADER_COMPLETE_EVENT } from "./components/Preloader";
-import { HeroBackgroundVideo, HeroVideoCard } from "./components/HeroVideo";
+import { HeroBackground, HeroCardPreview } from "./components/Hero";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -26,15 +25,12 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    let ctx: ReturnType<typeof gsap.context> | undefined;
-
-    const initAnimations = () => {
-      ctx = gsap.context(() => {
-      // 1. Hero Animations
+    const ctx = gsap.context(() => {
+      // 1. Hero Animations (short delay so preloader can finish)
       gsap.fromTo(
         ".hero-reveal",
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.2 }
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.9 }
       );
 
       gsap.fromTo(
@@ -47,7 +43,7 @@ export default function Home() {
           duration: 1.2,
           ease: "power4.out",
           stagger: 0.2,
-          delay: 0.1,
+          delay: 1,
         }
       );
 
@@ -192,18 +188,8 @@ export default function Home() {
         );
       });
     });
-    };
 
-    if (document.documentElement.dataset.preloaderDone === "true") {
-      initAnimations();
-    } else {
-      window.addEventListener(PRELOADER_COMPLETE_EVENT, initAnimations, { once: true });
-    }
-
-    return () => {
-      window.removeEventListener(PRELOADER_COMPLETE_EVENT, initAnimations);
-      ctx?.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   const testimonials = [
@@ -266,7 +252,7 @@ export default function Home() {
           1. HERO SECTION — Cinematic Video Background
       ───────────────────────────────────────── */}
       <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20 pb-28 hero-section">
-        <HeroBackgroundVideo />
+        <HeroBackground />
         {/* Cinematic gradient overlay — deep navy top fading to page white */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/70 via-[#0A1128]/40 to-[#FCFCFD]" />
 
@@ -313,7 +299,7 @@ export default function Home() {
               {/* Decorative radial lighting inside card */}
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-brand-gold/20 blur-3xl group-hover:bg-brand-gold/30 transition-colors duration-500" />
 
-              <HeroVideoCard />
+              <HeroCardPreview />
 
               {/* Card stats text */}
               <div className="mt-6 flex flex-col gap-2">
