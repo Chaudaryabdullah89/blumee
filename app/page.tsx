@@ -6,6 +6,7 @@ import { MapPin, Send, Phone, Mail, ArrowLeft, ArrowRight, Star } from "lucide-r
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroBackground, HeroCardPreview } from "./components/Hero";
+import { submitContactForm } from "@/lib/submit-contact-form";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -13,11 +14,14 @@ export default function Home() {
 
   // State for Cost Estimator Form
   const [estName, setEstName] = useState("");
+  const [estEmail, setEstEmail] = useState("");
   const [estPhone, setEstPhone] = useState("");
   const [estService, setEstService] = useState("fit-out");
   const [estLocation, setEstLocation] = useState("business-bay");
   const [estMessage, setEstMessage] = useState("");
   const [estSubmitted, setEstSubmitted] = useState(false);
+  const [estIsSubmitting, setEstIsSubmitting] = useState(false);
+  const [estError, setEstError] = useState("");
 
   // State for Testimonials Carousel
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -953,12 +957,15 @@ export default function Home() {
             <div className="lg:col-span-7 bg-[#0F172A] border border-slate-800 rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden">
               {estSubmitted && (
                 <div className="absolute inset-0 bg-[#0F172A]/95 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-4 text-center px-6 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold shadow-lg animate-pulse">
-                    <Send className="w-6 h-6 animate-bounce" />
+                  <div className="w-14 h-14 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold shadow-lg">
+                    <Send className="w-6 h-6" />
                   </div>
-                  <h3 className="font-sans font-black text-lg text-white uppercase tracking-wider">Formatting Estimate Specs</h3>
+                  <h3 className="font-sans font-black text-lg text-white uppercase tracking-wider">
+                    Request Submitted
+                  </h3>
                   <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
-                    Connecting to Blume Technical Services engineering desk on WhatsApp... Redirecting you now to complete dispatch.
+                    Your estimate request was sent to our team. Check your email
+                    for a confirmation — we will follow up shortly.
                   </p>
                 </div>
               )}
@@ -968,41 +975,55 @@ export default function Home() {
               </h3>
 
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  setEstSubmitted(true);
-                  
+                  setEstIsSubmitting(true);
+                  setEstError("");
+
                   const serviceLabels: Record<string, string> = {
                     "fit-out": "Premium Fit-Out & Gypsum",
-                    "tiling": "Custom Large-Format Tiling",
-                    "masonry": "Precise Masonry Block Work",
-                    "doors": "Bespoke Timber Door Sets"
+                    tiling: "Custom Large-Format Tiling",
+                    masonry: "Precise Masonry Block Work",
+                    doors: "Bespoke Timber Door Sets",
                   };
-                  
+
                   const locationLabels: Record<string, string> = {
                     "business-bay": "Business Bay",
                     "palm-jumeirah": "Palm Jumeirah",
                     "downtown-dubai": "Downtown Dubai",
                     "al-quoz": "Al Quoz Site",
-                    "other": "Other District"
+                    other: "Other District",
                   };
 
-                  const formattedMsg = `*Blume Technical Services - New Estimate Request*\n\n` +
-                    `👤 *Client Name:* ${estName}\n` +
-                    `📞 *Phone Number:* ${estPhone}\n` +
-                    `🛠️ *Required Service:* ${serviceLabels[estService] || estService}\n` +
-                    `📍 *Project Location:* ${locationLabels[estLocation] || estLocation}\n\n` +
-                    `💬 *Specifications Summary:*\n${estMessage}`;
+                  try {
+                    await submitContactForm({
+                      name: estName,
+                      email: estEmail,
+                      phone: estPhone,
+                      message: estMessage,
+                      service: serviceLabels[estService] || estService,
+                      location: locationLabels[estLocation] || estLocation,
+                      source: "home-estimate",
+                    });
 
-                  const waUrl = `https://wa.me/97141234567?text=${encodeURIComponent(formattedMsg)}`;
-                  
-                  setTimeout(() => {
-                    window.open(waUrl, "_blank");
-                    setEstSubmitted(false);
+                    setEstSubmitted(true);
                     setEstName("");
+                    setEstEmail("");
                     setEstPhone("");
                     setEstMessage("");
-                  }, 2000);
+                    setEstService("fit-out");
+                    setEstLocation("business-bay");
+
+                    setTimeout(() => setEstSubmitted(false), 5000);
+                  } catch (err) {
+                    setEstError(
+                      err instanceof Error
+                        ? err.message
+                        : "Failed to send your request. Please try again."
+                    );
+                  } finally {
+                    setEstIsSubmitting(false);
+                  }
                 }}
                 className="flex flex-col gap-5"
               >
@@ -1022,6 +1043,22 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={estEmail}
+                      onChange={(e) => setEstEmail(e.target.value)}
+                      placeholder="ahmed@company.ae"
+                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
                       Phone Number *
                     </label>
                     <input
@@ -1033,10 +1070,7 @@ export default function Home() {
                       className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-1.5 sm:col-span-1">
                     <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
                       Required Service
                     </label>
@@ -1053,6 +1087,9 @@ export default function Home() {
                       <option value="doors" className="bg-slate-900 text-white">Bespoke Timber Door Sets</option>
                     </select>
                   </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
                       Project Location
@@ -1085,12 +1122,21 @@ export default function Home() {
                   />
                 </div>
 
+                {estError && (
+                  <div className="bg-red-950/50 border border-red-800/50 text-red-300 text-xs py-3.5 px-4 rounded-xl font-bold uppercase tracking-wider">
+                    {estError}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-brand-gold hover:bg-white hover:text-brand-navy text-[#0A1128] font-sans font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-full shadow-md flex items-center justify-center gap-2 group transition-all duration-300 mt-2"
+                  disabled={estIsSubmitting}
+                  className="w-full bg-brand-gold hover:bg-white hover:text-brand-navy disabled:bg-slate-600 disabled:cursor-not-allowed text-[#0A1128] font-sans font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-full shadow-md flex items-center justify-center gap-2 group transition-all duration-300 mt-2"
                 >
-                  <span>Request Estimate Schedule</span>
-                  <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>{estIsSubmitting ? "Sending Request..." : "Request Estimate Schedule"}</span>
+                  {!estIsSubmitting && (
+                    <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  )}
                 </button>
               </form>
             </div>

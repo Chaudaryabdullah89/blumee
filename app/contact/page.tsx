@@ -11,6 +11,7 @@ import {
   Send,
   ShieldCheck,
 } from "lucide-react";
+import { submitContactForm } from "@/lib/submit-contact-form";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -32,19 +33,10 @@ export default function ContactPage() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const data = await submitContactForm({
+        ...formData,
+        source: "contact-page",
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to route estimate specifications.");
-      }
 
       setSubmitted(true);
       setFormData({
@@ -199,9 +191,8 @@ export default function ContactPage() {
                   Message Submitted
                 </h3>
                 <p className="text-slate-500 text-xs md:text-sm max-w-sm">
-                  Thank you! Your technical specifications sheet has been routed
-                  to our Al Quoz estimating desk. An engineer will follow up
-                  shortly.
+                  Thank you! Your request has been sent to our team and a
+                  confirmation email is on its way to your inbox.
                 </p>
               </div>
             )}
