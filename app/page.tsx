@@ -2,7 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { MapPin, Send, Phone, Mail, ArrowLeft, ArrowRight, Star } from "lucide-react";
+import {
+  MapPin,
+  Send,
+  Phone,
+  Mail,
+  ArrowLeft,
+  ArrowRight,
+  Star,
+} from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroBackground, HeroCardPreview } from "./components/Hero";
@@ -30,11 +38,18 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. Hero Animations (short delay so preloader can finish)
+      // 1. Hero Animations (delayed so the preloader can slide up completely)
       gsap.fromTo(
         ".hero-reveal",
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.9 }
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.2,
+          delay: 1.5,
+        },
       );
 
       gsap.fromTo(
@@ -47,8 +62,8 @@ export default function Home() {
           duration: 1.2,
           ease: "power4.out",
           stagger: 0.2,
-          delay: 1,
-        }
+          delay: 1.6,
+        },
       );
 
       gsap.to(".hero-video-card", {
@@ -59,7 +74,7 @@ export default function Home() {
           start: "top top",
           end: "bottom top",
           scrub: true,
-        }
+        },
       });
 
       // 2. Editorial Text Inline Capsule Animations — clipPath reveal (no width conflict)
@@ -75,11 +90,11 @@ export default function Home() {
           scrollTrigger: {
             trigger: ".editorial-heading",
             start: "top 80%",
-          }
-        }
+          },
+        },
       );
 
-      // 3. Stats Counter Animation
+      // 3. Stats Counter Animation (stat-counters are currently bypassed as stats are qualitative)
       const statElements = document.querySelectorAll(".stat-counter");
       statElements.forEach((el) => {
         const target = parseInt(el.getAttribute("data-target") || "0", 10);
@@ -98,7 +113,7 @@ export default function Home() {
           },
           onUpdate: () => {
             el.textContent = `${prefix}${Math.floor(obj.val)}${suffix}`;
-          }
+          },
         });
       });
 
@@ -131,7 +146,7 @@ export default function Home() {
             start: "top 80%",
             end: "bottom 35%",
             scrub: 1.2,
-          }
+          },
         });
       });
 
@@ -149,13 +164,13 @@ export default function Home() {
           scrollTrigger: {
             trigger: ".services-grid",
             start: "top 78%",
-          }
-        }
+          },
+        },
       );
 
-      // 6. Why Choose Us Cards Parallax Entrance
+      // 6. Featured Projects Cards Parallax Entrance
       gsap.fromTo(
-        ".why-choose-card",
+        ".project-card",
         { y: 70, opacity: 0 },
         {
           y: 0,
@@ -164,10 +179,10 @@ export default function Home() {
           ease: "power3.out",
           stagger: 0.2,
           scrollTrigger: {
-            trigger: ".why-choose-grid",
+            trigger: ".projects-grid",
             start: "top 80%",
-          }
-        }
+          },
+        },
       );
 
       // 7. Process Step Active Highlighting Timeline
@@ -187,10 +202,44 @@ export default function Home() {
               start: "top 78%",
               end: "bottom 32%",
               toggleActions: "play reverse play reverse",
-            }
-          }
+            },
+          },
         );
       });
+
+      // 8. Our Story Section Columns entrance
+      gsap.fromTo(
+        ".about-reveal",
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".about-section",
+            start: "top 78%",
+          },
+        },
+      );
+
+      // 9. CTA Section entrance
+      gsap.fromTo(
+        ".cta-reveal",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.25,
+          scrollTrigger: {
+            trigger: ".cta-section",
+            start: "top 80%",
+          },
+        },
+      );
     });
 
     return () => ctx.revert();
@@ -198,55 +247,58 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "Blume Technical Services delivered a flawless retail fit-out for our boutique showroom in Downtown. Their masonry block borders and double-leaf fire-rated doors were absolutely perfect. Their technical team managed all NOC and Civil Defense approvals perfectly within 21 days.",
+      quote:
+        "Blume Technical Services delivered a stunning corporate office fit-out for our new headquarters. Their team managed the entire process from design brief to final handover — on time and within budget. The space truly reflects our brand.",
       author: "Tariq Al Futtaim",
       role: "Managing Director",
-      company: "Al Futtaim Offices",
+      company: "Al Futtaim Group",
       rating: 5,
-      location: "Downtown Dubai"
+      location: "Business Bay, Dubai",
     },
     {
-      quote: "We engaged Blume for over 650 sqm of Calacatta marble tiling across our beachfront luxury villa. The flatness tolerances they achieved (under 0.5mm lippage) with laser-level alignments were staggering. Truly world-class craftsmanship.",
+      quote:
+        "We engaged Blume to design and fit-out our flagship retail boutique. Their attention to detail, material sourcing, and project coordination was exceptional. The store has become a destination in itself — customers love the ambiance.",
       author: "Elena Petrova",
-      role: "Lead Project Architect",
-      company: "Palm Jumeirah Residences",
+      role: "Brand Director",
+      company: "Luxe Retail Group",
       rating: 5,
-      location: "Palm Jumeirah"
+      location: "Downtown Dubai",
     },
     {
-      quote: "Our corporate headquarters drywall partitioning and fine plaster renders required precise soundproofing coordinates. Blume executed the Q4 level glass-flat plastering beautifully, complete with full ISO certifications.",
-      author: "Marcus Vance",
-      role: "Head of Infrastructure Development",
-      company: "Apex Financial Center",
+      quote:
+        "Blume's design consultancy team helped us reimagine our healthcare facility. They understood our operational needs and translated them into a calming, functional environment. Their end-to-end management was truly stress-free.",
+      author: "Dr. Marcus Vance",
+      role: "Head of Operations",
+      company: "Dubai Medical Centre",
       rating: 5,
-      location: "DIFC, Dubai"
-    }
+      location: "Jumeirah, Dubai",
+    },
   ];
 
   const faqs = [
     {
-      q: "What types of projects do you specialize in?",
-      a: "We specialize in premium commercial development, including corporate office complexes, retail shopping destinations, high-tech industrial parks, and advanced institutional buildings. We also provide structural block masonry, precision plastering, and bespoke corporate interior design services.",
+      q: "What core technical and finishing services does Blume specialize in?",
+      a: "We specialize in 6 core civil and finishing disciplines: Turnkey Fit-Out & Renovation, Custom Tiling & Stonework, Bespoke Joinery & Doors, Professional Plastering & Finishes, Precision Block Masonry, and Interior Design & Space Planning.",
     },
     {
-      q: "How do you ensure project safety and quality?",
-      a: "Blume Technical Services operates under rigorous international safety and engineering standards. We employ certified professional structural engineers, maintain comprehensive zero-accident safety protocols, and execute daily quality control checks and materials auditing throughout the construction lifecycle.",
+      q: "What quality tolerances do you guarantee for tiling and stonework?",
+      a: "We execute all tiling strictly under BS 5385 British standards. Using digital rotary lasers, we maintain floor and wall flatnesses with a variance tolerance of under +/- 0.5mm to eliminate all lippage across large-format porcelain and marble slabs. We also conduct mandatory 24-hour liquid flood tests before tiling wet zones.",
     },
     {
-      q: "Can you work with our existing architects?",
-      a: "Absolutely. We are highly collaborative and regularly work with our clients' existing architectural teams, project managers, and interior designers. We bring our advanced structural engineering, cost control systems, and construction expertise to realize your exact plans.",
+      q: "Are your custom joinery and door installations certified?",
+      a: "Yes. All bespoke timber door assemblies can be supplied with certified fire ratings (60-minute and 90-minute options) complying with Dubai Civil Defense (DCD) requirements. We manufacture using solid woods like ash and walnut, complete with drop-down soundproof gaskets and smoke seals.",
     },
     {
-      q: "What is your typical project development schedule?",
-      a: "Project schedules vary based on scale and structural complexity. During our strategic planning phase, we provide a detailed Gantt chart outlining milestones from site evaluation, planning approvals, foundation laying, structural framework, shell building, down to bespoke interior finishing.",
+      q: "How do you handle developer NOCs and municipality approvals in Dubai?",
+      a: "We provide complete turnkey approval coordination. Our engineering team prepares and submits detailed structural, architectural, and MEP layout drawings to secure NOCs from developers (Emaar, Nakheel, Dubai Properties) and approvals from Dubai Municipality (DM), Civil Defense (DCD), and Concordia/TECOM.",
     },
     {
-      q: "How do you handle potential budget overrides?",
-      a: "We combat budget overrides through 'Precision Estimating'. Our initial structural analysis and quantity surveying ensure highly accurate cost projections. Any client-approved modifications during building are calculated in real-time, maintaining complete transparency.",
+      q: "How fast can you mobilize for masonry block work and plastering?",
+      a: "Once NOC approvals and work permits are in place, our specialized in-house crews can mobilize to site within 3 to 5 business days. All concrete masonry units (CMU) and plaster binders are sourced from certified regional suppliers to guarantee raw material density and anti-cracking compliance.",
     },
     {
-      q: "Do you provide post-construction services?",
-      a: "Yes. We stand by our work. We provide full post-construction handovers, standard maintenance warranties, structural certifications, operational training for building mechanical systems, and long-term facility support packages.",
+      q: "Do you work with third-party designers, architects, and main contractors?",
+      a: "Absolutely. While we provide full design-and-build services, we frequently collaborate as specialist contractors or direct fit-out partners — executing detailed shop drawings, plaster skimming (Q1 to Q4 finishes), and architectural stone details matching design guidelines.",
     },
   ];
 
@@ -278,14 +330,15 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] w-fit shadow-md hero-reveal opacity-0">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
               <span className="font-sans font-bold text-[10px] md:text-xs uppercase tracking-widest text-brand-gold">
-                Solidus Architectural Standard
+                Premium Interior Standards
               </span>
             </div>
 
             <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-xl leading-relaxed tracking-wide hero-reveal opacity-0">
-              Blume Technical Services provides premier commercial construction and
-              infrastructure solutions for modern enterprises and big visions.
-              We build with unbreakable integrity.
+              Blume Technical Services is an Interior Design and Fit-Out
+              management company that exists to help bring brands and spaces to
+              life — combining planning, design, manufacturing, and renovations
+              into one seamless experience.
             </p>
 
             {/* Giant Title */}
@@ -308,13 +361,12 @@ export default function Home() {
               {/* Card stats text */}
               <div className="mt-6 flex flex-col gap-2">
                 <h3 className="font-sans font-black text-2xl text-white tracking-tight flex items-center gap-2">
-                  <span className="text-brand-gold">$100k+</span> Delivered
-                  Value
+                  <span className="text-brand-gold">AED 15 Million +</span>{" "}
+                  Delivered Value
                 </h3>
                 <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                   Our portfolio represents our unwavering commitment to
-                  redefining urban landscapes with structural planning and
-                  engineering excellence.
+                  redefining urban landscapes with engineering excellence.
                 </p>
               </div>
             </div>
@@ -329,54 +381,26 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center">
           {/* Paragraph with inline rounded capsules like the image */}
           <h2 className="font-sans font-semibold text-2xl md:text-4xl text-brand-navy leading-relaxed md:leading-[1.7] max-w-4xl mx-auto tracking-tight editorial-heading">
-            Starting from the 2017, as the intricacy of structures
+            Starting from corporate offices to hotels, retail shops to
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&q=80&w=200')`,
               }}
             ></span>
-            continued to evolve, architecture transformed into a
-            multi-disciplinary field with various specializations. We blend
-            creativity,
+            healthcare environments, our focus is on creating inspired designs
+            to provide our clients with
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=200')`,
               }}
             ></span>
-            technical skill, and an unwavering attention to detail to deliver
-            thoughtful, high-quality spaces.
+            an environment of lasting value, driven by senior staff expertise
+            and unparalleled cross-industry know-how.
           </h2>
 
           {/* Stats grid section with divider lines */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 mt-20 pt-16 border-t border-black/[0.06] stats-container">
-            {[
-              { val: 150, suffix: "+", label: "Clients Served" },
-              { val: 210, suffix: "+", label: "Successful Projects" },
-              { val: 9, prefix: "0", label: "Prestigious Awards" },
-              { val: 18, suffix: "+", label: "Years Experience" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className={`flex flex-col gap-2 ${
-                  i < 3 ? "md:border-r border-black/[0.06]" : ""
-                }`}
-              >
-                <span
-                  className="font-sans font-black text-4xl md:text-5xl text-brand-navy tracking-tight stat-counter"
-                  data-target={stat.val}
-                  data-prefix={stat.prefix || ""}
-                  data-suffix={stat.suffix || ""}
-                >
-                  {stat.prefix || ""}{stat.val}{stat.suffix || ""}
-                </span>
-                <span className="font-sans font-bold text-xs uppercase tracking-widest text-[#64748b]">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -387,37 +411,33 @@ export default function Home() {
         {/* Soft gold side gradients for dramatic fade effect */}
         <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#0A1128] to-transparent z-10 pointer-events-none" />
         <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#0A1128] to-transparent z-10 pointer-events-none" />
-        
+
         <div className="animate-marquee flex items-center gap-12 text-[#FCFCFD]">
           {[...Array(3)].map((_, i) => (
             <React.Fragment key={i}>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Dubai Municipality Approved
+                Interior Design
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                ISO 9001 Quality Certified
+                Turnkey Fit-Out Solutions
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Laser-Level Tiling Accuracy
+                FF&E Procurement
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Civil Defense Compliant
+                Project Management
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Zero-Accident Site Standard
+                Design Consultancy
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Premium Drywall & Gypsum
-              </span>
-              <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Bespoke Joinery & Carpentry
+                Manufacturing & Joinery
               </span>
             </React.Fragment>
           ))}
@@ -428,20 +448,20 @@ export default function Home() {
           3. OUR STORY SECTION — Blueprint Skyscraper
       ───────────────────────────────────────── */}
       <span id="about" className="block -mt-20 pt-20" />
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-8">
+      <section className="py-24 max-w-7xl mx-auto px-6 md:px-8 about-section">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Sketch Outline */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
+          <div className="lg:col-span-6 flex flex-col gap-6 about-reveal opacity-0">
             <div className="flex flex-col gap-2">
               <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
                 Our Story
               </span>
               <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                We Build Foundations For Future Businesses
+                We Bring Brands & Spaces To Life
               </h2>
             </div>
 
-            {/* Minimal SVG Skyscraper blueprint wireframe - super high premium detail */}
+            {/* Minimal SVG Interior Floor Plan wireframe - super high premium detail */}
             <div className="relative aspect-[4/3] w-full border border-black/[0.05] rounded-3xl bg-[#f8fafc] flex items-center justify-center p-8 overflow-hidden shadow-inner group blueprint-container">
               {/* Grid background in wireframe */}
               <div
@@ -451,7 +471,7 @@ export default function Home() {
                     linear-gradient(to right, #000000 1px, transparent 1px),
                     linear-gradient(to bottom, #000000 1px, transparent 1px)
                   `,
-                  backgroundSize: "20px 20px",
+                  backgroundSize: "15px 15px",
                 }}
               />
               <svg
@@ -461,81 +481,190 @@ export default function Home() {
                 stroke="currentColor"
                 strokeWidth="0.75"
               >
-                {/* Ground grid lines */}
-                <line className="blueprint-path" x1="10" y1="135" x2="190" y2="135" />
-                <line
-                  className="blueprint-path"
-                  x1="20"
-                  y1="140"
-                  x2="180"
-                  y2="140"
-                  strokeDasharray="2 2"
-                />
-                {/* Highrise main columns */}
-                <rect className="blueprint-path" x="50" y="20" width="100" height="115" />
-                <rect className="blueprint-path" x="65" y="10" width="70" height="125" />
-                <rect className="blueprint-path" x="80" y="5" width="40" height="130" />
-                {/* Structural truss details */}
-                <line className="blueprint-path" x1="50" y1="20" x2="150" y2="135" strokeWidth="0.5" />
-                <line className="blueprint-path" x1="150" y1="20" x2="50" y2="135" strokeWidth="0.5" />
-                <line className="blueprint-path" x1="65" y1="10" x2="135" y2="135" strokeWidth="0.5" />
-                <line className="blueprint-path" x1="135" y1="10" x2="65" y2="135" strokeWidth="0.5" />
-                {/* Levels markers */}
-                {Array.from({ length: 13 }).map((_, idx) => (
-                  <line
-                    key={idx}
-                    className="blueprint-path"
-                    x1="45"
-                    y1={15 + idx * 10}
-                    x2="155"
-                    y2={15 + idx * 10}
-                    strokeWidth="0.25"
-                    strokeDasharray="1 1"
-                  />
-                ))}
-                {/* Foundation measurements */}
+                {/* Boundary Walls (Double line for brick/block thickness) */}
+                <rect x="20" y="15" width="160" height="120" rx="2" />
+                <rect x="22" y="17" width="156" height="116" rx="1" />
+                {/* Interior Partition Block Walls (Double lines for block thickness) */}
+                {/* Meeting Room Division */}
+                <line x1="75" y1="17" x2="75" y2="80" />
+                <line x1="77" y1="17" x2="77" y2="78" />
+                <line x1="22" y1="80" x2="75" y2="80" />
+                <line x1="22" y1="78" x2="77" y2="78" />
+                {/* Office 01 Division */}
+                <line x1="130" y1="17" x2="130" y2="133" />
+                <line x1="128" y1="17" x2="128" y2="133" />
+                {/* Door Openings and Swings */}
+                {/* Main Entrance Swing */}
+                <path d="M 90 133 L 90 118" strokeDasharray="1 1" />
                 <path
-                  className="blueprint-path"
-                  d="M 30 135 L 30 20 M 27 20 L 33 20 M 27 135 L 33 135"
+                  d="M 90 118 A 15 15 0 0 1 105 133"
+                  strokeDasharray="1 1"
+                />
+                {/* Meeting Room Door Swing */}
+                <line x1="77" y1="45" x2="62" y2="45" />
+                <path d="M 62 45 A 15 15 0 0 1 77 60" strokeDasharray="1 1" />
+                {/* Executive Office Door Swing */}
+                <line x1="128" y1="90" x2="143" y2="90" />
+                <path
+                  d="M 143 90 A 15 15 0 0 1 128 105"
+                  strokeDasharray="1 1"
+                />
+                {/* Space Planning & Furniture Layout blocks */}
+                {/* Conference Table in Meeting Room */}
+                <rect
+                  x="35"
+                  y="35"
+                  width="28"
+                  height="18"
+                  rx="4"
                   strokeWidth="0.5"
                 />
+                {/* Conference Chairs */}
+                <circle cx="30" cy="44" r="1.5" />
+                <circle cx="40" cy="28" r="1.5" />
+                <circle cx="49" cy="28" r="1.5" />
+                <circle cx="58" cy="28" r="1.5" />
+                <circle cx="68" cy="44" r="1.5" />
+                <circle cx="40" cy="60" r="1.5" />
+                <circle cx="49" cy="60" r="1.5" />
+                <circle cx="58" cy="60" r="1.5" />
+                {/* Sofa in Reception Area */}
+                <rect
+                  x="90"
+                  y="35"
+                  width="28"
+                  height="10"
+                  rx="1"
+                  strokeWidth="0.5"
+                />
+                <rect
+                  x="90"
+                  y="55"
+                  width="10"
+                  height="20"
+                  rx="1"
+                  strokeWidth="0.5"
+                />
+                <circle cx="104" cy="65" r="4" strokeWidth="0.5" />{" "}
+                {/* Small plant */}
+                {/* Desks in Executive Office */}
+                <rect
+                  x="142"
+                  y="30"
+                  width="24"
+                  height="14"
+                  rx="1"
+                  strokeWidth="0.5"
+                />
+                <circle cx="154" cy="50" r="2" /> {/* Chair */}
+                <rect
+                  x="142"
+                  y="95"
+                  width="24"
+                  height="14"
+                  rx="1"
+                  strokeWidth="0.5"
+                />
+                <circle cx="154" cy="85" r="2" /> {/* Chair */}
+                {/* Labels and Annotations (Floor Plan Details) */}
                 <text
-                  x="20"
-                  y="80"
+                  x="28"
+                  y="24"
                   fill="currentColor"
-                  fontSize="5"
-                  className="font-sans font-bold"
-                  transform="rotate(-90 20 80)"
+                  fontSize="4.5"
+                  className="font-sans font-bold opacity-60"
                 >
-                  120.0m
+                  MEETING ROOM
                 </text>
+                <text
+                  x="86"
+                  y="24"
+                  fill="currentColor"
+                  fontSize="4.5"
+                  className="font-sans font-bold opacity-60"
+                >
+                  RECEPTION
+                </text>
+                <text
+                  x="136"
+                  y="24"
+                  fill="currentColor"
+                  fontSize="4.5"
+                  className="font-sans font-bold opacity-60"
+                >
+                  EXECUTIVE SUITE
+                </text>
+                <text
+                  x="32"
+                  y="73"
+                  fill="currentColor"
+                  fontSize="3.5"
+                  className="font-sans opacity-40"
+                >
+                  TILING REF: ST-04
+                </text>
+                <text
+                  x="136"
+                  y="122"
+                  fill="currentColor"
+                  fontSize="3.5"
+                  className="font-sans opacity-40"
+                >
+                  PLASTER LEVEL: Q4
+                </text>
+                <text
+                  x="86"
+                  y="112"
+                  fill="currentColor"
+                  fontSize="3.5"
+                  className="font-sans opacity-40"
+                >
+                  BLOCK WORK: 200MM
+                </text>
+                {/* Dimension measurement lines */}
+                {/* Horizontal dimension */}
                 <path
-                  className="blueprint-path"
-                  d="M 50 145 L 150 145 M 50 142 L 50 148 M 150 142 L 150 148"
+                  d="M 20 143 L 180 143 M 20 140 L 20 146 M 180 140 L 180 146"
                   strokeWidth="0.5"
                 />
                 <text
-                  x="92"
-                  y="148"
+                  x="94"
+                  y="141"
                   fill="currentColor"
                   fontSize="5"
                   className="font-sans font-bold"
-                  >
-                  50.0m
+                >
+                  16.0m
+                </text>
+                {/* Vertical dimension */}
+                <path
+                  d="M 10 15 L 10 135 M 7 15 L 13 15 M 7 135 L 13 135"
+                  strokeWidth="0.5"
+                />
+                <text
+                  x="4"
+                  y="78"
+                  fill="currentColor"
+                  fontSize="5"
+                  className="font-sans font-bold"
+                  transform="rotate(-90 4 78)"
+                >
+                  12.0m
                 </text>
               </svg>
             </div>
           </div>
 
           {/* Right Column: Narrative & Real Image */}
-          <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-16">
+          <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-16 about-reveal opacity-0">
             <div className="flex flex-col gap-6">
               <p className="text-[#475569] text-sm md:text-base leading-relaxed">
-                At Blume Technical Services, we combine cutting-edge structural engineering with
-                sustainable green practices. Our team of seasoned builders,
-                managers, and designers ensure that every project is delivered
-                precisely on time, strictly within budget, and with
-                uncompromising quality.
+                At Blume Technical Services, we combine creative spatial
+                planning, fine interior partitions, high-density block work, and
+                master plaster finishes. Our dedicated team of space planners,
+                detail managers, and skilled tradespeople ensure that every
+                project is delivered on time, strictly within budget, and with
+                uncompromising aesthetic quality.
               </p>
 
               <Link
@@ -559,24 +688,24 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Skyscraper looking up image */}
+            {/* Premium finished office interior image */}
             <div
               className="aspect-[16/9] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800')`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800')`,
               }}
             />
           </div>
         </div>
 
         {/* Dual Cards side-by-side (Our Mission / Our Vision) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 about-reveal opacity-0">
           {/* Mission Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
             <div
               className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=300')`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=300')`,
               }}
             />
             <div className="flex flex-col gap-2">
@@ -584,9 +713,11 @@ export default function Home() {
                 <span className="text-brand-gold">▪</span> Our Mission
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                To build long-term partnerships with institutional clients
-                through structural transparency and consistently flawless
-                craftsmanship.
+                To win the hearts and trust of all our clients by offering
+                operational and strategic support at all stages of the project.
+                From concept to execution — we aim for strict control on
+                time-line, budget and quality to ensure repeat customers and
+                avenues to making new clients.
               </p>
             </div>
           </div>
@@ -596,7 +727,7 @@ export default function Home() {
             <div
               className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&q=80&w=300')`,
+                backgroundImage: `url('https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=300')`,
               }}
             />
             <div className="flex flex-col gap-2">
@@ -604,10 +735,11 @@ export default function Home() {
                 <span className="text-brand-gold">▪</span> Our Vision
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                To stand as the absolute premier technical solutions and custom
-                fit-out partner across Dubai and the UAE—delivering unparalleled
-                craftsmanship in premium tiling, precise block work, high-end
-                door installations, and superior interior finishing.
+                To redefine the very essence of living spaces, founded on the
+                principles of creativity, innovation, and a deep appreciation
+                for aesthetics — transforming houses into homes, offices into
+                inspiring workspaces, and every space into a reflection of
+                individuality.
               </p>
             </div>
           </div>
@@ -623,7 +755,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
           }}
         />
         {/* Soft frosted gradient overlay */}
@@ -635,73 +767,78 @@ export default function Home() {
               What We Do
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-              From Concept To Completion, We Master Every Square Foot.
+              One-Stop Interior Design &amp; Fit-Out Solutions
             </h2>
           </div>
 
-          {/* Gorgeous grid of 4 service cards with glassmorphic designs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 services-grid">
+          {/* Gorgeous grid of 6 service cards with glassmorphic designs */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 services-grid">
             {[
               {
                 num: "01",
-                title: "Office Complexes",
-                desc: "Grade-A corporate office towers, corporate plazas, and business parks engineered for high performance, flexible work layouts, and energy efficiency.",
+                title: "Interior Design & Space Planning",
+                desc: "Strategic 2D/3D layouts, structural floor plans, material specs, and complete developer/authority approvals management (DM, DCD, Concordia).",
+                link: "/services#interior-design",
               },
               {
                 num: "02",
-                title: "Retail & Malls",
-                desc: "High-traffic modern shopping malls, flagship retail stores, and commercial strips featuring luxury facades and structural optimization for shopper circulation.",
+                title: "Turnkey Fit-Out & Renovation",
+                desc: "Complete interior fit-out execution for commercial and high-end residential spaces, drywalls, ceilings, MEP, and fast-track NOC delivery.",
+                link: "/services#fit-out",
               },
               {
                 num: "03",
-                title: "Industrial Hubs",
-                desc: "Heavy-duty manufacturing plants, automated logistics centers, and large-scale industrial warehouses boasting customized floor loading capacities.",
+                title: "Precision Block Masonry",
+                desc: "Laser-aligned laying of concrete blocks, partition walls, and boundary structures utilizing heavy-duty CMU units and reinforced lintels.",
+                link: "/services#block-masonry",
               },
               {
                 num: "04",
-                title: "Institutional Building",
-                desc: "High-specification university campuses, governmental office buildings, and state-of-the-art hospitals complying with rigorous safety codes.",
+                title: "Professional Plastering & Finishes",
+                desc: "Flawless multi-layer interior and exterior plastering skewing to Q4 levels, ready for custom paint or specialty Venetian wall textures.",
+                link: "/services#plastering",
+              },
+              {
+                num: "05",
+                title: "Custom Tiling & Stonework",
+                desc: "Laser-leveled large-format marble, natural stone, and porcelain installations with BS 5385 alignment limits and complete wet zone sealing.",
+                link: "/services#tiling",
+              },
+              {
+                num: "06",
+                title: "Bespoke Joinery & Doors",
+                desc: "Craftsmanship joinery fabrication, fire-rated ashwood doors, architraves, flush wall panels, custom wardrobes, and high-end wood fitting.",
+                link: "/services#doors",
               },
             ].map((serv, index) => (
-              <div
+              <Link
                 key={index}
-                className="service-card group relative rounded-3xl bg-white/45 backdrop-blur-md border border-white/60 p-8 md:p-10 shadow-sm hover-float shimmer-hover transition-all duration-500 overflow-hidden"
+                href={serv.link}
+                className="service-card group relative rounded-3xl bg-white/45 backdrop-blur-md border border-white/60 p-8 shadow-sm hover-float hover:shadow-lg transition-all duration-500 overflow-hidden flex flex-col justify-between"
               >
                 {/* Animated card background shine */}
                 <div className="absolute -inset-full bg-gradient-to-tr from-transparent via-white/20 to-transparent group-hover:animate-[spin_4s_linear_infinite] pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col gap-6">
+                <div className="relative z-10 flex flex-col gap-6 h-full justify-between">
                   <div className="flex items-center justify-between">
                     <span className="font-sans font-black text-4xl text-brand-navy/10 group-hover:text-brand-gold transition-colors duration-300">
                       {serv.num}
                     </span>
                     <div className="w-10 h-10 rounded-full bg-brand-navy/5 text-brand-navy flex items-center justify-center group-hover:bg-brand-navy group-hover:text-white transition-all duration-300">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 4.5v15m7.5-7.5h-15"
-                        />
-                      </svg>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-sans font-black text-xl text-brand-navy group-hover:text-brand-accent transition-colors duration-300">
+                  <div className="flex flex-col gap-2 mt-4">
+                    <h3 className="font-sans font-black text-lg md:text-xl text-brand-navy group-hover:text-brand-accent transition-colors duration-300 leading-snug">
                       {serv.title}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
+                    <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
                       {serv.desc}
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -721,7 +858,7 @@ export default function Home() {
                   Our Process
                 </span>
                 <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                  Explore The Strategic Way Our Process Is Done
+                  Our Simple, Transparent Design & Build Process
                 </h2>
               </div>
 
@@ -736,28 +873,29 @@ export default function Home() {
             {/* Right Column: Description & Steps */}
             <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-6">
               <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-                Explore our portfolio of high-impact commercial developments,
-                where structural integrity meets architectural innovation. Each
-                project represents our commitment to redefining urban
-                landscapes.
+                We are committed to making it simpler and easier for you to
+                access the information and services you need — from one place.
+                Whether you choose a single service or the complete end-to-end
+                package, you can feel confident we will deliver quality work on
+                an accurate, cost-managed budget, every time.
               </p>
 
               <div className="flex flex-col gap-6">
                 {[
                   {
                     step: "01",
-                    title: "Strategic Planning",
-                    desc: "Before break ground, we evaluate topographical maps, run zoning regulatory checks, perform environmental impact surveys, and craft full structural specifications.",
+                    title: "Discovery & Briefing",
+                    desc: "We start by understanding your vision, requirements, budget and timeline. Our consultants perform a detailed site survey and produce a comprehensive design brief.",
                   },
                   {
                     step: "02",
-                    title: "Precision Estimating",
-                    desc: "Our quantity surveyors build micro-cost matrices tracking material specifications down to individual blocks and plaster mixes, guaranteeing zero hidden costs.",
+                    title: "Design & Material Selection",
+                    desc: "Our designers develop concepts, mood boards, 2D/3D layouts and material palettes tailored to your brand. We present value-added options at every price point.",
                   },
                   {
                     step: "03",
-                    title: "Masterful Building",
-                    desc: "We coordinate site teams using sophisticated project management software, maintaining consistent speed while passing weekly external safety audits.",
+                    title: "Build & Handover",
+                    desc: "Our project managers coordinate all trades, manufacturing and custom fit-out installation. We maintain strict quality control throughout, delivering your space on time and on budget.",
                   },
                 ].map((step, idx) => (
                   <div
@@ -784,98 +922,139 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────────────────────────
-          6. WHY CHOOSE US — Asymmetric Visual Layout
+          6. FEATURED PROJECTS — Premium Asymmetrical Showcase
       ───────────────────────────────────────── */}
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col gap-3">
-          <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-            Why Choose Us
-          </span>
-          <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-            Strategic Excellence In Every Square Foot.
-          </h2>
-          <p className="text-slate-500 text-sm leading-relaxed max-w-xl mx-auto">
-            We are a full-service construction studio committed to delivering
-            thoughtful, high-quality spaces. Our work blends creativity,
-            technical skill, and an unwavering attention to detail.
-          </p>
-        </div>
-
-        {/* Asymmetrical Grid layout matching user image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch why-choose-grid">
-          {/* Left tall card */}
-          <div className="why-choose-card lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[400px] lg:min-h-0 border border-black/[0.04] shadow-sm hover-float transition-all duration-500 group">
-            <div
-              className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[6s]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=600')`,
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 text-[#FCFCFD]">
-              <span className="font-sans font-black text-3xl block text-brand-gold mb-2">
-                150+
+      <section className="py-24 bg-white border-y border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+            <div className="flex flex-col gap-3">
+              <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
+                Our Showcase
               </span>
-              <h3 className="font-sans font-extrabold text-xl mb-2">
-                Clients Served
-              </h3>
-              <p className="text-slate-300 text-xs leading-relaxed">
-                We build long-term partnerships through structural transparency
-                and consistent, certified structural delivery.
+              <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
+                Featured Projects
+              </h2>
+              <p className="text-slate-500 text-sm max-w-xl">
+                Explore our selection of premier technical, fit-out, and civil execution works delivered across Dubai&apos;s most prestigious locations.
               </p>
             </div>
+            <Link
+              href="/projects"
+              className="group/btn inline-flex items-center gap-2 px-6 py-3 font-sans font-bold text-xs uppercase tracking-widest text-brand-navy hover:text-white bg-white hover:bg-brand-navy border border-black/[0.06] hover:border-brand-navy rounded-full shadow-sm hover:shadow transition-all duration-300 whitespace-nowrap"
+            >
+              <span>Explore Portfolio</span>
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          {/* Middle column (two stacked text cards) */}
-          <div className="lg:col-span-4 flex flex-col gap-8 justify-between">
-            <div className="why-choose-card bg-white rounded-3xl border border-black/[0.06] p-8 flex-1 flex flex-col justify-center gap-2 hover-float shimmer-hover transition-all duration-300">
-              <span className="font-sans font-black text-3xl text-brand-gold">
-                15+
-              </span>
-              <h4 className="font-sans font-black text-lg text-brand-navy">
-                Years Experience
-              </h4>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Every customized blueprint meets national and international
-                engineering regulations for durability.
-              </p>
-            </div>
+          {/* Asymmetric Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch projects-grid">
+            {[
+              {
+                id: 1,
+                title: "Executive Office Fit-Out",
+                category: "Fit-Out",
+                client: "Al Futtaim Offices",
+                location: "Business Bay, Dubai",
+                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
+                desc: "Complete interior fit-out for corporate headquarters, featuring precise drywall partitions, acoustically optimized ceilings, and high-end timber door sets.",
+                tags: ["Acoustic Ceilings", "Timber Doors", "Drywalls"],
+                colSpan: "lg:col-span-8 min-h-[450px]",
+              },
+              {
+                id: 2,
+                title: "Luxury Beachfront Villa Tiling",
+                category: "Tiling & Stonework",
+                client: "Private Elite Villa",
+                location: "Palm Jumeirah, Dubai",
+                img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800",
+                desc: "Laser-leveled installation of large-format Italian Calacatta marble slab tiles with micro-joint epoxy grouting and complete wet area waterproofing.",
+                tags: ["Italian Marble", "Epoxy Grout", "Waterproofing"],
+                colSpan: "lg:col-span-4 min-h-[450px]",
+              },
+              {
+                id: 3,
+                title: "Bespoke Penthouse Joinery",
+                category: "Bespoke Joinery",
+                client: "Marina Heights Penthouse",
+                location: "Dubai Marina, Dubai",
+                img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
+                desc: "Craftsmanship wood joinery including fire-rated solid ash doors, customized walk-in wardrobes, and veneered feature wall panels.",
+                tags: ["Solid Ash", "Fire-Rated Doors", "Wardrobes"],
+                colSpan: "lg:col-span-4 min-h-[450px]",
+              },
+              {
+                id: 5,
+                title: "High-End Retail Store Fit-Out",
+                category: "Fit-Out & Execution",
+                client: "Vogue Boutique",
+                location: "Downtown Dubai",
+                img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1200",
+                desc: "Premium commercial setup showcasing custom brass structural framings, flawless venetian wall rendering, and micro-bevel porcelain floor tiling.",
+                tags: ["Brass Framings", "Venetian Plaster", "Porcelain Tile"],
+                colSpan: "lg:col-span-8 min-h-[450px]",
+              },
+            ].map((project, idx) => (
+              <Link
+                key={idx}
+                href={`/projects/${project.id}`}
+                className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer ${project.colSpan}`}
+              >
+                {/* Visual Background Frame */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
+                  style={{
+                    backgroundImage: `url('${project.img}')`,
+                  }}
+                />
+                
+                {/* Visual Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#050A18]/45 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
+                
+                {/* Floating Category Badge & Location (Top) */}
+                <div className="absolute top-6 left-6 right-6 flex items-center justify-between z-10 pointer-events-none">
+                  <span className="px-3 py-1 text-[9px] font-sans font-bold uppercase tracking-widest text-[#FCFCFD] bg-brand-navy/60 border border-white/[0.12] rounded-full backdrop-blur-md shadow-sm">
+                    {project.category}
+                  </span>
+                  <span className="flex items-center gap-1 text-[10px] font-bold text-slate-300 uppercase tracking-wider backdrop-blur-sm bg-black/25 px-2.5 py-1 rounded-full border border-white/[0.05]">
+                    <MapPin className="w-3.5 h-3.5 text-brand-gold" />
+                    {project.location}
+                  </span>
+                </div>
 
-            <div className="why-choose-card bg-white rounded-3xl border border-black/[0.06] p-8 flex-1 flex flex-col justify-center gap-2 hover-float shimmer-hover transition-all duration-300">
-              <span className="font-sans font-black text-3xl text-brand-gold">
-                99%
-              </span>
-              <h4 className="font-sans font-black text-lg text-brand-navy">
-                Success Rate
-              </h4>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Streamlined administrative project scheduling and site
-                coordination to minimize budget overrides.
-              </p>
-            </div>
-          </div>
+                {/* Content Overlay (Bottom) */}
+                <div className="relative z-10 p-8 md:p-10 flex flex-col gap-4 text-[#FCFCFD]">
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[10px] font-black tracking-widest uppercase text-brand-gold">
+                      Client: {project.client}
+                    </span>
+                    <h3 className="font-sans font-black text-2xl md:text-3xl uppercase leading-tight tracking-tight">
+                      {project.title}
+                    </h3>
+                  </div>
+                  
+                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed max-w-xl opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-24 transition-all duration-500 ease-in-out overflow-hidden">
+                    {project.desc}
+                  </p>
 
-          {/* Right tall card */}
-          <div className="why-choose-card lg:col-span-4 relative rounded-3xl overflow-hidden min-h-[400px] lg:min-h-0 border border-black/[0.04] shadow-sm hover-float transition-all duration-500 group">
-            <div
-              className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[6s]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=600')`,
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 text-[#FCFCFD]">
-              <span className="font-sans font-black text-3xl block text-brand-gold mb-2">
-                200+
-              </span>
-              <h3 className="font-sans font-extrabold text-xl mb-2">
-                Projects Done
-              </h3>
-              <p className="text-slate-300 text-xs leading-relaxed">
-                Delivering high-performance corporate infrastructure designed to
-                accommodate complex organizational needs.
-              </p>
-            </div>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-[9px] font-bold uppercase tracking-wider text-slate-400 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-md"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Right Corner Interactive Arrow */}
+                <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white/10 group-hover:bg-brand-gold border border-white/[0.12] group-hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 z-10">
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -884,95 +1063,102 @@ export default function Home() {
           7. CTA SECTION — Full Bleed Dark Landmark (Cost Estimator & Contact)
       ───────────────────────────────────────── */}
       <span id="contact" className="block" />
-      <section className="relative py-24 overflow-hidden bg-[#0A1128] border-t border-white/[0.04] text-[#FCFCFD]">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-brand-gold/5 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-brand-gold/5 blur-3xl pointer-events-none" />
+      <section className="relative py-28 overflow-hidden bg-[#050A18] border-t border-white/[0.04] text-[#FCFCFD] cta-section">
+        {/* Glowing visual ambient light backdrops */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-gold/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-brand-gold/5 blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-8 z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             {/* Left side: Coordinates and Brand Slogan */}
-            <div className="lg:col-span-5 flex flex-col gap-8">
+            <div className="lg:col-span-5 flex flex-col gap-8 cta-reveal opacity-0">
               <div className="flex flex-col gap-3">
-                <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-                  Contact Estimators
+                <span className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-sans font-bold uppercase tracking-widest text-brand-gold bg-brand-gold/10 border border-brand-gold/20 rounded-full w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
+                  Estimating Desk Open
                 </span>
-                <h2 className="font-sans font-black text-3xl md:text-5xl uppercase leading-tight tracking-tight text-white">
-                  Ready to start your next project?
+                <h2 className="font-sans font-black text-4xl md:text-5xl uppercase leading-tight tracking-tight text-white mt-2">
+                  Ready to transform your space?
                 </h2>
-                <p className="text-slate-400 text-xs md:text-sm leading-relaxed mt-2">
-                  Request an on-site laser survey or submit your CAD plans
-                  directly to our engineering coordinators. We offer quick
-                  turnaround block masonry, custom joinery, and flat marble
-                  laying quotes.
+                <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                  Submit your brief or layout file directly to our estimation engineers. We provide comprehensive, itemized pricing and timeline audits within 48 hours.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-4 items-start p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] shadow-sm">
-                  <MapPin className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div className="flex flex-col">
-                    <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">
-                      Office Site
-                    </span>
-                    <span className="text-xs md:text-sm font-semibold text-slate-300 mt-0.5">
-                      Plot 45-B, Al Quoz Industrial Area 3, Dubai, UAE
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-start p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] shadow-sm">
-                  <Phone className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div className="flex flex-col">
-                    <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">
-                      Direct Hotline
-                    </span>
-                    <a
-                      href="tel:+97141234567"
-                      className="text-xs md:text-sm font-bold text-white hover:text-brand-gold transition-colors mt-0.5"
+              <div className="flex flex-col gap-5">
+                {[
+                  {
+                    icon: MapPin,
+                    label: "Headquarters",
+                    val: "Exchange Tower Business Bay, Dubai, UAE",
+                    link: null,
+                  },
+                  {
+                    icon: Phone,
+                    label: "Direct Estimation Desk",
+                    val: "+971 58 5252114",
+                    link: "tel:+971585252114",
+                  },
+                  {
+                    icon: Mail,
+                    label: "Engineering & Estimating",
+                    val: "info@blume.ae",
+                    link: "mailto:info@blume.ae",
+                  },
+                ].map((item, idx) => {
+                  const ItemIcon = item.icon;
+                  const CardWrapper = item.link ? "a" : "div";
+                  const extraProps = item.link ? { href: item.link } : {};
+                  return (
+                    // @ts-ignore
+                    <CardWrapper
+                      key={idx}
+                      {...extraProps}
+                      className={`flex gap-5 items-start p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] shadow-sm hover:border-brand-gold/30 hover:bg-white/[0.04] transition-all duration-300 group/item ${
+                        item.link ? "cursor-pointer" : ""
+                      }`}
                     >
-                      +971 4 123 4567
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-start p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] shadow-sm">
-                  <Mail className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div className="flex flex-col">
-                    <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">
-                      Direct Email
-                    </span>
-                    <a
-                      href="mailto:info@blume.ae"
-                      className="text-xs md:text-sm font-bold text-slate-300 hover:text-white transition-colors mt-0.5"
-                    >
-                      info@blume.ae
-                    </a>
-                  </div>
-                </div>
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] group-hover/item:border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0 transition-colors">
+                        <ItemIcon className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">
+                          {item.label}
+                        </span>
+                        <span className="text-xs md:text-sm font-semibold text-slate-200 mt-1 transition-colors group-hover/item:text-white">
+                          {item.val}
+                        </span>
+                      </div>
+                    </CardWrapper>
+                  );
+                })}
               </div>
             </div>
 
             {/* Right side: Elegant Interactive Form */}
-            <div className="lg:col-span-7 bg-[#0F172A] border border-slate-800 rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden">
+            <div className="lg:col-span-7 bg-[#070D1D]/90 border border-white/[0.08] rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden backdrop-blur-xl cta-reveal opacity-0">
               {estSubmitted && (
-                <div className="absolute inset-0 bg-[#0F172A]/95 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-4 text-center px-6 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold shadow-lg">
+                <div className="absolute inset-0 bg-[#070D1D]/98 backdrop-blur-md z-30 flex flex-col items-center justify-center gap-4 text-center px-6 transition-all duration-300 animate-fade-in">
+                  <div className="w-16 h-16 rounded-full bg-brand-gold/10 border border-brand-gold/35 flex items-center justify-center text-brand-gold shadow-lg animate-bounce">
                     <Send className="w-6 h-6" />
                   </div>
-                  <h3 className="font-sans font-black text-lg text-white uppercase tracking-wider">
-                    Request Submitted
+                  <h3 className="font-sans font-black text-xl text-white uppercase tracking-wider">
+                    Estimate Request Sent
                   </h3>
-                  <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
-                    Your estimate request was sent to our team. Check your email
-                    for a confirmation — we will follow up shortly.
+                  <p className="text-slate-400 text-xs md:text-sm max-w-sm leading-relaxed">
+                    Thank you. Your request is being routed to our senior project engineers. Check your email for confirmation.
                   </p>
                 </div>
               )}
 
-              <h3 className="font-sans font-black text-sm uppercase tracking-widest text-brand-gold border-b border-slate-800 pb-4 mb-6">
-                Direct Cost Estimate Request
-              </h3>
+              <div className="flex flex-col gap-2 border-b border-white/[0.08] pb-6 mb-8">
+                <span className="text-[10px] font-black tracking-widest uppercase text-brand-gold">
+                  Cost Estimation Calculator
+                </span>
+                <h3 className="font-sans font-black text-xl md:text-2xl text-white uppercase leading-none">
+                  Request Site Survey &amp; Quote
+                </h3>
+              </div>
 
               <form
                 onSubmit={async (e) => {
@@ -981,10 +1167,12 @@ export default function Home() {
                   setEstError("");
 
                   const serviceLabels: Record<string, string> = {
-                    "fit-out": "Premium Fit-Out & Gypsum",
-                    tiling: "Custom Large-Format Tiling",
-                    masonry: "Precise Masonry Block Work",
-                    doors: "Bespoke Timber Door Sets",
+                    "interior-design": "Interior Design & Space Planning",
+                    "fit-out": "Turnkey Fit-Out & Renovation",
+                    "block-masonry": "Precision Block Masonry",
+                    plastering: "Professional Plastering & Finishes",
+                    tiling: "Custom Tiling & Stonework",
+                    doors: "Bespoke Joinery & Doors",
                   };
 
                   const locationLabels: Record<string, string> = {
@@ -1014,22 +1202,22 @@ export default function Home() {
                     setEstService("fit-out");
                     setEstLocation("business-bay");
 
-                    setTimeout(() => setEstSubmitted(false), 5000);
+                    setTimeout(() => setEstSubmitted(false), 6000);
                   } catch (err) {
                     setEstError(
                       err instanceof Error
                         ? err.message
-                        : "Failed to send your request. Please try again."
+                        : "Failed to send your request. Please try again.",
                     );
                   } finally {
                     setEstIsSubmitting(false);
                   }
                 }}
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-6"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                       Your Name *
                     </label>
                     <input
@@ -1038,11 +1226,11 @@ export default function Home() {
                       value={estName}
                       onChange={(e) => setEstName(e.target.value)}
                       placeholder="Ahmed Al Mansoor"
-                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                      className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none transition-all duration-300"
                     />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                       Email Address *
                     </label>
                     <input
@@ -1051,14 +1239,14 @@ export default function Home() {
                       value={estEmail}
                       onChange={(e) => setEstEmail(e.target.value)}
                       placeholder="ahmed@company.ae"
-                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                      className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none transition-all duration-300"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                       Phone Number *
                     </label>
                     <input
@@ -1067,49 +1255,71 @@ export default function Home() {
                       value={estPhone}
                       onChange={(e) => setEstPhone(e.target.value)}
                       placeholder="+971 50 123 4567"
-                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                      className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none transition-all duration-300"
                     />
                   </div>
-                  <div className="flex flex-col gap-1.5 sm:col-span-1">
-                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                       Required Service
                     </label>
                     <select
                       value={estService}
                       onChange={(e) => setEstService(e.target.value)}
-                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                      className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white focus:outline-none transition-all duration-300 cursor-pointer"
                     >
-                      <option value="fit-out" className="bg-slate-900 text-white">Premium Fit-Out & Gypsum</option>
-                      <option value="tiling" className="bg-slate-900 text-white">Custom Large-Format Tiling</option>
-                      <option value="masonry" className="bg-slate-900 text-white">
-                        Precise Masonry Block Work
+                      <option value="interior-design" className="bg-[#070D1D] text-white">
+                        Interior Design &amp; Space Planning
                       </option>
-                      <option value="doors" className="bg-slate-900 text-white">Bespoke Timber Door Sets</option>
+                      <option value="fit-out" className="bg-[#070D1D] text-white">
+                        Turnkey Fit-Out &amp; Renovation
+                      </option>
+                      <option value="block-masonry" className="bg-[#070D1D] text-white">
+                        Precision Block Masonry
+                      </option>
+                      <option value="plastering" className="bg-[#070D1D] text-white">
+                        Professional Plastering &amp; Finishes
+                      </option>
+                      <option value="tiling" className="bg-[#070D1D] text-white">
+                        Custom Tiling &amp; Stonework
+                      </option>
+                      <option value="doors" className="bg-[#070D1D] text-white">
+                        Bespoke Joinery &amp; Doors
+                      </option>
                     </select>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                       Project Location
                     </label>
                     <select
                       value={estLocation}
                       onChange={(e) => setEstLocation(e.target.value)}
-                      className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all"
+                      className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white focus:outline-none transition-all duration-300 cursor-pointer"
                     >
-                      <option value="business-bay" className="bg-slate-900 text-white">Business Bay</option>
-                      <option value="palm-jumeirah" className="bg-slate-900 text-white">Palm Jumeirah</option>
-                      <option value="downtown-dubai" className="bg-slate-900 text-white">Downtown Dubai</option>
-                      <option value="al-quoz" className="bg-slate-900 text-white">Al Quoz Site</option>
-                      <option value="other" className="bg-slate-900 text-white">Other District</option>
+                      <option value="business-bay" className="bg-[#070D1D] text-white">
+                        Business Bay
+                      </option>
+                      <option value="palm-jumeirah" className="bg-[#070D1D] text-white">
+                        Palm Jumeirah
+                      </option>
+                      <option value="downtown-dubai" className="bg-[#070D1D] text-white">
+                        Downtown Dubai
+                      </option>
+                      <option value="al-quoz" className="bg-[#070D1D] text-white">
+                        Al Quoz Site
+                      </option>
+                      <option value="other" className="bg-[#070D1D] text-white">
+                        Other District
+                      </option>
                     </select>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-slate-400 text-[10px] font-extrabold uppercase tracking-wider">
+                <div className="flex flex-col gap-2">
+                  <label className="text-slate-400 text-[10px] font-black uppercase tracking-wider">
                     Brief Message *
                   </label>
                   <textarea
@@ -1117,13 +1327,13 @@ export default function Home() {
                     rows={3}
                     value={estMessage}
                     onChange={(e) => setEstMessage(e.target.value)}
-                    placeholder="Enter estimated floor dimensions, tile requirements, or partition schedules..."
-                    className="bg-slate-900 border border-slate-800 rounded-xl py-3 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/35 transition-all resize-none"
+                    placeholder="Describe your space details, dimensions, or design style specifications..."
+                    className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white placeholder-slate-500 focus:outline-none transition-all duration-300 resize-none"
                   />
                 </div>
 
                 {estError && (
-                  <div className="bg-red-950/50 border border-red-800/50 text-red-300 text-xs py-3.5 px-4 rounded-xl font-bold uppercase tracking-wider">
+                  <div className="bg-red-950/40 border border-red-800/40 text-red-300 text-xs py-3.5 px-4 rounded-xl font-bold uppercase tracking-wider">
                     {estError}
                   </div>
                 )}
@@ -1133,7 +1343,11 @@ export default function Home() {
                   disabled={estIsSubmitting}
                   className="w-full bg-brand-gold hover:bg-white hover:text-brand-navy disabled:bg-slate-600 disabled:cursor-not-allowed text-[#0A1128] font-sans font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-full shadow-md flex items-center justify-center gap-2 group transition-all duration-300 mt-2"
                 >
-                  <span>{estIsSubmitting ? "Sending Request..." : "Request Estimate Schedule"}</span>
+                  <span>
+                    {estIsSubmitting
+                      ? "Sending Request..."
+                      : "Request Design Consultation"}
+                  </span>
                   {!estIsSubmitting && (
                     <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   )}
@@ -1147,10 +1361,10 @@ export default function Home() {
       {/* ─────────────────────────────────────────
           7.5 CLIENT TESTIMONIALS — Sleek Carousel (Light Slate Theme)
       ───────────────────────────────────────── */}
-      <section className="py-24 bg-slate-50 text-brand-navy overflow-hidden relative border-b border-black/[0.04]">
-        {/* Dynamic decorative backdrop */}
+      {/* <section className="py-24 bg-slate-50 text-brand-navy overflow-hidden relative border-b border-black/[0.04]">
+
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3">
             <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
@@ -1160,33 +1374,43 @@ export default function Home() {
               Trusted by Dubai's Visionaries
             </h2>
             <p className="text-slate-500 text-xs md:text-sm max-w-lg mx-auto">
-              Read how Blume Technical Services coordinates structural masonry, bespoke door fittings, and premium fit-outs for major enterprises.
+              Read how Blume Technical Services brings brands and spaces to
+              life across offices, hotels, retail shops, and healthcare
+              environments throughout Dubai and the UAE.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto relative px-6 md:px-12">
-            {/* Active Testimonial Card */}
+           
             <div className="bg-white border border-slate-100 p-8 md:p-12 rounded-3xl shadow-lg flex flex-col gap-6 relative transition-all duration-500 transform hover:scale-[1.01]">
-              {/* Rating stars */}
+             
               <div className="flex gap-1">
-                {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold animate-pulse" />
+                {Array.from({
+                  length: testimonials[activeTestimonial].rating,
+                }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-brand-gold text-brand-gold animate-pulse"
+                  />
                 ))}
               </div>
 
-              {/* Quote text */}
+           
               <p className="font-serif italic text-lg md:text-xl text-slate-700 leading-relaxed">
                 "{testimonials[activeTestimonial].quote}"
               </p>
 
-              {/* Author Info */}
+ 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 pt-6 border-t border-slate-100">
                 <div className="flex flex-col">
                   <span className="font-sans font-black text-sm md:text-base text-brand-navy">
                     {testimonials[activeTestimonial].author}
                   </span>
                   <span className="text-slate-500 text-xs mt-0.5">
-                    {testimonials[activeTestimonial].role}, <strong className="text-brand-navy font-bold">{testimonials[activeTestimonial].company}</strong>
+                    {testimonials[activeTestimonial].role},{" "}
+                    <strong className="text-brand-navy font-bold">
+                      {testimonials[activeTestimonial].company}
+                    </strong>
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] uppercase font-bold tracking-wider text-slate-500 w-fit">
@@ -1196,26 +1420,30 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Slider Controls */}
+    
             <div className="flex justify-between items-center mt-8">
-              {/* Slider pagination dots */}
+              
               <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveTestimonial(idx)}
                     className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      activeTestimonial === idx ? "bg-brand-gold w-8" : "bg-slate-200"
+                      activeTestimonial === idx
+                        ? "bg-brand-gold w-8"
+                        : "bg-slate-200"
                     }`}
                   />
                 ))}
               </div>
 
-              {/* Left/Right buttons */}
+    
               <div className="flex gap-3">
                 <button
                   onClick={() =>
-                    setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
+                    setActiveTestimonial((prev) =>
+                      prev === 0 ? testimonials.length - 1 : prev - 1,
+                    )
                   }
                   className="p-3 rounded-full bg-white border border-slate-150 text-brand-navy hover:bg-[#0A1128] hover:text-white transition-all shadow-sm"
                 >
@@ -1223,7 +1451,9 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() =>
-                    setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
+                    setActiveTestimonial((prev) =>
+                      prev === testimonials.length - 1 ? 0 : prev + 1,
+                    )
                   }
                   className="p-3 rounded-full bg-white border border-slate-150 text-brand-navy hover:bg-[#0A1128] hover:text-white transition-all shadow-sm"
                 >
@@ -1231,10 +1461,9 @@ export default function Home() {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ─────────────────────────────────────────
           8. FAQ SECTION — Dynamic Accordions

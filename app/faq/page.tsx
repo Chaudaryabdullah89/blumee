@@ -9,28 +9,28 @@ export default function FAQPage() {
 
   const faqs = [
     {
-      q: "Which developer districts in Dubai do you service?",
-      a: "We service commercial and premium residential properties across all major Dubai districts, including Business Bay, Downtown Dubai, Dubai Marina, DIFC, Palm Jumeirah, and Al Barsha. Our team handles gate passes and coordinate NOCs directly with master developers like Emaar, Nakheel, Dubai Properties, and select free zone authorities."
+      q: "What core technical and finishing services does Blume specialize in?",
+      a: "We specialize in 6 core civil and finishing disciplines: Turnkey Fit-Out & Renovation, Custom Tiling & Stonework, Bespoke Joinery & Doors, Professional Plastering & Finishes, Precision Block Masonry, and Interior Design & Space Planning."
     },
     {
-      q: "What are your standard quality tolerances for tiling and stone work?",
-      a: "We operate strictly under BS 5385 British tiling standards. Our laser alignment tolerance is maintained under +/- 0.5mm to eliminate all lippage (unevenness) across large-format tiles and marble. All wet zones undergo a rigorous 24-hour flood test before marble installation."
+      q: "What quality tolerances do you guarantee for tiling and stonework?",
+      a: "We execute all tiling strictly under BS 5385 British standards. Using digital rotary lasers, we maintain floor and wall flatnesses with a variance tolerance of under +/- 0.5mm to eliminate all lippage across large-format porcelain and marble slabs. We also conduct mandatory 24-hour liquid flood tests before tiling wet zones."
     },
     {
-      q: "Are your custom wooden door installations Civil Defense compliant?",
-      a: "Yes. All custom wooden entry and exit doors can be supplied as fully fire-rated (60-minute and 90-minute options) complying with Dubai Civil Defense guidelines. We incorporate heavy-duty concealed drop seals and certified neoprene noise-damping gaskets."
+      q: "Are your custom joinery and door installations certified?",
+      a: "Yes. All bespoke timber door assemblies can be supplied with certified fire ratings (60-minute and 90-minute options) complying with Dubai Civil Defense (DCD) requirements. We manufacture using solid woods like ash and walnut, complete with drop-down soundproof gaskets and smoke seals."
+    },
+    {
+      q: "How do you handle developer NOCs and municipality approvals in Dubai?",
+      a: "We provide complete turnkey approval coordination. Our engineering team prepares and submits detailed structural, architectural, and MEP layout drawings to secure NOCs from developers (Emaar, Nakheel, Dubai Properties) and approvals from Dubai Municipality (DM), Civil Defense (DCD), and Concordia/TECOM."
     },
     {
       q: "How fast can you mobilize for masonry block work and plastering?",
-      a: "Once master developer NOC approvals and municipality work permits are secured, our in-house teams can mobilize to your site in Al Quoz, Barsha, or surrounding areas within 3 to 5 business days. Materials are sourced from certified regional suppliers to assure block density."
+      a: "Once NOC approvals and work permits are in place, our specialized in-house crews can mobilize to site within 3 to 5 business days. All concrete masonry units (CMU) and plaster binders are sourced from certified regional suppliers to guarantee raw material density and anti-cracking compliance."
     },
     {
-      q: "Do you manage complete turnkey interior fit-outs and municipality approvals?",
-      a: "Yes, we offer complete turnkey management. This includes spatial design, drywall partitioning, ceiling gypsum work, custom carpentry, tiling, and MEP. We coordinate complete approval packages for Dubai Municipality (DM), Civil Defense (DCD), and DEWA connections."
-    },
-    {
-      q: "What is your pricing estimate validity timeframe?",
-      a: "Due to ongoing market changes in premium finishes, copper components, and solid timbers, all technical estimate proposals remain firm for 30 calendar days from the date of quotation."
+      q: "Do you work with third-party designers, architects, and main contractors?",
+      a: "Absolutely. While we provide full design-and-build services, we frequently collaborate as specialist contractors or direct fit-out partners — executing detailed shop drawings, plaster skimming (Q1 to Q4 finishes), and architectural stone details matching design guidelines."
     }
   ];
 

@@ -9,9 +9,9 @@ import Preloader from "./components/Preloader";
 import { HERO_POSTER_URL } from "@/lib/hero-video";
 
 export const metadata: Metadata = {
-  title: "Blume Technical Services — Premium Construction & Development",
+  title: "Blume Technical Services — Interior Design & Fit-Out Management",
   description:
-    "We provide premier commercial construction and fit-out solutions for modern enterprises. Blume Technical Services — redefining urban interiors with structural integrity across Dubai.",
+    "Blume Technical Services is an Interior Design and Fit-Out management company that exists to help bring brands and spaces to life. We combine planning, design, manufacturing, project management and renovation services across Dubai.",
 };
 
 export default function RootLayout({
@@ -20,14 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-    >
+    <html lang="en" className="h-full antialiased">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
         <link rel="preload" as="image" href={HERO_POSTER_URL} />
       </head>
       <body className="min-h-full flex flex-col bg-[#FCFCFD]">

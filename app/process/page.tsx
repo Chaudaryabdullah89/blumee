@@ -2,17 +2,27 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Compass, ClipboardList, ShieldCheck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowLeft,
+  Compass,
+  ClipboardList,
+  ShieldCheck,
+  Award,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function ProcessPage() {
   return (
     <div className="flex-1 w-full bg-[#FCFCFD]">
-      {/* Hero Header */}
+      {/* ─────────────────────────────────────────
+          1. HERO SECTION — Premium Dark Banner
+      ───────────────────────────────────────── */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=1200')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
@@ -29,82 +39,108 @@ export default function ProcessPage() {
             Our Technical <span className="text-brand-gold">Process</span>
           </h1>
           <p className="font-sans font-medium text-xs md:text-sm text-slate-300 max-w-xl leading-relaxed uppercase tracking-wide">
-            How We Deliver Flawless Construction & Finishing Quality Across Dubai
+            How We Deliver Flawless Refurbishment &amp; Finishing Quality Across
+            Dubai
           </p>
         </div>
       </section>
 
-      {/* Steps Timeline Grid */}
+      {/* ─────────────────────────────────────────
+          2. THE STEPS TIMELINE — Alternating Grid
+      ───────────────────────────────────────── */}
       <section className="py-24 max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-32 relative">
+          {/* Vertical timeline trace line (Only visible on large screens) */}
+          <div className="absolute hidden lg:block left-1/2 top-8 bottom-8 w-[1px] bg-slate-200 -translate-x-1/2 pointer-events-none" />
+
           {[
             {
-              step: "Phase 01",
-              title: "Digital Site Survey & Precise Estimating",
+              step: "01",
+              phase: "Phase One",
+              title: "Digital Survey & Estimating",
               icon: ClipboardList,
-              desc: "Every premium fit-out starts with absolute site measurements. Our engineers inspect the site coordinates using digital rotary lasers. We calculate precise wall areas for plaster rendering and concrete block masonry volume requirements. This prevents material waste and budget overrides completely.",
+              desc: "Every premium fit-out starts with absolute physical data. Our engineers inspect the site coordinates using digital rotary lasers, checking levels and angles to calculate exact material requirements. This ensures budget transparency and prevents material waste.",
               actions: [
                 "Digital line-and-level audits",
-                "Precise block count and plaster rendering volumes",
-                "Subfloor flatness check before stone layouts",
-                "Comprehensive materials quotation within 48 hours"
-              ]
+                "Precise block count and plaster calculations",
+                "Subfloor flatness checks before stone layouts",
+                "Itemized materials quotation within 48 hours",
+              ],
+              img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
+              reverse: false,
             },
             {
-              step: "Phase 02",
-              title: "Spatial Designing & Woodwork Detailing",
+              step: "02",
+              phase: "Phase Two",
+              title: "Detailed Shop Drawings",
               icon: Compass,
-              desc: "We coordinate with architects to map out spatial layouts. Our joinery draftspeople create precise workshop drawings for custom doors, ash frames, ceiling partitions, and custom timber work. This phase ensures all door swings, socket coordinates, and tile layouts are approved before cutting.",
+              desc: "Our joinery and design draftspeople create precise workshop drawings for custom doors, ash frames, tile layout matrices, and wall plaster terminations. Every coordinate is cross-verified for code compliance and client approvals.",
               actions: [
-                "Detailed 2D/3D fit-out layouts",
-                "Carpentry shop drawings for custom door assemblies",
-                "Tiling grid coordinates maps",
-                "Dubai Municipality and developer NOC planning"
-              ]
+                "2D/3D fit-out layout planning",
+                "Carpentry workshop drawings for door sets",
+                "Tiling grid coordinate maps",
+                "Dubai Municipality and developer NOC prep",
+              ],
+              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+              reverse: true,
             },
             {
-              step: "Phase 03",
-              title: "Expert Craftsmanship & On-Site Mobilization",
+              step: "03",
+              phase: "Phase Three",
+              title: "On-Site Execution & Crafts",
               icon: ShieldCheck,
-              desc: "Our specialized in-house crews mobilize with professional tools. Masons build block partitions to perfect straight lines, finishing teams render plaster to flawless flat profiles, and tiling experts install porcelain and marble using dynamic levelers. Safety is managed daily under strict ISO standards.",
+              desc: "Our specialized in-house crews mobilize with laser-guided equipment. Masons align block partitions, finishing teams render plaster to flawless flat profiles, and tiling experts install natural stone with dynamic leveling clips.",
               actions: [
-                "In-house masons, carpenters, and tilers",
+                "Experienced in-house masons & carpenters",
                 "Laser-guided wall and floor alignments",
                 "Double-coat liquid wet-area waterproofing",
-                "Daily project supervisor site audits"
-              ]
+                "Daily project supervisor site audits",
+              ],
+              img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800",
+              reverse: false,
             },
             {
-              step: "Phase 04",
-              title: "Laser Quality Check & Handover Audit",
+              step: "04",
+              phase: "Phase Four",
+              title: "Laser Quality Check & Handover",
               icon: Award,
-              desc: "Before we hand over any finished space, we conduct a strict internal QA inspection. We check plaster flatness, ensure all custom ash doors close with secure rubber seal compression, verify that stone joints are lip-free, and coordinate final sign-offs.",
+              desc: "Before handover, we conduct strict internal quality audits. We inspect plaster flatness with laser leveling tools, verify door set seals under pressure, audit joint lippage limits, and sign off the completion certificates.",
               actions: [
-                "Laser flatness tests with +/- 0.5mm lippage limits",
+                "Laser flatness tests with +/- 0.5mm limits",
                 "Pressure tests for plumbing and wet-area seals",
                 "Acoustic gasket and door latch balance audits",
-                "Full clean-up and handover certificate signing"
-              ]
-            }
+                "Full clean-up and handover certificate signing",
+              ],
+              img: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800",
+              reverse: true,
+            },
           ].map((phase, idx) => {
             const PhaseIcon = phase.icon;
             return (
-              <div key={idx} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border-b border-slate-100 pb-16 last:border-0 last:pb-0">
-                {/* Step indicator column */}
-                <div className="lg:col-span-3 flex items-center gap-4 lg:flex-col lg:items-start lg:gap-2">
-                  <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold bg-slate-50 border border-slate-100 px-3 py-1.5 rounded-full shadow-sm">
-                    {phase.step}
-                  </span>
-                  <div className="hidden lg:block w-full border-t border-slate-100 mt-4" />
+              <div
+                key={idx}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative group ${
+                  phase.reverse ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                {/* Center Node Indicator (only on large screens) */}
+                <div className="absolute hidden lg:flex left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm items-center justify-center text-brand-navy z-20 font-sans font-black text-xs group-hover:border-brand-gold group-hover:text-brand-gold transition-colors duration-300 pointer-events-none">
+                  {phase.step}
                 </div>
 
-                {/* Narrative column */}
-                <div className="lg:col-span-9 flex flex-col gap-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-navy flex items-center justify-center text-white shrink-0 shadow-sm">
-                      <PhaseIcon className="w-6 h-6" />
+                {/* Left/Right Column: Narrative Column */}
+                <div
+                  className={`lg:col-span-6 flex flex-col gap-6 ${
+                    phase.reverse ? "lg:order-last" : ""
+                  }`}
+                >
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-full shadow-sm">
+                        {phase.phase}
+                      </span>
                     </div>
-                    <h3 className="font-sans font-black text-xl md:text-2xl text-brand-navy">
+                    <h3 className="font-sans font-black text-2xl md:text-3xl text-brand-navy uppercase tracking-tight leading-tight">
                       {phase.title}
                     </h3>
                   </div>
@@ -113,15 +149,36 @@ export default function ProcessPage() {
                     {phase.desc}
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     {phase.actions.map((act, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0" />
-                        <span className="text-slate-600 text-xs md:text-sm font-semibold">
+                      <div key={i} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                        <span className="text-slate-500 text-xs md:text-sm font-semibold">
                           {act}
                         </span>
                       </div>
                     ))}
+                  </div>
+                </div>
+
+                {/* Left/Right Column: Visual Column */}
+                <div className="lg:col-span-6 relative">
+                  {/* Gold border backdrop offset */}
+                  <div className="absolute -inset-4 border border-brand-gold/15 rounded-3xl -rotate-1 pointer-events-none" />
+
+                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 border border-black/[0.04] shadow-lg group">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
+                      style={{
+                        backgroundImage: `url('${phase.img}')`,
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/35 to-transparent pointer-events-none" />
+                    
+                    {/* Big numbers watermark backdrop */}
+                    <span className="absolute bottom-6 right-8 font-sans font-black text-7xl text-white/10 select-none pointer-events-none">
+                      {phase.step}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -130,11 +187,13 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 max-w-7xl mx-auto px-6 md:px-8">
+      {/* ─────────────────────────────────────────
+          3. CALL TO ACTION SECTION
+      ───────────────────────────────────────── */}
+      <section className="pb-24 max-w-7xl mx-auto px-6 md:px-8">
         <div className="relative rounded-3xl bg-brand-navy p-8 md:p-16 text-center text-white overflow-hidden shadow-xl border border-white/[0.08] group">
           <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-gold/10 blur-3xl pointer-events-none" />
-          
+
           <div className="relative z-10 flex flex-col gap-6 items-center max-w-2xl mx-auto">
             <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
               Get Started
@@ -143,11 +202,12 @@ export default function ProcessPage() {
               Ready to Experience Blume Technical Services Precision?
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Contact our engineering and masonry estimating desk today to schedule your dynamic on-site laser survey.
+              Contact our engineering and technical estimating desk today to
+              schedule your detailed on-site laser survey and layout consultation.
             </p>
-            
+
             <Link
-              href="/#contact"
+              href="/contact"
               className="px-6 py-3 font-sans font-bold text-xs uppercase tracking-widest text-[#FCFCFD] bg-brand-gold hover:bg-white hover:text-brand-navy rounded-full transition-all duration-300 shadow-md flex items-center gap-2 group/btn mt-4"
             >
               Request Site Inspection

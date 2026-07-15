@@ -2,16 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
-import { 
-  Paintbrush, 
-  Layers, 
-  Grid, 
-  DoorOpen, 
-  Compass, 
-  CheckCircle, 
-  ArrowRight, 
+import {
+  Paintbrush,
+  Layers,
+  Grid,
+  DoorOpen,
+  Compass,
+  CheckCircle,
+  ArrowRight,
   FileText,
-  Briefcase
+  Briefcase,
+  Hammer,
 } from "lucide-react";
 
 export default function ServicesPage() {
@@ -24,7 +25,7 @@ export default function ServicesPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1600')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
           }}
         />
         {/* Navy dark gradient overlay */}
@@ -39,14 +40,19 @@ export default function ServicesPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            Premium <span className="text-brand-gold font-black">Technical</span> & <br />
+            Interior Design &{" "}
+            <span className="text-brand-gold font-black">Technical</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Interior Solutions
+              Services
             </span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            Specialized in high-end interior fit-out, masonry block work, professional plastering, and spatial design for commercial, retail, and premium residential buildings across Dubai.
+            We are committed to making it simpler and easier for you to access
+            interior design, fit-out, and specialized technical services from
+            one place. Whether you choose a single service or the complete
+            end-to-end package, you can feel confident we will deliver quality
+            work on an accurate, cost-managed budget, every time.
           </p>
         </div>
       </section>
@@ -60,98 +66,116 @@ export default function ServicesPage() {
             Services Catalog
           </span>
           <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-            Specialized Craftsmanship
+            Our Services
           </h2>
           <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-            We deliver highly focused, premium technical services that guarantee structural integrity and flawless aesthetic finishes.
+            From concept and space planning to masonry, tiling, and bespoke
+            joinery — we combine design and specialized technical execution into
+            one seamless experience.
           </p>
         </div>
 
         <div className="flex flex-col gap-24">
           {[
             {
-              title: "Premium Interior Fit-Out & Renovations",
-              subtitle: "All Kind of Buildings Related Work",
-              desc: "From premium corporate offices in Downtown Dubai to luxury villas in Palm Jumeirah, we coordinate complete interior turn-key solutions. We manage ceiling designs, wall partitions, high-end woodwork, electrical trunking, and comprehensive renovations under strict schedules.",
+              title: "Interior Design & Space Planning",
+              subtitle: "Concept, 3D Visualization & Layouts",
+              desc: "We create inspired, functional layouts customized to your space and requirements. From initial concept drawings, mood boards, and photorealistic 3D renders, to CAD layouts and comprehensive material specifications—our design team sets a solid foundation for your project.",
               bullets: [
-                "Commercial Office & Coworking Fit-Out",
-                "High-End Retail Shop & Boutique Setup",
-                "Luxury Villa Interior Renovations",
-                "Custom Ceiling & Gypsum Works"
+                "Concept Development & Mood Boards",
+                "2D/3D Space Layout & Renderings",
+                "Material & Finish Specifications",
+                "Detailed Construction Drawings",
               ],
-              icon: Paintbrush,
-              img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
-              reverse: false
+              icon: Compass,
+              img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
+              reverse: false,
             },
             {
-              title: "Precision Masonry Block Work",
-              subtitle: "Solid Internal & External Partitions",
-              desc: "Flawless wall construction is the foundation of any premium space. Our masonry team delivers precise block alignment, solid concrete masonry units (CMU), precise lintel placement, and expansion joint coordination to prevent future wall cracks.",
+              title: "Turnkey Fit-Out & Renovation",
+              subtitle: "Seamless Commercial & Residential Transformations",
+              desc: "Complete design-to-build fit-out and renovation solutions. We manage and execute everything from walls and ceilings to MEP and final decorative finishes, delivering custom-tailored environments stress-free, on time, and on budget.",
               bullets: [
-                "Internal Block Wall Partitions",
-                "Boundary Walls & Structural Masonry",
-                "Flawless Mortar Line Alignment",
-                "Reinforced Lintel & Column Integration"
+                "Commercial & Office Fit-Outs",
+                "Residential Renovations & Refurbishments",
+                "MEP & Ceiling Installations",
+                "Drywall, Partitions & Glass Work",
               ],
               icon: Layers,
+              img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
+              reverse: true,
+            },
+            {
+              title: "Precision Block Masonry",
+              subtitle: "Structural & Non-Structural Wall Construction",
+              desc: "Professional block masonry work executed with precision and structural integrity. From internal partitions and boundary walls to load-bearing structures, our skilled masons ensure straight, level, and clean brickwork according to exact engineering specifications.",
+              bullets: [
+                "Concrete Block Wall Construction",
+                "Internal Partition & Partitioning Walls",
+                "Boundary Walls & Extensions",
+                "Precise Mortar Ratios & Alignment",
+              ],
+              icon: Hammer,
               img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800",
-              reverse: true
+              reverse: false,
             },
             {
               title: "Professional Plastering & Finishes",
-              subtitle: "Flawless Flat Surfaces",
-              desc: "Our plastering experts ensure perfectly plumb, flat, and smooth surfaces ready for premium paint or custom wallpaper. We use top-grade bonding agents, corner beads for ultra-sharp edges, and multi-coat leveling processes.",
+              subtitle: "Smooth, Flawless Internal & External Wall Finishes",
+              desc: "Exceptional wall plastering services that provide the perfect base for your final paint or wallpaper. We specialize in high-quality internal and external cement plastering, gypsum rendering, and architectural texturing with laser-straight flatness.",
               bullets: [
-                "Internal & External Wall Plastering",
-                "Decorative Gypsum Plaster Finishes",
-                "Surface Crack Repair & Mesh Integration",
-                "Sharp Corner Bead & Edge Detailing"
+                "Internal Gypsum Plastering",
+                "External Cement Plastering & Rendering",
+                "Crack Repair & Wall Leveling",
+                "Decorative & Textured Finishes",
               ],
-              icon: Briefcase,
-              img: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=800",
-              reverse: false
+              icon: Paintbrush,
+              img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800",
+              reverse: true,
             },
             {
-              title: "Interior Space Designing & Planning",
-              subtitle: "Spatial Blueprints & Layout Optimization",
-              desc: "We transform design layouts into highly functional physical plans. Combining architectural sketches with carpentry details, we optimize room setups, traffic flow, material selections, and lighting coordinates before laying down a single tile.",
+              title: "Custom Tiling & Stonework",
+              subtitle: "High-End Flooring, Wall Tiling & Stone Accents",
+              desc: "Premium tile installation services for bathrooms, kitchens, living areas, and commercial spaces. Our team handles everything from standard ceramic tiles to large-format porcelain, marble, granite, and intricate mosaic backsplashes with perfect alignment and minimal joints.",
               bullets: [
-                "2D & 3D Spatial Layout Optimization",
-                "Material Selection & Coordination",
-                "Carpentry & Custom Skirting Blueprints",
-                "Lighting & Power Point Layouts"
+                "Large-Format Porcelain & Ceramic Tiling",
+                "Marble, Granite & Natural Stone Slabs",
+                "Bathroom & Kitchen Wet Area Tiling",
+                "Intricate Mosaic & Backsplash Patterns",
               ],
-              icon: Compass,
-              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
-              reverse: true
+              icon: Grid,
+              img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+              reverse: false,
             },
             {
-              title: "Specialized Tiling & Door Systems",
-              subtitle: "Flawless Tiling & Joinery Work",
-              desc: "We install premium porcelain, marble, and ceramic tiles with micro-joint precision, flawless waterproofing, and absolute flatness. Additionally, our carpentry team supplies and installs premium solid-wood, flush, and custom fire-rated doors.",
+              title: "Bespoke Joinery & Doors",
+              subtitle: "Custom Timber Fabrication & Door Installation",
+              desc: "Expert craftsmanship in woodwork, joinery, and door installations. We manufacture and install custom wardrobes, cabinets, kitchen cupboards, and high-quality timber doors that match your architectural style and offer superior longevity.",
               bullets: [
-                "Marble, Porcelain & Ceramic Tile Laying",
-                "Bathroom & Wet Area Epoxy Grouting",
-                "Solid Wood & Premium Flush Door Fitting",
-                "High-End Chrome & Brass Door Ironmongery"
+                "Bespoke Timber Door Sets & Frames",
+                "Custom Wardrobes & Kitchen Cabinets",
+                "Wooden Wall Paneling & Cladding",
+                "Precision Fit & Hardware Installation",
               ],
               icon: DoorOpen,
-              img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
-              reverse: false
-            }
+              img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800",
+              reverse: true,
+            },
           ].map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div 
+              <div
                 key={idx}
                 className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${
                   item.reverse ? "lg:flex-row-reverse" : ""
                 }`}
               >
                 {/* Left/Right Text Column */}
-                <div className={`lg:col-span-6 flex flex-col gap-6 ${
-                  item.reverse ? "lg:order-last" : ""
-                }`}>
+                <div
+                  className={`lg:col-span-6 flex flex-col gap-6 ${
+                    item.reverse ? "lg:order-last" : ""
+                  }`}
+                >
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-brand-navy shadow-sm">
                       <Icon className="w-6 h-6" />
@@ -186,7 +210,7 @@ export default function ServicesPage() {
                 <div className="lg:col-span-6 relative">
                   {/* Subtle decorative gold frame */}
                   <div className="absolute -inset-4 border border-brand-gold/20 rounded-3xl -rotate-1 pointer-events-none" />
-                  
+
                   <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 shadow-lg border border-black/[0.04] group">
                     <div
                       className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
@@ -216,7 +240,8 @@ export default function ServicesPage() {
               Our Technical Process
             </h2>
             <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-              Every tiling, plastering, or masonry project undergoes a multi-point quality check to guarantee perfect results.
+              Every tiling, plastering, or masonry project undergoes a
+              multi-point quality check to guarantee perfect results.
             </p>
           </div>
 
@@ -225,25 +250,25 @@ export default function ServicesPage() {
               {
                 step: "01",
                 title: "Site Survey & Estimating",
-                desc: "We perform digital line-and-level surveys, calculate accurate mortar block ratios, and check tile joints."
+                desc: "We perform digital line-and-level surveys, calculate accurate mortar block ratios, and check tile joints.",
               },
               {
                 step: "02",
                 title: "Detailed Space Planning",
-                desc: "Our designing team outlines CAD layouts, detailing woodwork joins, door clearances, and wet area waterproofing."
+                desc: "Our designing team outlines CAD layouts, detailing woodwork joins, door clearances, and wet area waterproofing.",
               },
               {
                 step: "03",
                 title: "High-End Execution",
-                desc: "Our in-house masons and carpentry teams install tiling, lay blocks, mount custom doors, and plaster walls flawlessly."
+                desc: "Our in-house masons and carpentry teams install tiling, lay blocks, mount custom doors, and plaster walls flawlessly.",
               },
               {
                 step: "04",
                 title: "Quality Sign-Off",
-                desc: "Every surface is checked with laser leveling instruments for perfect flatness and alignment before hand-over."
-              }
+                desc: "Every surface is checked with laser leveling instruments for perfect flatness and alignment before hand-over.",
+              },
             ].map((p, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white rounded-3xl border border-black/[0.05] p-8 flex flex-col gap-6 hover-float transition-all duration-300 group"
               >
@@ -271,20 +296,23 @@ export default function ServicesPage() {
         <div className="relative rounded-3xl bg-brand-navy p-8 md:p-16 text-center text-white overflow-hidden shadow-xl border border-white/[0.08] group">
           {/* Subtle gold decorative glow */}
           <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-brand-gold/10 blur-3xl pointer-events-none" />
-          
+
           <div className="relative z-10 flex flex-col gap-6 items-center max-w-2xl mx-auto">
             <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
               Get an Estimate
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl uppercase leading-tight tracking-tight">
-              Ready to Upgrade Your Building's Interiors?
+              Ready to Upgrade Your Building&apos;s Interiors?
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Submit your property layouts, design blueprints, or technical spec sheets today. Our team provides highly competitive quotes on premium tiling, block masonry, custom joinery, and fit-out packages.
+              Submit your property layouts, design blueprints, or technical spec
+              sheets today. Our team provides highly competitive quotes on
+              premium tiling, block masonry, custom joinery, and fit-out
+              packages.
             </p>
-            
+
             <Link
-              href="/#contact"
+              href="/contact"
               className="px-6 py-3 font-sans font-bold text-xs uppercase tracking-widest text-[#FCFCFD] bg-brand-gold hover:bg-white hover:text-brand-navy rounded-full transition-all duration-300 shadow-md flex items-center gap-2 group/btn mt-4"
             >
               Get a Quote

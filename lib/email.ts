@@ -123,7 +123,7 @@ function buildUserConfirmationHtml(data: FormEmailData) {
           <tr><td class="spec-label">Service</td><td class="spec-value">${service || "General inquiry"}</td></tr>
           <tr><td class="spec-label">Location</td><td class="spec-value">${location || "—"}</td></tr>
         </table>
-        <p class="intro">A member of our team typically responds within <strong>1–2 business days</strong>. For urgent matters, call us at <a href="tel:+97141234567">+971 4 123 4567</a> or email <a href="mailto:info@blume.ae">info@blume.ae</a>.</p>
+        <p class="intro">A member of our team typically responds within <strong>1–2 business days</strong>. For urgent matters, call us at <a href="tel:+971585252114">+971 58 5252114</a> or email <a href="mailto:info@blume.ae">info@blume.ae</a>.</p>
       </div>
       <div class="footer">
         <p>&copy; ${new Date().getFullYear()} Blume Technical Services. All rights reserved.</p>
@@ -165,7 +165,7 @@ Location: ${data.location || "N/A"}
 We typically respond within 1–2 business days.
 
 Blume Technical Services
-+971 4 123 4567 | info@blume.ae
++971 58 5252114 | info@blume.ae
 `;
 }
 

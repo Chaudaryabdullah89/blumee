@@ -68,7 +68,7 @@ export default function PrivacyPage() {
               <ul className="list-disc pl-6 flex flex-col gap-1 text-slate-500 text-xs md:text-sm">
                 <li>Professional Contact Details (Name, company email, corporate phone number).</li>
                 <li>Design Blueprints, interior architectural CAD layouts, and project site coordinates.</li>
-                <li>Site Safety Footage captured during construction monitoring and progress updates.</li>
+                <li>Site Safety Footage captured during project execution monitoring and progress updates.</li>
                 <li>Cookies and website usage statistics collected dynamically through our online estimate request forms.</li>
               </ul>
             </div>
@@ -110,8 +110,8 @@ export default function PrivacyPage() {
                 If you have questions regarding personal data records, drawing files retention, or wish to invoke your rights under the UAE Data Protection laws, please contact our compliance desk:
               </p>
               <p className="text-brand-navy font-bold text-xs md:text-sm mt-1">
-                Blume Technical Services Compliance<br />
-                Plot 45-B, Al Quoz Industrial Area 3, Dubai, UAE<br />
+                 Blume Technical Services Compliance<br />
+                 Exchange Tower Business Bay, Dubai, UAE<br />
                 Email: <a href="mailto:privacy@blume.ae" className="text-brand-gold hover:underline">privacy@blume.ae</a>
               </p>
             </div>

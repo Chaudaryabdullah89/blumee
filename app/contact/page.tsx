@@ -85,7 +85,7 @@ export default function ContactPage() {
             Contact Our <span className="text-brand-gold">Engineers</span>
           </h1>
           <p className="font-sans font-medium text-xs md:text-sm text-slate-300 max-w-xl leading-relaxed uppercase tracking-wide">
-            Plot 45-B, Al Quoz Industrial Area 3, Dubai, UAE
+            Exchange Tower Business Bay, Dubai, UAE
           </p>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                     Office Address
                   </span>
                   <span className="font-sans font-black text-xs md:text-sm text-brand-navy mt-0.5">
-                    Plot 45-B, Al Quoz Industrial Area 3,
+                    Exchange Tower Business Bay,
                     <br />
                     Dubai, United Arab Emirates
                   </span>
@@ -134,13 +134,13 @@ export default function ContactPage() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">
-                    Direct Landline
+                    Direct Phone Line
                   </span>
                   <a
-                    href="tel:+97141234567"
+                    href="tel:+971585252114"
                     className="font-sans font-black text-xs md:text-sm text-brand-navy hover:text-brand-gold transition-colors mt-0.5"
                   >
-                    +971 4 123 4567
+                    +971 58 5252114
                   </a>
                 </div>
               </div>

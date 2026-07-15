@@ -24,26 +24,27 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xs font-medium">
-              Dubai's premier commercial fit-out and technical solutions contractor. Delivering elite craftsmanship in premium tiling, precise block work, high-end door systems, and master finishing solutions.
+              A premier Interior Design, Fit-Out, and Technical Services company that exists to help bring brands and spaces to life. We combine design, space planning, precision block masonry, professional plastering, custom tiling, bespoke joinery, and turnkey fit-out management to deliver pragmatic, end-to-end solutions.
             </p>
             <div className="flex flex-col gap-1 mt-1 text-[10px] uppercase font-bold tracking-wider text-slate-500">
-              <span>Standards Compliance</span>
-              <span className="text-brand-gold">BS/EN 1996 • ASTM C90 • BS 8203</span>
+              <span>Our Promise</span>
+              <span className="text-brand-gold">Inspired Design • Technical Excellence • On Budget</span>
             </div>
           </div>
 
           {/* Col 2: Technical Services Links (3 columns wide) */}
           <div className="lg:col-span-3 flex flex-col gap-4">
             <h4 className="font-sans font-black text-xs uppercase tracking-widest text-slate-500 border-l-2 border-brand-gold pl-2.5">
-              Technical Services
+              Our Services
             </h4>
             <nav className="flex flex-col gap-2.5">
               {[
-                { name: "Premium Fit-Out & Gypsum", slug: "fit-out" },
+                { name: "Interior Design & Space Planning", slug: "interior-design" },
+                { name: "Turnkey Fit-Out & Renovation", slug: "fit-out" },
+                { name: "Precision Block Masonry", slug: "block-masonry" },
+                { name: "Professional Plastering & Finishes", slug: "plastering" },
                 { name: "Custom Tiling & Stonework", slug: "tiling" },
-                { name: "Precision Block Masonry", slug: "masonry" },
-                { name: "High-End Door Installations", slug: "doors" },
-                { name: "Partition Walls & Plaster", slug: "plaster" }
+                { name: "Bespoke Joinery & Doors", slug: "doors" }
               ].map((l) => (
                 <Link 
                   key={l.name} 
@@ -89,14 +90,14 @@ const Footer = () => {
               <div className="flex gap-2.5 items-start">
                 <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <span>
-                  Plot 45-B, Al Quoz Industrial Area 3,<br />
+                  Exchange Tower Business Bay,<br />
                   Dubai, United Arab Emirates
                 </span>
               </div>
               <div className="flex gap-2.5 items-center">
                 <Phone className="w-4 h-4 text-brand-gold shrink-0" />
-                <a href="tel:+97141234567" className="text-white hover:text-brand-gold transition-colors font-black">
-                  +971 4 123 4567
+                <a href="tel:+971585252114" className="text-white hover:text-brand-gold transition-colors font-black">
+                  +971 58 5252114
                 </a>
               </div>
               <div className="flex gap-2.5 items-center">
