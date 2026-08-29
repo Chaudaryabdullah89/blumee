@@ -5,8 +5,8 @@ const smtpPort = Number(process.env.SMTP_PORT) || 587;
 const smtpUser = process.env.SMTP_USER;
 const smtpPass = process.env.SMTP_PASS;
 const smtpSecure = process.env.SMTP_SECURE === "true";
-const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "info@blume.ae";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://blume.ae";
+const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || "blumetec0@gmail.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.blumtec.com";
 
 export const transporter = nodemailer.createTransport({
   host: smtpHost,
@@ -56,7 +56,7 @@ const emailStyles = `
 function getFromAddress() {
   return smtpUser
     ? `Blume Technical Services <${smtpUser}>`
-    : `"Blume Technical Services" <info@blume.ae>`;
+    : `"Blume Technical Services" <blumetec0@gmail.com>`;
 }
 
 function getSourceLabel(source?: string) {
@@ -123,7 +123,7 @@ function buildUserConfirmationHtml(data: FormEmailData) {
           <tr><td class="spec-label">Service</td><td class="spec-value">${service || "General inquiry"}</td></tr>
           <tr><td class="spec-label">Location</td><td class="spec-value">${location || "—"}</td></tr>
         </table>
-        <p class="intro">A member of our team typically responds within <strong>1–2 business days</strong>. For urgent matters, call us at <a href="tel:+971585252114">+971 58 5252114</a> or email <a href="mailto:info@blume.ae">info@blume.ae</a>.</p>
+        <p class="intro">A member of our team typically responds within <strong>1–2 business days</strong>. For urgent matters, call us at <a href="tel:+971585252114">+971 58 525 2114</a> or email <a href="mailto:blumetec0@gmail.com">blumetec0@gmail.com</a>.</p>
       </div>
       <div class="footer">
         <p>&copy; ${new Date().getFullYear()} Blume Technical Services. All rights reserved.</p>
@@ -165,7 +165,7 @@ Location: ${data.location || "N/A"}
 We typically respond within 1–2 business days.
 
 Blume Technical Services
-+971 58 5252114 | info@blume.ae
++971 58 525 2114 | blumetec0@gmail.com
 `;
 }
 

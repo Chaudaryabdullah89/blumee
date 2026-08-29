@@ -11,7 +11,7 @@ import {
   Ruler,
   Hammer,
   Compass,
-  DoorOpen,
+  Zap,
   Paintbrush,
   ArrowRight,
   Award,
@@ -19,142 +19,170 @@ import {
 
 // Robust services data catalog
 const servicesData = {
+  screeding: {
+    title: "Floor Screeding",
+    subtitle: "Bonded, Unbonded, Floating & Heated Systems",
+    heroImg: "/projects/screed-team-pour.jpg",
+    desc: "Floor screeding is our core specialisation. From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme.",
+    icon: Ruler,
+    timeframe: "Sequenced bay-by-bay and villa-by-villa to programme",
+    compliance: "UAE Local Codes & Manufacturer Specification",
+    standard: "SR1 (3mm) to SR3 (10mm) Surface Regularity",
+    materials:
+      "Washed, graded sand and OPC batched to a controlled ratio, with admixtures and fibres where specified; approved systems from Fosroc, MAPEI and Flowcrete.",
+    technicalGuide:
+      "Laser survey of the slab and datum lines, substrate preparation and priming, controlled mix batching in forced-action mixers, placing and compaction to rails or laser datum, straightedging and power-trowelling, then protected curing with moisture and soundness testing before handover.",
+    keyMetrics: [
+      { label: "Surface Regularity", value: "SR1 3mm to SR3 10mm" },
+      { label: "Typical Thickness", value: "25mm to 75mm build-up" },
+      { label: "Moisture Testing", value: "100% of screeded areas" },
+    ],
+    milestones: [
+      "Laser Survey & Datum Marking",
+      "Substrate Preparation & Priming",
+      "Controlled Mix Batching",
+      "Placing & Compaction to Datum",
+      "Levelling & Power-Trowel Finish",
+      "Curing, Testing & Handover Pack",
+    ],
+  },
   "fit-out": {
-    title: "Premium Interior Fit-Out",
-    subtitle: "Turn-Key Commercial & Residential Solutions",
+    title: "Interior Fit-Out",
+    subtitle: "Space Planning to Finishing Touches",
     heroImg:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
-    desc: "Our interior fit-out team delivers turnkey renovations for corporate offices, high-end boutiques, and luxury villas across Dubai. We integrate spatial layouts, customized partitions, false ceilings, and premium finishes into a single, seamless delivery timeline.",
-    icon: Paintbrush,
-    timeframe: "30 - 60 Days (Project Scale Dependent)",
-    compliance: "Dubai Municipality & Civil Defense Approved",
-    standard: "Q4 Superior Fit-Out Standard",
+    desc: "Transforming empty spaces into functional, aesthetically pleasing environments — from space planning and layout design to furniture installation and finishing touches, executed seamlessly from start to finish.",
+    icon: Compass,
+    timeframe: "Coordinated with screeding and MEP programme",
+    compliance: "Coordinated with Developer & Authority Approvals",
+    standard: "Q4 Plaster Finish, Manufacturer-Specified Materials",
     materials:
-      "Premium gypsum panels, acoustic isolation layers, customized brass details, and low-VOC paints.",
+      "Gypsum partitions and ceiling systems, doors and ironmongery, paint and decorative finishes, coordinated FF&E.",
     technicalGuide:
-      "We manage structural partition planning, suspended metal ceiling framing, high-performance gypsum board installations, electrical routing coordination, and detailed decorative trims under laser-level tolerances.",
+      "We manage structural partition planning, ceiling framing, MEP coordination, and detailed finishing under close supervision — with meticulous attention to detail from substrate preparation to furnishing placement.",
     keyMetrics: [
-      { label: "Level Accuracy", value: "Under +/- 1.0mm tolerance" },
-      { label: "Acoustic Rating", value: "Up to 48 dB wall dampening" },
-      { label: "Fire Resistance", value: "Fully BS 476 compliant" },
+      { label: "Coordination", value: "Screeding + Fit-Out + MEP, one contract" },
+      { label: "Finish Standard", value: "Q4 Plaster Skim" },
+      { label: "Sectors Served", value: "Residential, Commercial, Hospitality" },
     ],
     milestones: [
-      "Spatial Layout & CAD Coordination",
-      "Metal Frame Sub-Structure Erection",
-      "Concealed Services (MEP) Routing",
-      "Insulation & Double-Gypsum Cladding",
-      "Plaster Prep & Multi-Coat Painting",
+      "Space Planning & Layout Design",
+      "Partition & Ceiling Framing",
+      "MEP Coordination",
+      "Plaster, Paint & Finishes",
+      "Furniture & Fixture Installation",
+      "Snagging & Handover",
     ],
   },
-  tiling: {
-    title: "Custom Tiling & Stonework",
-    subtitle: "High-End Porcelain, Marble & Ceramic Laying",
+  renovation: {
+    title: "Renovation Works",
+    subtitle: "Structural, Screeding & Aesthetic Upgrades",
     heroImg:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200",
-    desc: "Our tiling specialists execute flawless large-format porcelain, custom stone layouts, and fine marble cladding. We ensure perfectly flat subfloor screeds and micro-joint alignments that yield visually seamless floors.",
-    icon: Ruler,
-    timeframe: "10 - 25 Days",
-    compliance: "ISO 9001 Material Quality Compliant",
-    standard: "Lippage-Free Flatness (BS 5385)",
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200",
+    desc: "Breathing new life into outdated or dilapidated spaces. Our renovation services span structural modifications, floor re-screeding, aesthetic enhancements and functional upgrades — approached with creativity and a commitment to excellence.",
+    icon: Hammer,
+    timeframe: "Scoped per site condition survey",
+    compliance: "Structural & Authority Approvals Coordinated",
+    standard: "Matched to Original or Upgraded Specification",
     materials:
-      "Imported Italian Calacatta marble, large-format porcelain, chemical epoxy grouts, and flexible polymer-modified adhesives.",
+      "Concrete repair mortars, re-screeding systems, matched finishes and refurbishment materials.",
     technicalGuide:
-      "Prior to tile laying, we check subfloor level using digital rotary lasers, correct inconsistencies with self-leveling compounds, install polyurethane wet-area waterproofing, and utilize dynamic tile-leveling clips to avoid lippage completely.",
+      "We survey existing conditions, identify structural and substrate issues, carry out demolition and concrete crack repair where needed, then re-screed and refinish to bring the space back to a sound, serviceable standard.",
     keyMetrics: [
-      { label: "Lippage Limit", value: "Less than 0.5mm max" },
-      { label: "Waterproofing", value: "Class-A Liquid Membrane" },
-      { label: "Grout Width", value: "1.5mm - 2.0mm joints" },
+      { label: "Scope", value: "Structural, Screed & Finish Upgrades" },
+      { label: "Approach", value: "Restoration or Full Modern Makeover" },
+      { label: "Delivery", value: "Every Stage Handled with Care" },
     ],
     milestones: [
-      "Subfloor Level & Flatness Audits",
-      "Polyurethane Waterproofing Application",
-      "Dry-Lay Layout Selection & Alignment",
-      "Laser-Guided Adhesive Comb Troweling",
-      "Concealed Tiling Clip Alignment",
-      "Epoxy Grout Filling & Acid Washing",
+      "Condition Survey & Scoping",
+      "Demolition & Concrete Repair",
+      "Re-Screeding to Falls",
+      "Structural & MEP Upgrades",
+      "Finishing & Redecoration",
+      "Final Inspection & Handover",
     ],
   },
-  masonry: {
-    title: "Precision Block Masonry",
-    subtitle: "Heavy-Duty Structural & Internal Partitions",
-    heroImg:
-      "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=1200",
-    desc: "Wall partition accuracy determines the success of all subsequent plastering and cabinetry. Our masonry crews build solid concrete walls, boundary walls, and insulated partition block works with uncompromising straightness.",
+  "block-work": {
+    title: "Block Work & Gypsum",
+    subtitle: "Concrete Block Walls & Custom Ceilings",
+    heroImg: "/projects/gypsum-ceiling-medallion.jpg",
+    desc: "Concrete block walls, partitions and structural elements built with precision, alongside custom gypsum ceilings, wall panels, partitions and mouldings crafted by our in-house team.",
     icon: Layers,
-    timeframe: "14 - 30 Days",
-    compliance: "Dubai Civil Engineering Approved",
-    standard: "Vertical Plumb Standard (BS 5628)",
+    timeframe: "Sequenced with the screeding and fit-out programme",
+    compliance: "Structural Engineering Approved",
+    standard: "Vertical Plumb & Reinforced Lintel Detailing",
     materials:
-      "200mm solid concrete blocks, insulated thermal blocks, galvanized steel wall ties, and high-strength OPC mortars.",
+      "Concrete masonry units (CMU), galvanized wall ties, gypsum board and mouldings, reinforcement mesh.",
     technicalGuide:
-      "We layout coordinates based on dynamic CAD drawings, mount high-tensile carbon steel anchors to columns, cast on-site concrete lintels for door clearances, and incorporate technical thermal expansion joints to neutralize regional temperature movements.",
+      "Masonry crews build boundary and partition block walls to CAD coordinates, casting reinforced lintels for openings; our gypsum team then installs false ceilings, wall panels and decorative mouldings — including the ornate, hand-detailed ceiling work shown in our completed craftsmanship gallery.",
     keyMetrics: [
-      { label: "Plumb Tolerance", value: "Under 2.0mm per 3 meters" },
-      { label: "Block Density", value: "Min 2000 kg/m3 solid load" },
-      { label: "Tie Frequency", value: "Every third block course" },
+      { label: "Wall Systems", value: "CMU Block, Partitions & Boundary Walls" },
+      { label: "Ceiling Systems", value: "False Ceilings, Panels & Mouldings" },
+      { label: "Detailing", value: "Custom Gypsum Cornicing" },
     ],
     milestones: [
-      "Floor Coordinate Chalk Lining",
-      "Galvanized Wall-Tie Anchor Pinning",
-      "Level Masonry block lay (1:3 Mortar)",
-      "Reinforced Steel Lintel Castings",
-      "Thermal Expansion Joint Detailing",
+      "Coordinate Setting-Out",
+      "Block Wall Construction",
+      "Lintel & Opening Detailing",
+      "False Ceiling Framing",
+      "Gypsum Board & Mouldings",
+      "Final Finish Inspection",
     ],
   },
-  doors: {
-    title: "High-End Door Installations",
-    subtitle: "Custom Wood Joinery & Fire-Rated Door Sets",
-    heroImg:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
-    desc: "We supply and fit high-end wooden doors, architraves, frames, and premium ironmongery. Our joinery experts ensure doors lock smoothly with tight gaskets that block sound and drafts.",
-    icon: DoorOpen,
-    timeframe: "7 - 20 Days",
-    compliance: "Dubai Civil Defense Certified",
-    standard: "Grade 1 Wood Joinery Standards",
-    materials:
-      "Seasoned solid ash, oak veneers, sound-proof internal particle fillers, neoprene seals, and heavy-duty steel ironmongery.",
-    technicalGuide:
-      "We audit door structural frame plumb, install heavy-duty wood casing anchors, fit door panels using 3 ball-bearing hinges, mount architectural locksets, and compress secure neoprene gaskets.",
-    keyMetrics: [
-      { label: "Gap Tolerance", value: "Uniform 2.0mm border gap" },
-      { label: "Acoustic Rating", value: "Up to 35 dB secure sound damping" },
-      { label: "Hinges Number", value: "3 Ball-bearing hinges per door" },
-    ],
-    milestones: [
-      "Door Frame Openings Plumb Audit",
-      "Structural Hardwood Sub-Frame Anchor",
-      "Door Leaf Mortising & Hinge Layout",
-      "Panel Hanging & Balance Alignments",
-      "Architrave Skirting Fitting",
-      "Hardware & Neoprene Seal Compression",
-    ],
-  },
-  plaster: {
-    title: "Partition Walls & Plastering",
-    subtitle: "Flawless Flat Leveling & Gypsum Skimming",
+  plastering: {
+    title: "Plastering & Painting",
+    subtitle: "Smooth Finishes, Full Colour Range",
     heroImg:
       "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=1200",
-    desc: "Perfect plastering provides the base for elite decoration. Our finishing masons render, level, and skim walls until they achieve a glass-like Q4 surface profile.",
-    icon: Hammer,
-    timeframe: "10 - 20 Days",
-    compliance: "Dubai Municipality Finishing Certified",
-    standard: "Q4 Flawless Flat Standard (BS EN 998)",
+    desc: "Smooth, flawless surface preparation and finishing, plus a full range of colours, finishes and decorative painting techniques — the base every decoration depends on.",
+    icon: Paintbrush,
+    timeframe: "Sequenced after block work and MEP first fix",
+    compliance: "Q4 Finish, Manufacturer-Specified Systems",
+    standard: "Three-Coat Render & Skim to Q4",
     materials:
-      "Premium bonding agents, rust-proof corner beads, fiberglass joint mesh, and multi-coat leveling plasters.",
+      "Sand-cement render, gypsum skim coats, fiberglass joint mesh, full range of paints and decorative coatings.",
     technicalGuide:
-      "We prime masonry walls, mount metal corner beads to reinforce edges, apply spatter-dash base layers to maximize mortar bonding, layout level screed guides, render walls, and complete the skimming process with premium fine-gypsum layers.",
+      "We prime and render walls in a controlled multi-coat sequence, apply fiberglass mesh at joints to prevent cracking, skim to a Q4 finish, then apply a full range of colours and decorative painting techniques to specification.",
     keyMetrics: [
-      { label: "Surface Flatness", value: "Under 1.0mm deviation per 2m" },
-      { label: "Coats Applied", value: "3-Coat rendering & skimming" },
-      { label: "Corner Angle", value: "Exact 90-degree bead setups" },
+      { label: "Finish Level", value: "Q4 Flawless Skim" },
+      { label: "Crack Control", value: "Fiberglass Joint Mesh" },
+      { label: "Coverage", value: "Internal & External Surfaces" },
     ],
     milestones: [
-      "Wall Primer & Bonding Agent Spatter",
-      "Corner Bead & Level Screed Guide Setup",
-      "Render Layer Throwing & Screed Level",
-      "Fiberglass Mesh Joint Overlay",
-      "Gypsum Finish Skimming (Multi-coat)",
-      "Fine Sanding & Dust-free Primer base",
+      "Surface Priming",
+      "Render Coat Application",
+      "Joint Mesh Reinforcement",
+      "Gypsum Skim Finish",
+      "Sanding & Prep for Paint",
+      "Full-Colour Decorative Painting",
+    ],
+  },
+  mep: {
+    title: "MEP Services",
+    subtitle: "Electrical, Plumbing, HVAC & Firefighting",
+    heroImg:
+      "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=1200",
+    desc: "A full suite of Mechanical, Electrical and Plumbing services, coordinated with the fit-out programme and delivered by trained engineers and technicians in accordance with local and international standards.",
+    icon: Zap,
+    timeframe: "Coordinated with screeding & fit-out programme",
+    compliance: "Local & International Standards Compliant",
+    standard: "Sustainable, Eco-Friendly MEP Solutions",
+    materials:
+      "Lighting & small power systems, cable containment, plumbing & drainage systems, central A/C and split units, generators, motors, pumps.",
+    technicalGuide:
+      "Our MEP team installs lighting and small power, cable containment, plumbing and drainage, and central or split A/C systems, and carries out air conditioning, electrical, plumbing, firefighting, low current and fresh air/ventilation works — coordinated with the screeding and fit-out programme.",
+    keyMetrics: [
+      { label: "Systems Installed", value: "Lighting, Power, Plumbing, A/C" },
+      { label: "Works Carried Out", value: "Electrical, Firefighting, Low Current" },
+      { label: "Approach", value: "Sustainable, Eco-Friendly Solutions" },
+    ],
+    milestones: [
+      "MEP Coordination Drawings",
+      "First-Fix Containment & Rough-In",
+      "Plumbing & Drainage Installation",
+      "Electrical & Low Current Systems",
+      "A/C & Ventilation Installation",
+      "Testing, Commissioning & Handover",
     ],
   },
 };
@@ -355,8 +383,8 @@ export default function ServiceDetailPage({
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
               Submit your property details or drawing specification file today.
-              Our engineers provide detailed block counts, tiling materials
-              estimates, and complete turnkey fit-out proposals.
+              Our engineers provide detailed screed build-up recommendations,
+              material estimates, and complete turnkey fit-out proposals.
             </p>
 
             <Link

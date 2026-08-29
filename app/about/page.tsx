@@ -38,20 +38,17 @@ export default function AboutPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            We Shape <span className="text-brand-gold font-black">Spaces</span>{" "}
-            & <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Standards
-            </span>
+            The Floor Sets{" "}
+            <span className="text-brand-gold font-black">The Standard</span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            Blume Technical Services is a premier Interior Design, Fit-Out, and
-            Technical Services company that exists to help bring brands and
-            spaces to life. We combine design, space planning, precision block
-            masonry, professional plastering, custom tiling, bespoke joinery,
-            and turnkey fit-out management to deliver pragmatic, end-to-end
-            solutions.
+            Blume Technical Services L.L.C. provides end-to-end floor
+            screeding, interior design and fit-out turnkey solutions for
+            commercial offices, residential developments and hospitality
+            spaces across Dubai and the wider United Arab Emirates. Floor
+            screeding is our core specialisation — the flat, sound, correctly
+            cured floor base that every finish above it depends on.
           </p>
         </div>
       </section>
@@ -66,30 +63,31 @@ export default function AboutPage() {
             <div className="lg:col-span-7 flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-                  Our Journey
+                  Our Experience
                 </span>
                 <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                  Founded on Vision, Driven by Design
+                  Specialist Screeding, End-to-End Delivery
                 </h2>
               </div>
 
               <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                Blume Technical Services is a premier Interior Design, Fit-Out,
-                and Technical Services company that exists to help bring brands
-                and spaces to life. Uniquely, we combine design, space planning,
-                precision block masonry, professional plastering, custom tiling,
-                bespoke joinery, and turnkey fit-out management to deliver
-                pragmatic, end-to-end solutions. Our cross-industry experience
-                means all our services are based on an unparalleled
-                understanding of real-world success.
+                Blume Technical Services provides end-to-end floor screeding,
+                interior design and fit-out turnkey solutions for commercial
+                offices, residential developments and hospitality spaces
+                across Dubai and the wider United Arab Emirates. Floor
+                screeding is our core specialisation. From bonded and unbonded
+                sand-cement screeds to floating, heated and self-levelling
+                systems, we deliver the flat, sound, correctly cured floor
+                base that every finish above it depends on — at volume, and
+                to programme.
               </p>
               <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                Our senior technical staff brings extensive industry experience
-                in value-engineering and space management. We offer proven expertise
-                in design consultations and material selection, ensuring smooth
-                project delivery within tight budgets and challenging timelines.
-                Working on diverse projects has honed our ability to find creative,
-                high-quality solutions within set parameters.
+                With an extensive track record and a dedicated team of
+                engineers, supervisors and trained screeding crews, we serve a
+                diverse client base of developers, main contractors and
+                private owners. At Blume, full client satisfaction is our
+                standard — delivered through high-quality craftsmanship and
+                on-time project completion.
               </p>
             </div>
 
@@ -112,12 +110,13 @@ export default function AboutPage() {
                   <div className="flex items-center gap-2 mb-1.5">
                     <Award className="w-5 h-5 text-brand-gold" />
                     <span className="font-sans font-black text-xs text-brand-navy uppercase tracking-wider">
-                      Quality Certified
+                      Approved Applicator
                     </span>
                   </div>
                   <p className="text-slate-700 text-[11px] md:text-xs leading-relaxed">
-                    Every project is managed under ISO 9001 and ISO 45001
-                    international building standards.
+                    Registered approved applicator for Fosroc, MAPEI,
+                    Flowcrete and Master Builders Solutions flooring &amp;
+                    coating systems.
                   </p>
                 </div>
               </div>
@@ -143,23 +142,23 @@ export default function AboutPage() {
           {[
             {
               title: "Integrity",
-              desc: "Honesty, integrity and humility are our key strengths. They help us build a reputation that in turn will help us achieve our mission of repeat clientele and long-term relationships that make us key players in the market.",
+              desc: "Honest, transparent dealings with every client and partner — the reputation that wins us repeat clientele and long-term relationships across the UAE construction industry.",
               icon: ShieldCheck,
             },
             {
-              title: "Creativity",
-              desc: "We approach every project with fresh eyes, searching for design solutions and material options that deliver exceptional value — even within tight budgets and challenging parameters.",
+              title: "Excellence",
+              desc: "Meticulous craftsmanship and high standards on every project — from substrate preparation to final finish, executed within strictly controlled time and budgetary parameters.",
+              icon: HardHat,
+            },
+            {
+              title: "Collaboration",
+              desc: "Open communication that keeps clients involved at every stage. Your input shapes each stage of the process, from consultation through to handover.",
               icon: Ruler,
             },
             {
               title: "Innovation",
-              desc: "We bring innovative design thinking and structural expertise to every space, combining cutting-edge spatial concepts with proven engineering, installation, and renovation techniques.",
+              desc: "Fresh design thinking paired with practical, buildable solutions — bringing cutting-edge spatial concepts together with proven engineering and installation techniques.",
               icon: Cpu,
-            },
-            {
-              title: "Excellence",
-              desc: "From corporate offices to hotels, retail shops to healthcare environments, our focus is on creating inspired designs that provide our clients with an environment of lasting value.",
-              icon: HardHat,
             },
           ].map((val, idx) => {
             const Icon = val.icon;
@@ -266,38 +265,38 @@ export default function AboutPage() {
       <section className="py-24 max-w-5xl mx-auto px-6 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col gap-3">
           <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-            Milestones
+            Our Journey
           </span>
           <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-            Our Historic Path
+            Comprehensive Service, Start to Finish
           </h2>
         </div>
 
         <div className="relative border-l border-slate-200 ml-4 md:ml-32 flex flex-col gap-16">
           {[
             {
-              year: "2017",
-              title: "Blume Technical Services is Founded",
-              desc: "Opened our design studio in Dubai, UAE, with a dedicated team of design and fit-out professionals — prioritizing Interior Design, Fit-Out, and specialized technical services for premium commercial spaces.",
+              year: "01",
+              title: "Foundation Established",
+              desc: "Launched with a vision to transform spaces across the region, licensed as Blume Technical Services under Dubai's Department of Economy and Tourism.",
             },
             {
-              year: "2019",
-              title: "Cross-Industry Expansion",
-              desc: "Expanded our portfolio to serve hotels, retail chains, and healthcare facilities — developing deep cross-industry expertise in design-led, end-to-end fit-out solutions.",
+              year: "02",
+              title: "First Major Project",
+              desc: "Successfully completed our first commercial fit-out project, building the track record that would grow into a diverse portfolio of developers and main contractors.",
             },
             {
-              year: "2021",
-              title: "Technical Services & Renovations",
-              desc: "Expanded our scope to offer specialized technical services — including precision block masonry, professional plastering, and custom large-format tiling to deliver complete design and refurbishment packages.",
+              year: "03",
+              title: "Screeding Division Formed",
+              desc: "Dedicated screeding crews and plant established as a standalone specialist capability — with forced-action mixers, screed pumps and rotary laser levels for fast, flat, high-volume floor placement.",
             },
             {
-              year: "2024",
-              title: "Portfolio Excellence",
-              desc: "Established a leading position as a premier technical contractor in Dubai, executing high-profile commercial and residential projects with a reputation for inspired design and disciplined execution.",
+              year: "04",
+              title: "Expanded Service Offering",
+              desc: "Integrated comprehensive MEP services into our design and fit-out solutions, becoming an approved applicator for leading manufacturers including Fosroc, MAPEI and Flowcrete.",
             },
           ].map((mil, idx) => (
             <div key={idx} className="relative pl-8 md:pl-12 group">
-              {/* Year flag floating on left (only visible on medium screens and up) */}
+              {/* Phase flag floating on left (only visible on medium screens and up) */}
               <div className="absolute hidden md:block -left-36 top-1.5 w-24 text-right">
                 <span className="font-sans font-black text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-200">
                   {mil.year}
@@ -310,9 +309,9 @@ export default function AboutPage() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                {/* Year flag fallback for mobile */}
+                {/* Phase flag fallback for mobile */}
                 <span className="font-sans font-black text-sm text-brand-gold md:hidden">
-                  {mil.year}
+                  Phase {mil.year}
                 </span>
                 <h4 className="font-sans font-black text-lg md:text-xl text-brand-navy">
                   {mil.title}

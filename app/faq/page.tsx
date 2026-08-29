@@ -9,28 +9,28 @@ export default function FAQPage() {
 
   const faqs = [
     {
-      q: "What core technical and finishing services does Blume specialize in?",
-      a: "We specialize in 6 core civil and finishing disciplines: Turnkey Fit-Out & Renovation, Custom Tiling & Stonework, Bespoke Joinery & Doors, Professional Plastering & Finishes, Precision Block Masonry, and Interior Design & Space Planning."
+      q: "What is Blume's core specialisation?",
+      a: "Floor screeding. From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme. We also deliver interior fit-out, renovation and MEP works alongside it."
     },
     {
-      q: "What quality tolerances do you guarantee for tiling and stonework?",
-      a: "We execute all tiling strictly under BS 5385 British standards. Using digital rotary lasers, we maintain floor and wall flatnesses with a variance tolerance of under +/- 0.5mm to eliminate all lippage across large-format porcelain and marble slabs. We also conduct mandatory 24-hour liquid flood tests before tiling wet zones."
+      q: "What tolerances do you guarantee on screeded floors?",
+      a: "Surface regularity is measured as the maximum permissible gap beneath a 2m straightedge: SR1 (3mm) for high-specification floors, SR2 (5mm) for normal-specification floors, and SR3 (10mm) for utility-specification floors — verified with a level and SR survey on every bay, plus soundness and moisture testing before handover."
     },
     {
-      q: "Are your custom joinery and door installations certified?",
-      a: "Yes. All bespoke timber door assemblies can be supplied with certified fire ratings (60-minute and 90-minute options) complying with Dubai Civil Defense (DCD) requirements. We manufacture using solid woods like ash and walnut, complete with drop-down soundproof gaskets and smoke seals."
+      q: "Are you a licensed and approved contractor?",
+      a: "Yes. Blume Technical Services L.L.C. holds Professional Trade License No. 959319 issued by Dubai's Department of Economy and Tourism, is VAT registered (TRN 100564723300003), and is a reviewed and approved subcontractor / applicator for leading UAE consultants including Arcadis, National Engineering Bureau, Dewan Architects + Engineers and KEO International."
     },
     {
-      q: "How do you handle developer NOCs and municipality approvals in Dubai?",
-      a: "We provide complete turnkey approval coordination. Our engineering team prepares and submits detailed structural, architectural, and MEP layout drawings to secure NOCs from developers (Emaar, Nakheel, Dubai Properties) and approvals from Dubai Municipality (DM), Civil Defense (DCD), and Concordia/TECOM."
+      q: "Are you certified by the material manufacturers you install?",
+      a: "Yes. We are a registered approved applicator for Al Gurg Fosroc, MAPEI Construction Chemicals, Master Builders Solutions, Flowcrete Middle East and NYA Technical Services / SBI Industries — for epoxy, polyurethane, traffic deck and screed systems, executed under manufacturer specification and, where required, their site supervision."
     },
     {
-      q: "How fast can you mobilize for masonry block work and plastering?",
-      a: "Once NOC approvals and work permits are in place, our specialized in-house crews can mobilize to site within 3 to 5 business days. All concrete masonry units (CMU) and plaster binders are sourced from certified regional suppliers to guarantee raw material density and anti-cracking compliance."
+      q: "How fast can you mobilize a screeding crew to site?",
+      a: "Our screeding division operates with its own dedicated crews, forced-action mixers, screed pumps and rotary laser levels. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences."
     },
     {
-      q: "Do you work with third-party designers, architects, and main contractors?",
-      a: "Absolutely. While we provide full design-and-build services, we frequently collaborate as specialist contractors or direct fit-out partners — executing detailed shop drawings, plaster skimming (Q1 to Q4 finishes), and architectural stone details matching design guidelines."
+      q: "Which locations do you cover?",
+      a: "From our base in Dubai, our teams mobilise across the Emirates — with completed and ongoing work in Dubai, Abu Dhabi and Fujairah — to deliver screeding, fit-out and renovation projects wherever our clients need us."
     }
   ];
 

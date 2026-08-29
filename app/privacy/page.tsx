@@ -89,7 +89,7 @@ export default function PrivacyPage() {
                 3. On-Site Safety Surveillance
               </h3>
               <p>
-                To comply with the strict health and safety frameworks (ISO 45001) enforced across Dubai Municipality building sites, our active locations (including Al Quoz, Palm Jumeirah, and DIFC sites) utilize secure close-circuit television (CCTV) cameras. Footage is retained purely for security, safety compliance reviews, and incident audits, and is auto-deleted every 30 days.
+                To comply with the health, safety and site-security requirements enforced by Dubai Municipality and main contractors, our active job sites across Dubai, Abu Dhabi and Fujairah may utilize secure close-circuit television (CCTV) cameras. Footage is retained purely for security, safety compliance reviews, and incident audits, and is auto-deleted every 30 days.
               </p>
             </div>
 
@@ -111,8 +111,8 @@ export default function PrivacyPage() {
               </p>
               <p className="text-brand-navy font-bold text-xs md:text-sm mt-1">
                  Blume Technical Services Compliance<br />
-                 Exchange Tower Business Bay, Dubai, UAE<br />
-                Email: <a href="mailto:privacy@blume.ae" className="text-brand-gold hover:underline">privacy@blume.ae</a>
+                 Al Zarooni Building, Office 412, Frij Murar, Deira, Dubai, UAE<br />
+                Email: <a href="mailto:blumetec0@gmail.com" className="text-brand-gold hover:underline">blumetec0@gmail.com</a>
               </p>
             </div>
 

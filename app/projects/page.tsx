@@ -14,130 +14,237 @@ import {
   ZoomIn,
 } from "lucide-react";
 
-// Premium projects dataset mapped to high-end Dubai technical service categories
+// Real completed & ongoing projects, from our pre-qualification submittal record
 const projectsData = [
   {
     id: 1,
-    title: "Executive Office Fit-Out",
-    category: "Fit-Out & Renovation",
-    client: "Al Futtaim Offices",
-    location: "Business Bay, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800",
-    desc: "Complete interior fit-out for corporate headquarters. Structured precise drywall partitions, flawless smooth plastering, and custom oak skirting.",
-    works: [
-      "Drywall Partitions",
-      "Plaster Finishes",
-      "Acoustic Ceilings",
-      "Wood Trim Joinery",
-    ],
+    title: "Dragon Palace Hotel",
+    category: "Floor Screeding & Fit-Out",
+    client: "Mr. Peng Hung",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/screed-team-pour.jpg",
+    desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
+    works: ["Demolition", "Floor Screeding", "Interior Fit-Out"],
   },
   {
     id: 2,
-    title: "Luxury Beachfront Villa Tiling",
-    category: "Tiling & Stonework",
-    client: "Private Elite Villa",
-    location: "Palm Jumeirah, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800",
-    desc: "Laid over 650 sqm of premium Italian Calacatta marble tiles with absolute laser-level flatness, micro-joint epoxy grouting, and high-grade wet-area waterproofing.",
-    works: [
-      "Italian Marble Laying",
-      "Epoxy Grouting",
-      "Shower Waterproofing",
-      "Stair Cladding",
-    ],
+    title: "Chorisia 1 & Chorisia 2",
+    category: "Floor Screeding & Fit-Out",
+    client: "Al Barari",
+    location: "Al Barari, Dubai",
+    year: "Completed",
+    img: "/projects/screed-rebar-columns.jpg",
+    desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
+    works: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
   },
   {
     id: 3,
-    title: "Bespoke Penthouse Joinery & Doors",
-    category: "Bespoke Joinery & Doors",
-    client: "Marina Heights Penthouse",
-    location: "Dubai Marina, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
-    desc: "Supply and seamless installation of custom fire-rated solid ash doors, architraves, flush internal doors, and walk-in wood closets.",
-    works: [
-      "Solid Ash Door Fitting",
-      "Bespoke Architraves",
-      "Walk-in Wardrobes",
-      "Chrome Hardware",
-    ],
+    title: "Wilton Park Residence",
+    category: "Interior Fit-Out",
+    client: "Ellington Properties",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/gypsum-ceiling-medallion.jpg",
+    desc: "Interior work across a G+2P+12 residential building — floor screeding, plaster, tile, ceiling and paint.",
+    works: ["Floor Screeding", "Plaster & Tile", "Ceiling & Paint"],
   },
   {
     id: 4,
-    title: "Commercial Showroom Block Work",
-    category: "Block Masonry",
-    client: "Al Barsha Automotive Plaza",
-    location: "Al Barsha 1, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-    desc: "Built precise heavy-duty masonry boundary and partition block walls utilizing reinforced lintels and sound-damping mortar matrices.",
-    works: [
-      "Solid Block Work",
-      "Reinforced Lintels",
-      "Boundary Brick Masonry",
-      "Mortar Line Audits",
-    ],
+    title: "Himlton House Residence",
+    category: "Floor Screeding & Fit-Out",
+    client: "Ellington Properties",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/screed-finished-corridor.jpg",
+    desc: "Floor screeding and interior fit-out for a G+2P+5 residential building.",
+    works: ["Floor Screeding", "Interior Fit-Out"],
   },
   {
     id: 5,
-    title: "High-End Retail Store Fit-Out",
-    category: "Fit-Out & Renovation",
-    client: "Vogue Boutique",
-    location: "Downtown Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800",
-    desc: "Premium boutique setup featuring custom brass partition frames, flawless venetian plaster textures, and micro-bevel porcelain floor tiling.",
-    works: [
-      "Brass Framing",
-      "Venetian Plastering",
-      "Porcelain Tiling",
-      "Custom Door Glass",
-    ],
+    title: "78 Villas, Green Wood",
+    category: "Interior Fit-Out",
+    client: "Damac Property",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/gypsum-ceiling-unfinished.jpg",
+    desc: "Interior work across 78 villas (G+1 & G+2) — floor screeding, plaster, tile, paint and ceiling.",
+    works: ["78 Villas", "Floor Screeding", "Plaster, Tile & Paint"],
   },
   {
     id: 6,
-    title: "Luxury Residential Plaster Finishes",
-    category: "Plastering & Finishes",
-    client: "Signature Mansion",
-    location: "Jumeirah Golf Estates, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800",
-    desc: "Delivered flawless gypsum skimming and micro-cement plaster wall rendering across a 5-bedroom luxury mansion with laser-straight alignment checks.",
-    works: [
-      "Gypsum Skimming",
-      "Micro-Cement Finish",
-      "Laser Alignment Checks",
-      "Anti-Crack Meshing",
-    ],
+    title: "2B+G+6 Residential Building",
+    category: "Renovation Works",
+    client: "Mr. Omar Essa Seed Essa Al Falasi",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/screed-rebar-night.jpg",
+    desc: "Demolition, floor screeding and renovation work for a private residential building.",
+    works: ["Demolition", "Floor Screeding", "Renovation"],
   },
   {
     id: 7,
-    title: "Boutique Cafe Space Planning",
-    category: "Interior Design & Space Planning",
-    client: "The Grind Coffee Co.",
-    location: "City Walk, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-    desc: "Provided detailed 3D space layouts, building permit blueprints, and mood boards to optimize visual flow and maximize seating capacity.",
-    works: [
-      "3D Space Layouts",
-      "Municipality Approvals",
-      "Mood Boards",
-      "Material Spec Sheets",
-    ],
+    title: "Boulevard Heights",
+    category: "Epoxy & Resin Flooring",
+    client: "Target Engineering (Emaar)",
+    location: "Downtown Dubai",
+    year: "Completed",
+    img: "/projects/screed-finished-corridor.jpg",
+    desc: "Traffic deck coating — supply and application on the Boulevard Heights main contract works.",
+    works: ["Traffic Deck Coating", "Emaar", "Approved Applicator"],
+  },
+  {
+    id: 8,
+    title: "IKEA Center, Delma Mall",
+    category: "Floor Screeding & Fit-Out",
+    client: "Pinnacle Interior",
+    location: "Abu Dhabi, UAE",
+    year: "Completed",
+    img: "/projects/screed-site-pour.jpg",
+    desc: "Floor screeding and interior fit-out work for the IKEA Center at Delma Mall.",
+    works: ["Floor Screeding", "Interior Fit-Out"],
+  },
+  {
+    id: 9,
+    title: "IKEA Center, Fujairah",
+    category: "Floor Screeding & Fit-Out",
+    client: "Pinnacle Interior",
+    location: "Fujairah, UAE",
+    year: "Completed",
+    img: "/projects/screed-shuttered-bay.jpg",
+    desc: "Floor screeding and interior fit-out work for the IKEA Center in Fujairah.",
+    works: ["Floor Screeding", "Interior Fit-Out"],
+  },
+  {
+    id: 10,
+    title: "Head Office — Ellington Properties",
+    category: "Renovation Works",
+    client: "Ellington Properties",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "/projects/screed-corner-haunching.jpg",
+    desc: "Floor screeding and office renovation for the Ellington Properties head office.",
+    works: ["Floor Screeding", "Office Renovation"],
+  },
+  {
+    id: 11,
+    title: "Rocambolseco Fit-Out",
+    category: "Interior Fit-Out",
+    client: "Ducto Interior",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
+    desc: "Screed, block, plaster, tile, painting and ceiling works delivered for Ducto Interior.",
+    works: ["Screed & Block", "Plaster & Tile", "Painting & Ceiling"],
+  },
+  {
+    id: 12,
+    title: "Executive Office — Al Futtaim",
+    category: "Floor Screeding & Fit-Out",
+    client: "Ducto Interior",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800",
+    desc: "Demolition, floor screeding and interior fit-out for an Al Futtaim executive office, delivered via Ducto Interior.",
+    works: ["Demolition", "Floor Screeding", "Interior Fit-Out"],
+  },
+  {
+    id: 13,
+    title: "Al Jadaf 326-1667 — Floor Finishes",
+    category: "Epoxy & Resin Flooring",
+    client: "CRC — Construction & Reconstruction Eng. Co.",
+    location: "Al Jadaf, Dubai",
+    year: "Completed",
+    img: "/projects/screed-mesh-membrane.jpg",
+    desc: "Approved applicator for floor finishes works to basements — Commercial & Residential 2B+G+14+HC. Approved as noted, received 17 Nov 2024 (Ref. CRC/100061/SA/048).",
+    works: ["Approved Applicator", "Floor Finishes", "Basements"],
+  },
+  {
+    id: 14,
+    title: "Al Jadaf 326-1300 — Flooring Works",
+    category: "Epoxy & Resin Flooring",
+    client: "CRC — Construction & Reconstruction Eng. Co.",
+    location: "Al Jadaf, Dubai",
+    year: "Completed",
+    img: "/projects/screed-rebar-night.jpg",
+    desc: "Approved flooring applicator for a Commercial & Residential 2B+G+9+HC development.",
+    works: ["Approved Applicator", "Flooring Works"],
+  },
+  {
+    id: 15,
+    title: "Al Badaa Residential",
+    category: "Epoxy & Resin Flooring",
+    client: "Al Kaitoob Building Contracting",
+    location: "Al Satwa, Dubai",
+    year: "Completed",
+    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
+    desc: "Epoxy floor coating — Fosroc approved applicator — for a 3B+G+9+Gym residential building. Approved as noted, 15 Jan 2024 (Ref. P128-KCC-CV-GEN-PQ-072).",
+    works: ["Epoxy Floor Coating", "Fosroc Applicator"],
+  },
+  {
+    id: 16,
+    title: "Souq Al Kabeer Car Parking",
+    category: "Epoxy & Resin Flooring",
+    client: "Alghanim International / ORC Contracting",
+    location: "Dubai, UAE",
+    year: "Completed",
+    img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800",
+    desc: "Epoxy flooring and road marking for a commercial and robotic car parking building. Approved with comments, 28 Feb 2026 (Ref. AGUPR03/2024/GAR/071).",
+    works: ["Epoxy Flooring", "Road Marking"],
+  },
+  {
+    id: 17,
+    title: "Zabeel Feedmill",
+    category: "Epoxy & Resin Flooring",
+    client: "Fujairah National Construction Co.",
+    location: "Fujairah, UAE",
+    year: "Completed",
+    img: "/projects/screed-site-pour.jpg",
+    desc: "Epoxy flooring over screeded concrete works. Approved as noted, 15 Oct 2024 (Ref. FNC/6345/PQ036/00).",
+    works: ["Screeded Concrete", "Epoxy Flooring"],
+  },
+  {
+    id: 18,
+    title: "Hang Out — Mall of the Emirates",
+    category: "Interior Fit-Out",
+    client: "Ducto Interior",
+    location: "Dubai, UAE",
+    year: "Ongoing",
+    img: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=800",
+    desc: "Plaster, screed, painting and demolition works currently in progress at the Mall of the Emirates.",
+    works: ["Plaster & Screed", "Painting", "Demolition"],
+  },
+  {
+    id: 19,
+    title: "TECOM Office Building",
+    category: "MEP & Waterproofing",
+    client: "Tamdeen — TECOM Investments",
+    location: "Dubai, UAE",
+    year: "Ongoing",
+    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+    desc: "Water tank waterproofing in progress for a 3B+G+6 office building.",
+    works: ["Water Tank Waterproofing"],
+  },
+  {
+    id: 20,
+    title: "Canal Residence West Ph. II",
+    category: "Renovation Works",
+    client: "United Engineering Construction (UNEC) LLC",
+    location: "Dubai Sports City, Dubai",
+    year: "Ongoing",
+    img: "/projects/screed-corner-haunching.jpg",
+    desc: "Concrete crack repair to slabs and walls in progress. Approved with comments, 15 May 2024 (Ref. UNEC/J-259/DT/SCW/003).",
+    works: ["Concrete Crack Repair", "Slabs & Walls"],
   },
 ];
 
 const categories = [
   "All",
-  "Interior Design & Space Planning",
-  "Fit-Out & Renovation",
-  "Block Masonry",
-  "Plastering & Finishes",
-  "Tiling & Stonework",
-  "Bespoke Joinery & Doors",
+  "Floor Screeding & Fit-Out",
+  "Interior Fit-Out",
+  "Renovation Works",
+  "Epoxy & Resin Flooring",
+  "MEP & Waterproofing",
 ];
 
 export default function ProjectsPage() {
@@ -175,17 +282,17 @@ export default function ProjectsPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            Our Selected{" "}
-            <span className="text-brand-gold font-black">Technical</span> <br />
+            Completed &{" "}
+            <span className="text-brand-gold font-black">Ongoing</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Achievements
+              Projects
             </span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            Explore our portfolio of premium tiling, precise block work,
-            high-end wooden door fittings, plastering, and commercial interior
-            fit-outs delivered across Dubai.
+            21+ projects delivered and ongoing for leading UAE developers and
+            main contractors — floor screeding, interior fit-out, renovation
+            and epoxy flooring works across Dubai, Abu Dhabi and Fujairah.
           </p>
         </div>
       </section>
@@ -324,32 +431,32 @@ export default function ProjectsPage() {
             </h2>
             <p className="text-slate-500 text-sm max-w-xl mx-auto">
               We separate ourselves through precise civil execution. Every
-              project is certified to meet absolute structural and finishing
-              benchmarks.
+              project is verified to meet documented surface, structural and
+              finishing benchmarks.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "BS 5385 Tiling Standards",
-                metric: "< 0.5mm Tolerances",
-                desc: "We lay large-format porcelain and Italian marble with absolute flat leveling. Zero floor lippage, precise subfloor screed layouts, and epoxy grouting.",
+                title: "Surface Regularity",
+                metric: "SR1 3mm to SR3 10mm",
+                desc: "Every screeded bay is checked with a 2m straightedge and laser level survey, to the class stated in the project specification.",
               },
               {
                 title: "Q4 Skimming Standard",
-                metric: "Flawless PlasterSkim",
-                desc: "Our plastering crews skim walls to a perfect Q4 mirror-smooth status under cross-lighting, eliminating all visible joints or imperfections.",
+                metric: "Flawless Plaster Skim",
+                desc: "Our plastering crews skim walls to a Q4 mirror-smooth finish, ready for paint or specialty wall textures.",
               },
               {
-                title: "Civil Defense Certified",
-                metric: "60-90 Min Fire Doors",
-                desc: "Every bespoke door set is engineered in-house to DCD fire-safety guidelines, complete with neoprene acoustic drop seals and drop down gaskets.",
+                title: "Manufacturer Accredited",
+                metric: "Fosroc, MAPEI, Flowcrete",
+                desc: "Registered approved applicator for the epoxy, polyurethane, traffic deck and screed systems we install, executed to manufacturer specification.",
               },
               {
-                title: "Reinforced Block Masonry",
-                metric: "High-Tensile Integrity",
-                desc: "All block walls are laid with heavy-duty CMU blocks, structural lintels, expansion joints, and galvanized steel ties for permanent crack-prevention.",
+                title: "Moisture & Soundness Tested",
+                metric: "100% of Screeded Areas",
+                desc: "Level, soundness and moisture testing on every screeded floor before sign-off, with documented handover on every area released.",
               },
             ].map((stat, idx) => (
               <div
@@ -386,12 +493,12 @@ export default function ProjectsPage() {
               Collaborate
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl uppercase leading-tight tracking-tight">
-              Have a Custom Technical Project in Mind?
+              Have a Floor Screeding or Fit-Out Project in Mind?
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Whether you need premium marble tiling, complete office partition
-              block work, custom joinery, or complete fit-outs, our engineers
-              are ready to assist.
+              Whether you need volume floor screeding, complete interior
+              fit-out, renovation works, or epoxy flooring, our engineers are
+              ready to assist.
             </p>
 
             <Link

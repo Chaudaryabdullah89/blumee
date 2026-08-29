@@ -9,9 +9,9 @@ import Preloader from "./components/Preloader";
 import { HERO_POSTER_URL } from "@/lib/hero-video";
 
 export const metadata: Metadata = {
-  title: "Blume Technical Services — Interior Design & Fit-Out Management",
+  title: "Blume Technical Services — Floor Screeding, Fit-Out & MEP, Dubai",
   description:
-    "Blume Technical Services is an Interior Design and Fit-Out management company that exists to help bring brands and spaces to life. We combine planning, design, manufacturing, project management and renovation services across Dubai.",
+    "Blume Technical Services L.L.C. delivers end-to-end floor screeding, interior fit-out, MEP and renovation solutions for developers, main contractors and private clients across Dubai, Abu Dhabi and Fujairah.",
 };
 
 export default function RootLayout({

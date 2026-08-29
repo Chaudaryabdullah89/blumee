@@ -22,8 +22,8 @@ export default function ContactPage() {
     company: "",
     email: "",
     phone: "",
-    service: "Fit-Out",
-    location: "Business Bay",
+    service: "Screeding",
+    location: "Dubai",
     message: "",
   });
 
@@ -85,7 +85,7 @@ export default function ContactPage() {
             Contact Our <span className="text-brand-gold">Engineers</span>
           </h1>
           <p className="font-sans font-medium text-xs md:text-sm text-slate-300 max-w-xl leading-relaxed uppercase tracking-wide">
-            Exchange Tower Business Bay, Dubai, UAE
+            Al Zarooni Building, Office 412, Frij Murar, Deira, Dubai, UAE
           </p>
         </div>
       </section>
@@ -105,8 +105,8 @@ export default function ContactPage() {
               <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
                 If you have architectural designs, CAD floorplans, or bills of
                 quantities ready, please submit your files. Our engineering desk
-                provides detailed itemized estimates for tiling, masonry,
-                plaster, and door systems.
+                provides detailed itemized estimates for floor screeding,
+                fit-out, block work and MEP packages.
               </p>
             </div>
 
@@ -121,9 +121,9 @@ export default function ContactPage() {
                     Office Address
                   </span>
                   <span className="font-sans font-black text-xs md:text-sm text-brand-navy mt-0.5">
-                    Exchange Tower Business Bay,
+                    Al Zarooni Building, Office 412,
                     <br />
-                    Dubai, United Arab Emirates
+                    Frij Murar, Deira, Dubai, UAE
                   </span>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                     href="tel:+971585252114"
                     className="font-sans font-black text-xs md:text-sm text-brand-navy hover:text-brand-gold transition-colors mt-0.5"
                   >
-                    +971 58 5252114
+                    +971 58 525 2114
                   </a>
                 </div>
               </div>
@@ -154,10 +154,10 @@ export default function ContactPage() {
                     Email Inquiries
                   </span>
                   <a
-                    href="mailto:info@blume.ae"
+                    href="mailto:blumetec0@gmail.com"
                     className="font-sans font-black text-xs md:text-sm text-brand-navy hover:text-brand-gold transition-colors mt-0.5"
                   >
-                    info@blume.ae
+                    blumetec0@gmail.com
                   </a>
                 </div>
               </div>
@@ -279,13 +279,12 @@ export default function ContactPage() {
                     }
                     className="bg-slate-50 border border-slate-100 rounded-xl py-3 px-4 text-xs md:text-sm text-brand-navy focus:outline-none focus:border-brand-gold transition-all"
                   >
-                    <option value="Fit-Out">Premium Interior Fit-Out</option>
-                    <option value="Tiling">Custom Tiling & Stonework</option>
-                    <option value="Masonry">Precision Block Masonry</option>
-                    <option value="Doors">High-End Door Installations</option>
-                    <option value="Plastering">
-                      Partition Walls & Plastering
-                    </option>
+                    <option value="Screeding">Floor Screeding</option>
+                    <option value="Fit-Out">Interior Fit-Out</option>
+                    <option value="Renovation">Renovation Works</option>
+                    <option value="Block Work">Block Work & Gypsum</option>
+                    <option value="Plastering">Plastering & Painting</option>
+                    <option value="MEP">MEP Services</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -299,12 +298,10 @@ export default function ContactPage() {
                     }
                     className="bg-slate-50 border border-slate-100 rounded-xl py-3 px-4 text-xs md:text-sm text-brand-navy focus:outline-none focus:border-brand-gold transition-all"
                   >
-                    <option value="Business Bay">Business Bay</option>
-                    <option value="Downtown Dubai">Downtown Dubai</option>
-                    <option value="Palm Jumeirah">Palm Jumeirah</option>
-                    <option value="Dubai Marina">Dubai Marina</option>
-                    <option value="Al Quoz">Al Quoz</option>
-                    <option value="Other UAE">Other / Rest of Dubai</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Abu Dhabi">Abu Dhabi</option>
+                    <option value="Fujairah">Fujairah</option>
+                    <option value="Other UAE">Other Emirate</option>
                   </select>
                 </div>
               </div>
@@ -320,7 +317,7 @@ export default function ContactPage() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  placeholder="Describe your wall partition layout dimensions, tile areas, door quantities, or general fit-out specifications..."
+                  placeholder="Describe your floor area, screed type required, fit-out scope, or general project specifications..."
                   className="bg-slate-50 border border-slate-100 rounded-xl py-3 px-4 text-xs md:text-sm text-brand-navy placeholder-slate-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 transition-all resize-none"
                 />
               </div>
