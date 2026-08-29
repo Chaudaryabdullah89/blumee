@@ -142,7 +142,7 @@ export const services: Record<string, Service> = {
     title: "Interior Fit-Out & Renovation",
     subtitle: "Space Planning, Finishes & Refurbishment",
     heroImg:
-      "/img/fitout-interior.jpg",
+      "/img/fitout-office-dubai.jpg",
     desc: "Transforming empty spaces into functional, aesthetically pleasing environments — and breathing new life into outdated ones. From space planning and layout design to furniture installation and finishing touches, executed seamlessly from start to finish.",
     icon: Compass,
     timeframe: "Coordinated across all trades on one programme",

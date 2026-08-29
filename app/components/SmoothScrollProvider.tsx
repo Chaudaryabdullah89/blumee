@@ -19,6 +19,20 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
+    // Touch devices already have GPU-accelerated momentum scrolling. Running
+    // Lenis on top of it hands scrolling to JS on the main thread, which is
+    // what makes phones feel laggy — so we opt out there, and for anyone who
+    // has asked for reduced motion.
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+
+    if (isTouch || prefersReducedMotion) {
+      // ScrollTrigger falls back to native scroll events on its own.
+      return;
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.4,

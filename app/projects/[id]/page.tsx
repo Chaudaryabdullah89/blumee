@@ -15,6 +15,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { findProject } from "@/lib/projects";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 
 
@@ -53,12 +54,10 @@ export default function ProjectDetailPage({
           1. PARALLAX HERO BANNER
       ───────────────────────────────────────── */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('${project.img}')`,
-          }}
-        />
+        <BackgroundImage
+            src={project.img}
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#FCFCFD] via-[#0A1128]/70 to-[#0A1128]/30" />
 

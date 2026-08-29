@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Hammer,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function ServicesPage() {
   return (
@@ -20,12 +21,11 @@ export default function ServicesPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('/img/office-interior.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
@@ -142,7 +142,7 @@ export default function ServicesPage() {
                 "Furniture, Fixture & Finish Installation",
               ],
               icon: Compass,
-              img: "/img/fitout-interior.jpg",
+              img: "/img/fitout-office-dubai.jpg",
               reverse: false,
             },
             {
@@ -210,12 +210,11 @@ export default function ServicesPage() {
                   <div className="absolute -inset-4 border border-brand-gold/20 rounded-3xl -rotate-1 pointer-events-none" />
 
                   <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 shadow-lg border border-black/[0.04] group">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                      style={{
-                        backgroundImage: `url('${item.img}')`,
-                      }}
-                    />
+                    <BackgroundImage
+                        src={item.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="group-hover:scale-105 transition-transform duration-500"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/35 to-transparent" />
                   </div>
                 </div>

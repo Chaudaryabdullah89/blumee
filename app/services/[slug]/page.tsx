@@ -12,6 +12,7 @@ import {
   Award,
 } from "lucide-react";
 import { findService } from "@/lib/services";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 
 export default function ServiceDetailPage({
@@ -52,12 +53,10 @@ export default function ServiceDetailPage({
           1. PARALLAX HERO BANNER
       ───────────────────────────────────────── */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('${service.heroImg}')`,
-          }}
-        />
+        <BackgroundImage
+            src={service.heroImg}
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FCFCFD] via-[#0A1128]/75 to-[#0A1128]/45" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-8 w-full z-10 flex flex-col gap-4">

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const SUGGESTIONS = [
   { href: "/services", label: "Our Services", desc: "Screeding, block work, plastering, gypsum, fit-out and MEP" },
-  { href: "/projects", label: "Our Projects", desc: "21+ completed and ongoing works across the UAE" },
+  { href: "/projects", label: "Our Projects", desc: "50+ completed and ongoing works across the UAE" },
   { href: "/contact", label: "Contact Us", desc: "Request a site survey or quotation" },
 ];
 

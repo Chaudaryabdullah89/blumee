@@ -13,6 +13,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroBackground, HeroCardPreview } from "./components/Hero";
 import { submitContactForm } from "@/lib/submit-contact-form";
+import { shouldReduceMotion } from "@/lib/motion";
+import { STATS } from "@/lib/site";
+import BackgroundImage from "./components/BackgroundImage";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -31,6 +34,10 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Scroll-linked effects are recalculated every frame on the main thread.
+    // Phones pay for that in dropped frames, so they get the plain layout.
+    const reduceMotion = shouldReduceMotion();
 
     const ctx = gsap.context(() => {
       // 1. Hero Animations (delayed so the preloader can slide up completely)
@@ -61,16 +68,18 @@ export default function Home() {
         },
       );
 
-      gsap.to(".hero-video-card", {
-        y: -40,
-        scale: 1.04,
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      if (!reduceMotion) {
+        gsap.to(".hero-video-card", {
+          y: -40,
+          scale: 1.04,
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
 
       // 2. Editorial Text Inline Capsule Animations — clipPath reveal (no width conflict)
       gsap.fromTo(
@@ -112,8 +121,10 @@ export default function Home() {
         });
       });
 
-      // 4. SVG Blueprint Draw-In
-      const blueprintLines = document.querySelectorAll(".blueprint-path");
+      // 4. SVG Blueprint Draw-In — scrubbed, so desktop pointer devices only.
+      const blueprintLines = reduceMotion
+        ? []
+        : document.querySelectorAll(".blueprint-path");
       blueprintLines.forEach((line) => {
         const pathEl = line as SVGPathElement | SVGLineElement | SVGRectElement;
         let length = 1000;
@@ -324,14 +335,16 @@ export default function Home() {
               <HeroCardPreview />
 
               {/* Card stats text */}
-              <div className="mt-6 flex flex-col gap-2">
-                <h3 className="font-sans font-black text-2xl text-white tracking-tight flex items-center gap-2">
-                  <span className="text-brand-gold">21+ Projects</span>{" "}
+              <div className="mt-6 flex flex-col gap-3">
+                <h3 className="font-sans font-black text-2xl text-white tracking-tight">
+                  <span className="text-brand-gold">50+ Projects</span>{" "}
                   Delivered &amp; Ongoing
                 </h3>
                 <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-                  75 team members on the ground across residential, commercial
-                  and hospitality sites in Dubai, Abu Dhabi and Fujairah.
+                  Over{" "}
+                  <span className="font-bold text-white">AED 25 Million</span> in
+                  delivered value, with 75 team members on the ground across
+                  Dubai, Abu Dhabi and Fujairah.
                 </p>
               </div>
             </div>
@@ -340,9 +353,38 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────────────────────────
+          1.5 STATS BAND — headline numbers, above the fold on mobile
+      ───────────────────────────────────────── */}
+      <section className="bg-white border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <dl className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-black/[0.06]">
+            {[STATS.projects, STATS.value, STATS.villas, STATS.team].map(
+              (stat) => (
+                <div
+                  key={stat.label}
+                  className="flex flex-col gap-1 px-4 py-8 md:px-8 md:py-10 text-center"
+                >
+                  {/* nowrap keeps "AED 25M+" on one line on narrow screens */}
+                  <dd className="font-sans font-black text-[28px] sm:text-4xl md:text-5xl text-brand-navy tracking-tighter whitespace-nowrap">
+                    {stat.value}
+                  </dd>
+                  <dt className="font-sans font-black text-[10px] md:text-xs uppercase tracking-widest text-brand-gold mt-1">
+                    {stat.label}
+                  </dt>
+                  <p className="text-slate-500 text-[11px] md:text-xs leading-snug">
+                    {stat.sub}
+                  </p>
+                </div>
+              ),
+            )}
+          </dl>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────
           2. INTRO SECTION — Rich Editorial Layout
       ───────────────────────────────────────── */}
-      <section className="bg-white py-24 border-y border-black/[0.04]">
+      <section className="bg-white py-20 md:py-24 border-y border-black/[0.04]">
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center">
           {/* Paragraph with inline rounded capsules like the image */}
           <h2 className="font-sans font-semibold text-2xl md:text-4xl text-brand-navy leading-relaxed md:leading-[1.7] max-w-4xl mx-auto tracking-tight editorial-heading">
@@ -654,12 +696,10 @@ export default function Home() {
             </div>
 
             {/* Premium finished office interior image */}
-            <div
-              className="aspect-[16/9] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('/img/office-interior.jpg')`,
-              }}
-            />
+            <BackgroundImage
+                src="/img/office-interior.jpg"
+                className="aspect-[16/9] w-full rounded-3xl shadow-lg border border-black/[0.04]"
+              />
           </div>
         </div>
 
@@ -667,12 +707,10 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 about-reveal opacity-0">
           {/* Mission Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <div
-              className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('/img/mission-interior.jpg')`,
-              }}
-            />
+            <BackgroundImage
+                src="/img/mission-interior.jpg"
+                className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
+              />
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Mission
@@ -690,12 +728,10 @@ export default function Home() {
 
           {/* Vision Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <div
-              className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('/img/vision-interior.jpg')`,
-              }}
-            />
+            <BackgroundImage
+                src="/img/vision-interior.jpg"
+                className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
+              />
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Vision
@@ -717,12 +753,10 @@ export default function Home() {
       <span id="services" className="block -mt-20 pt-20" />
       <section className="relative py-28 overflow-hidden">
         {/* Full-width dramatic building outline context background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: `url('/img/office-interior.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            className="md:bg-fixed"
+          />
         {/* Soft frosted gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#FCFCFD]/95 via-[#FCFCFD]/90 to-[#FCFCFD]/75 backdrop-blur-sm" />
 
@@ -827,12 +861,10 @@ export default function Home() {
                 </h2>
               </div>
 
-              <div
-                className="aspect-[4/3] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
-                style={{
-                  backgroundImage: `url('/img/site-team.jpg')`,
-                }}
-              />
+              <BackgroundImage
+                  src="/img/site-team.jpg"
+                  className="aspect-[4/3] w-full rounded-3xl shadow-lg border border-black/[0.04]"
+                />
             </div>
 
             {/* Right Column: Description & Steps */}
@@ -929,7 +961,7 @@ export default function Home() {
                 category: "Floor Screeding & Fit-Out",
                 client: "Mr. Peng Hung",
                 location: "Dubai, UAE",
-                img: "/projects/screed-team-pour.jpg",
+                img: "/img/apartment-interior.jpg",
                 desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
                 tags: ["80 Apartments", "Floor Screeding", "Demolition"],
                 colSpan: "lg:col-span-8 min-h-[450px]",
@@ -974,12 +1006,11 @@ export default function Home() {
                 className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer ${project.colSpan}`}
               >
                 {/* Visual Background Frame */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
-                  style={{
-                    backgroundImage: `url('${project.img}')`,
-                  }}
-                />
+                <BackgroundImage
+                    src={project.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="group-hover:scale-105 transition-transform duration-[8s]"
+                  />
                 
                 {/* Visual Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#050A18]/45 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />

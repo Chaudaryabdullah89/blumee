@@ -10,6 +10,7 @@ import {
   ZoomIn,
 } from "lucide-react";
 import { projects as projectsData, projectCategories as categories } from "@/lib/projects";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 
 
@@ -32,12 +33,11 @@ export default function ProjectsPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('/img/office-interior.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
@@ -58,7 +58,7 @@ export default function ProjectsPage() {
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            21+ projects delivered and ongoing for leading UAE developers and
+            50+ projects delivered and ongoing for leading UAE developers and
             main contractors — floor screeding, interior fit-out, renovation
             and epoxy flooring works across Dubai, Abu Dhabi and Fujairah.
           </p>
@@ -109,12 +109,11 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedProject(project)}
                 className="relative aspect-[4/3] overflow-hidden border-b border-black/[0.03] shrink-0 cursor-zoom-in group/img"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center group-hover/img:scale-105 transition-transform duration-500"
-                  style={{
-                    backgroundImage: `url('${project.img}')`,
-                  }}
-                />
+                <BackgroundImage
+                    src={project.img}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="group-hover/img:scale-105 transition-transform duration-500"
+                  />
                 <div className="absolute inset-0 bg-[#0A1128]/45 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="p-3 bg-white/10 backdrop-blur-md border border-white/30 rounded-full text-white shadow-lg transform scale-90 group-hover/img:scale-100 transition-all duration-300">
                     <ZoomIn className="w-5 h-5" />

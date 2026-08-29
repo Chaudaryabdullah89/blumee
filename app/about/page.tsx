@@ -11,6 +11,7 @@ import {
   Award,
   Calendar,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function AboutPage() {
   return (
@@ -20,12 +21,11 @@ export default function AboutPage() {
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
         {/* Background office interior */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('/img/office-interior.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/80 to-[#FCFCFD]" />
 
@@ -96,12 +96,9 @@ export default function AboutPage() {
               <div className="absolute -inset-4 border border-brand-gold/30 rounded-3xl -rotate-1 pointer-events-none" />
 
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-black/[0.04]">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('/img/mission-interior.jpg')`,
-                  }}
-                />
+                <BackgroundImage
+                    src="/img/mission-interior.jpg"
+                  />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
 
                 {/* Floating glass overlay card inside the image */}

@@ -42,6 +42,19 @@ export const COMPANY = {
   foundingCountry: "AE",
 } as const;
 
+/**
+ * Headline figures quoted across the site.
+ *
+ * Kept in one place so the home page, portfolio, metadata and 404 can never
+ * quote different numbers to each other.
+ */
+export const STATS = {
+  projects: { value: "50+", label: "Projects Delivered", sub: "& ongoing across the UAE" },
+  value: { value: "AED 25M+", label: "Delivered Value", sub: "in completed contracts" },
+  villas: { value: "110", label: "Villas Screeded", sub: "Chorisia 1 & 2, Al Barari" },
+  team: { value: "75", label: "Team On The Ground", sub: "engineers, supervisors, crews" },
+} as const;
+
 /** Full postal address on one line. */
 export const ADDRESS_ONE_LINE = `${COMPANY.address.street}, ${COMPANY.address.district}, ${COMPANY.address.city}, ${COMPANY.address.country}`;
 

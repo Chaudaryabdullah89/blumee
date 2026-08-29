@@ -25,7 +25,7 @@ export const projects: Project[] = [
     client: "Mr. Peng Hung",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/screed-team-pour.jpg",
+    img: "/img/apartment-interior.jpg",
     desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
     works: ["Demolition", "Floor Screeding", "Interior Fit-Out"],
     technicalDetails:

@@ -11,6 +11,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function ProcessPage() {
   return (
@@ -19,12 +20,11 @@ export default function ProcessPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('/img/site-team.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/site-team.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 w-full z-10 text-center flex flex-col gap-4 items-center">
@@ -167,12 +167,11 @@ export default function ProcessPage() {
                   <div className="absolute -inset-4 border border-brand-gold/15 rounded-3xl -rotate-1 pointer-events-none" />
 
                   <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 border border-black/[0.04] shadow-lg group">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
-                      style={{
-                        backgroundImage: `url('${phase.img}')`,
-                      }}
-                    />
+                    <BackgroundImage
+                        src={phase.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="group-hover:scale-105 transition-transform duration-[8s]"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/35 to-transparent pointer-events-none" />
                     
                     {/* Big numbers watermark backdrop */}

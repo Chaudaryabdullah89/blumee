@@ -3,18 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Lock, Eye, FileText } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function PrivacyPage() {
   return (
     <div className="flex-1 w-full bg-[#FCFCFD]">
       {/* Parallax Hero Header */}
       <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('/img/office-interior.jpg')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 w-full z-10 text-center flex flex-col gap-4 items-center">
