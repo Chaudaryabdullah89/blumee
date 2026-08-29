@@ -9,9 +9,10 @@ import Preloader from "./components/Preloader";
 import { HERO_POSTER_URL } from "@/lib/hero-video";
 
 export const metadata: Metadata = {
-  title: "Blume Technical Services — Floor Screeding, Fit-Out & MEP, Dubai",
+  title:
+    "Blume Technical Services — Screeding, Block Work, Plastering, Gypsum & MEP, Dubai",
   description:
-    "Blume Technical Services L.L.C. delivers end-to-end floor screeding, interior fit-out, MEP and renovation solutions for developers, main contractors and private clients across Dubai, Abu Dhabi and Fujairah.",
+    "Blume Technical Services L.L.C. is a specialist trade contractor delivering floor screeding, block work, plastering, gypsum and false ceilings, interior fit-out and MEP for developers, main contractors and private clients across Dubai, Abu Dhabi and Fujairah.",
 };
 
 export default function RootLayout({

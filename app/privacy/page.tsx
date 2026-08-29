@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('/img/office-interior.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />

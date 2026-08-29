@@ -84,7 +84,7 @@ const projectsData = [
     client: "Ellington Properties",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/screed-finished-corridor.jpg",
+    img: "/img/screeding-levelling.jpg",
     desc: "Floor screeding and interior fit-out for a G+2P+5 residential building.",
     technicalDetails:
       "Floor screeding placed to falls and datum across the building's residential floors, followed by our interior fit-out team completing finishes ready for handover.",
@@ -134,7 +134,7 @@ const projectsData = [
     client: "Target Engineering (Emaar)",
     location: "Downtown Dubai",
     year: "Completed",
-    img: "/projects/screed-finished-corridor.jpg",
+    img: "/img/carpark-coating.jpg",
     desc: "Traffic deck coating — supply and application on the Boulevard Heights main contract works.",
     technicalDetails:
       "Supplied and applied a traffic deck coating system to the Boulevard Heights main contract works, submitted as a technical submittal with method statement and inspection test plan reviewed by GCI on behalf of consultant Holfords Project Management.",
@@ -184,7 +184,7 @@ const projectsData = [
     client: "Ellington Properties",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/screed-corner-haunching.jpg",
+    img: "/img/plastering-wall.jpg",
     desc: "Floor screeding and office renovation for the Ellington Properties head office.",
     technicalDetails:
       "Floor screeding and a full office renovation package delivered for the Ellington Properties head office, coordinated to minimise disruption to an occupied commercial building.",
@@ -199,7 +199,7 @@ const projectsData = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/fitout-living.jpg",
     desc: "Screed, block, plaster, tile, painting and ceiling works delivered for Ducto Interior.",
     technicalDetails:
       "A full specialist trade package delivered as a direct fit-out partner to Ducto Interior — floor screeding, block work, plastering, tiling, painting and ceiling installation coordinated under one programme.",
@@ -218,7 +218,7 @@ const projectsData = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/office-interior.jpg",
     desc: "Demolition, floor screeding and interior fit-out for an Al Futtaim executive office, delivered via Ducto Interior.",
     technicalDetails:
       "Existing finishes were demolished, floors re-screeded to a level base, and a complete interior fit-out delivered for the Al Futtaim executive office as a direct fit-out partner to Ducto Interior.",
@@ -268,7 +268,7 @@ const projectsData = [
     client: "Al Kaitoob Building Contracting",
     location: "Al Satwa, Dubai",
     year: "Completed",
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/industrial-building.jpg",
     desc: "Epoxy floor coating — Fosroc approved applicator — for a 3B+G+9+Gym residential building.",
     technicalDetails:
       "Pre-qualified and approved as a Fosroc applicator for epoxy floor coating systems on the Al Badaa Residential development (3B+G+9+Gym) under consultant Dewan Architects + Engineers, with main contractor Al Kaitoob Building Contracting.",
@@ -288,7 +288,7 @@ const projectsData = [
     client: "Alghanim International / ORC Contracting",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/carpark-coating.jpg",
     desc: "Epoxy flooring and road marking for a commercial and robotic car parking building.",
     technicalDetails:
       "Approved as alternative subcontractor for epoxy flooring and road marking works on the Souq Al Kabeer commercial and robotic car parking building, under consultant Al Shandagha Architects & Engineering.",
@@ -320,7 +320,7 @@ const projectsData = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Ongoing",
-    img: "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/site-team.jpg",
     desc: "Plaster, screed, painting and demolition works currently in progress at the Mall of the Emirates.",
     technicalDetails:
       "Currently mobilised on site delivering plaster, screed, painting and demolition works for the Hang Out fit-out at Mall of the Emirates, as a direct trade partner to Ducto Interior.",
@@ -335,7 +335,7 @@ const projectsData = [
     client: "Tamdeen — TECOM Investments",
     location: "Dubai, UAE",
     year: "Ongoing",
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200",
+    img: "/img/site-drawings.jpg",
     desc: "Water tank waterproofing in progress for a 3B+G+6 office building.",
     technicalDetails:
       "Water tank waterproofing works in progress for the TECOM Office Building (3B+G+6), delivered for developer Tamdeen — TECOM Investments.",
@@ -350,7 +350,7 @@ const projectsData = [
     client: "United Engineering Construction (UNEC) LLC",
     location: "Dubai Sports City, Dubai",
     year: "Ongoing",
-    img: "/projects/screed-corner-haunching.jpg",
+    img: "/img/plastering-wall.jpg",
     desc: "Concrete crack repair to slabs and walls in progress.",
     technicalDetails:
       "Site report, material technical submittal and method statement approved for concrete crack repair (horizontal & vertical, slabs and walls) on Canal Residence West Phase II at Dubai Sports City, under main contractor UNEC.",

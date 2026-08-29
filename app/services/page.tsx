@@ -23,7 +23,7 @@ export default function ServicesPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
+            backgroundImage: `url('/img/office-interior.jpg')`,
           }}
         />
         {/* Navy dark gradient overlay */}
@@ -38,20 +38,19 @@ export default function ServicesPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            Floor Screeding &{" "}
-            <span className="text-brand-gold font-black">Technical</span> <br />
+            Specialised{" "}
+            <span className="text-brand-gold font-black">Trade</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Services
+              Works
             </span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            We are committed to making it simpler and easier for you to access
-            floor screeding, interior fit-out, and specialized technical
-            services from one place. Whether you choose a single service or
-            the complete end-to-end package, you can feel confident we will
-            deliver quality work on an accurate, cost-managed budget, every
-            time.
+            Screeding, block work, plastering, gypsum, fit-out and MEP — each
+            run by its own crews and supervision. Whether you choose a single
+            trade or the complete end-to-end package, you can feel confident
+            we will deliver quality work on an accurate, cost-managed budget,
+            every time.
           </p>
         </div>
       </section>
@@ -68,9 +67,9 @@ export default function ServicesPage() {
             Our Services
           </h2>
           <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-            From floor screeding and interior fit-out to block work, plastering
-            and MEP — we combine specialist technical execution into one
-            seamless, single-contract experience.
+            Six specialist disciplines — screeding, block work, plastering,
+            gypsum, fit-out and MEP — combined into one seamless,
+            single-contract experience.
           </p>
         </div>
 
@@ -79,7 +78,7 @@ export default function ServicesPage() {
             {
               title: "Floor Screeding",
               subtitle: "Bonded, Unbonded, Floating & Heated Systems",
-              desc: "Floor screeding is our core specialisation. From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme.",
+              desc: "From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme.",
               bullets: [
                 "Sand-Cement, Semi-Dry & Fibre-Reinforced Screeds",
                 "Bonded, Unbonded, Floating & Heated Build-Ups",
@@ -87,55 +86,27 @@ export default function ServicesPage() {
                 "SR1 to SR3 Surface Regularity Testing",
               ],
               icon: Ruler,
-              img: "/projects/screed-team-pour.jpg",
+              img: "/img/screeding-powerfloat.jpg",
               reverse: false,
             },
             {
-              title: "Interior Fit-Out",
-              subtitle: "Space Planning to Finishing Touches",
-              desc: "Transforming empty spaces into functional, aesthetically pleasing environments — from space planning and layout design to furniture installation and finishing touches, executed seamlessly from start to finish.",
-              bullets: [
-                "Space Planning & Layout Design",
-                "Partitions, Ceilings & MEP Coordination",
-                "Plaster, Paint & Decorative Finishes",
-                "Furniture & Fixture Installation",
-              ],
-              icon: Compass,
-              img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
-              reverse: true,
-            },
-            {
-              title: "Renovation Works",
-              subtitle: "Structural, Screeding & Aesthetic Upgrades",
-              desc: "Breathing new life into outdated or dilapidated spaces. Our renovation services span structural modifications, floor re-screeding, aesthetic enhancements and functional upgrades — approached with creativity and a commitment to excellence.",
-              bullets: [
-                "Condition Survey & Structural Scoping",
-                "Demolition & Concrete Crack Repair",
-                "Re-Screeding to Falls",
-                "Full Refurbishment & Redecoration",
-              ],
-              icon: Hammer,
-              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
-              reverse: false,
-            },
-            {
-              title: "Block Work & Gypsum",
-              subtitle: "Concrete Block Walls & Custom Ceilings",
-              desc: "Concrete block walls, partitions and structural elements built with precision, alongside custom gypsum ceilings, wall panels, partitions and mouldings crafted by our in-house team.",
+              title: "Block Work & Masonry",
+              subtitle: "Structural & Non-Structural Wall Construction",
+              desc: "Concrete block walls, internal partitions, boundary walls and structural elements built with precision and structural integrity — straight, level and plumb, to exact engineering specifications.",
               bullets: [
                 "Concrete Block Wall Construction",
-                "Reinforced Lintels & Opening Detailing",
-                "Custom False Ceilings & Wall Panels",
-                "Ornate Gypsum Mouldings & Cornicing",
+                "Internal Partitions & Boundary Walls",
+                "Reinforced Cast Lintels Over Openings",
+                "Continuous Line, Level & Plumb Checks",
               ],
-              icon: Layers,
-              img: "/projects/gypsum-ceiling-medallion.jpg",
+              icon: Hammer,
+              img: "/img/blockwork-mason.jpg",
               reverse: true,
             },
             {
               title: "Plastering & Painting",
               subtitle: "Smooth Finishes, Full Colour Range",
-              desc: "Smooth, flawless surface preparation and finishing, plus a full range of colours, finishes and decorative painting techniques — the base every decoration depends on.",
+              desc: "Smooth, flawless surface preparation and finishing across internal and external surfaces, plus a full range of colours, finishes and decorative painting techniques — the base every decoration depends on.",
               bullets: [
                 "Internal & External Cement Plastering",
                 "Three-Coat Render & Q4 Gypsum Skim",
@@ -143,13 +114,41 @@ export default function ServicesPage() {
                 "Full Range of Colours & Decorative Finishes",
               ],
               icon: Paintbrush,
-              img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800",
+              img: "/img/plastering-wall.jpg",
+              reverse: false,
+            },
+            {
+              title: "Gypsum & False Ceilings",
+              subtitle: "Custom Ceilings, Panels, Partitions & Mouldings",
+              desc: "Custom gypsum ceilings, wall panels, partitions, cornicing and ornate mouldings — from sleek modern ceiling solutions to traditional hand-detailed plasterwork, crafted and installed by our in-house team.",
+              bullets: [
+                "Suspended Grid & False Ceiling Systems",
+                "Gypsum Wall Panels & Partitions",
+                "Bulkheads, Coffers & Cove Lighting Details",
+                "Ornate Cast Cornicing & Mouldings",
+              ],
+              icon: Layers,
+              img: "/projects/gypsum-ceiling-medallion.jpg",
+              reverse: true,
+            },
+            {
+              title: "Interior Fit-Out & Renovation",
+              subtitle: "Space Planning, Finishes & Refurbishment",
+              desc: "Transforming empty spaces into functional, aesthetically pleasing environments — and breathing new life into outdated ones. From space planning and layout design to furniture installation and finishing touches.",
+              bullets: [
+                "Space Planning & Layout Design",
+                "Demolition, Strip-Out & Concrete Repair",
+                "Partitions, Ceilings & MEP Coordination",
+                "Furniture, Fixture & Finish Installation",
+              ],
+              icon: Compass,
+              img: "/img/fitout-interior.jpg",
               reverse: false,
             },
             {
               title: "MEP Services",
               subtitle: "Electrical, Plumbing, HVAC & Firefighting",
-              desc: "A full suite of Mechanical, Electrical and Plumbing services, coordinated with the fit-out programme and delivered by trained engineers and technicians in accordance with local and international standards.",
+              desc: "A full suite of Mechanical, Electrical and Plumbing services, coordinated with the civil and fit-out programme and delivered by trained engineers and technicians in accordance with local and international standards.",
               bullets: [
                 "Lighting, Small Power & Cable Containment",
                 "Plumbing, Drainage & A/C Systems",
@@ -157,7 +156,7 @@ export default function ServicesPage() {
                 "Sustainable, Eco-Friendly MEP Solutions",
               ],
               icon: Zap,
-              img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800",
+              img: "/img/mep-electrical.jpg",
               reverse: true,
             },
           ].map((item, idx) => {

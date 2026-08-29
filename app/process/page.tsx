@@ -22,7 +22,7 @@ export default function ProcessPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('/img/site-team.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
@@ -81,7 +81,7 @@ export default function ProcessPage() {
                 "MEP coordination drawings",
                 "Authority & developer NOC preparation",
               ],
-              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+              img: "/img/site-drawings.jpg",
               reverse: true,
             },
             {
@@ -111,7 +111,7 @@ export default function ProcessPage() {
                 "Moisture testing before finishes are laid",
                 "Snagging, clean-up & handover pack",
               ],
-              img: "/projects/screed-finished-corridor.jpg",
+              img: "/img/resin-floor.jpg",
               reverse: true,
             },
           ].map((phase, idx) => {

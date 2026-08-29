@@ -24,11 +24,11 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xs font-medium">
-              Blume Technical Services L.L.C. delivers end-to-end floor screeding, interior fit-out and MEP solutions for commercial offices, residential developments and hospitality spaces across the UAE. Floor screeding is our core specialisation — flat, sound, correctly cured floors, delivered at volume and to programme.
+              Blume Technical Services L.L.C. is a specialist trade contractor delivering floor screeding, block work, plastering, gypsum and false ceilings, interior fit-out and MEP for commercial offices, residential developments and hospitality spaces across the UAE — every trade under one contract.
             </p>
             <div className="flex flex-col gap-1 mt-1 text-[10px] uppercase font-bold tracking-wider text-slate-500">
               <span>Our Promise</span>
-              <span className="text-brand-gold">Specialist Screeding • Technical Precision • On Programme</span>
+              <span className="text-brand-gold">Craftsmanship • Technical Precision • On Programme</span>
             </div>
           </div>
 
@@ -40,10 +40,10 @@ const Footer = () => {
             <nav className="flex flex-col gap-2.5">
               {[
                 { name: "Floor Screeding", slug: "screeding" },
-                { name: "Interior Fit-Out", slug: "fit-out" },
-                { name: "Renovation Works", slug: "renovation" },
-                { name: "Block Work & Gypsum", slug: "block-work" },
+                { name: "Block Work & Masonry", slug: "block-work" },
                 { name: "Plastering & Painting", slug: "plastering" },
+                { name: "Gypsum & False Ceilings", slug: "gypsum" },
+                { name: "Interior Fit-Out & Renovation", slug: "fit-out" },
                 { name: "MEP Services", slug: "mep" }
               ].map((l) => (
                 <Link 

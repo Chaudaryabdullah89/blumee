@@ -12,7 +12,7 @@ export default function SpecsPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('/img/site-drawings.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />

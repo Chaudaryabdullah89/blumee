@@ -12,7 +12,7 @@ export default function TermsPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('/img/industrial-building.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />

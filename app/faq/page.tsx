@@ -9,8 +9,8 @@ export default function FAQPage() {
 
   const faqs = [
     {
-      q: "What is Blume's core specialisation?",
-      a: "Floor screeding. From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme. We also deliver interior fit-out, renovation and MEP works alongside it."
+      q: "What trades does Blume cover?",
+      a: "We are a specialist trade contractor across six disciplines: floor screeding, block work and masonry, plastering and painting, gypsum works and false ceilings, interior fit-out and renovation, and MEP. Each is run by its own crews and supervision, so a space can go from bare structure to finished handover under one contract."
     },
     {
       q: "What tolerances do you guarantee on screeded floors?",
@@ -25,8 +25,8 @@ export default function FAQPage() {
       a: "Yes. We are a registered approved applicator for Al Gurg Fosroc, MAPEI Construction Chemicals, Master Builders Solutions, Flowcrete Middle East and NYA Technical Services / SBI Industries — for epoxy, polyurethane, traffic deck and screed systems, executed under manufacturer specification and, where required, their site supervision."
     },
     {
-      q: "How fast can you mobilize a screeding crew to site?",
-      a: "Our screeding division operates with its own dedicated crews, forced-action mixers, screed pumps and rotary laser levels. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences."
+      q: "How fast can you mobilize crews to site?",
+      a: "Each trade operates with its own crews, supervision and plant — forced-action mixers, screed pumps and rotary laser levels for screeding, plus masonry, plastering and gypsum gangs. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences."
     },
     {
       q: "Which locations do you cover?",
@@ -41,7 +41,7 @@ export default function FAQPage() {
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200')`,
+            backgroundImage: `url('/img/office-workspace.jpg')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />

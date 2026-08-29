@@ -242,8 +242,8 @@ export default function Home() {
 
   const faqs = [
     {
-      q: "What is Blume's core specialisation?",
-      a: "Floor screeding. From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme. We also deliver interior fit-out, renovation and MEP works alongside it.",
+      q: "What trades does Blume cover?",
+      a: "We are a specialist trade contractor across six disciplines: floor screeding, block work and masonry, plastering and painting, gypsum works and false ceilings, interior fit-out and renovation, and MEP. Each is run by its own crews and supervision, so a space can go from bare structure to finished handover under one contract.",
     },
     {
       q: "What tolerances do you guarantee on screeded floors?",
@@ -258,8 +258,8 @@ export default function Home() {
       a: "Yes. We are a registered approved applicator for Al Gurg Fosroc, MAPEI Construction Chemicals, Master Builders Solutions, Flowcrete Middle East and NYA Technical Services / SBI Industries — for epoxy, polyurethane, traffic deck and screed systems, executed under manufacturer specification and, where required, their site supervision.",
     },
     {
-      q: "How fast can you mobilize a screeding crew to site?",
-      a: "Our screeding division operates with its own dedicated crews, forced-action mixers, screed pumps and rotary laser levels. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences.",
+      q: "How fast can you mobilize crews to site?",
+      a: "Each trade operates with its own crews, supervision and plant — forced-action mixers, screed pumps and rotary laser levels for screeding, plus masonry, plastering and gypsum gangs. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences.",
     },
     {
       q: "Which locations do you cover?",
@@ -295,22 +295,22 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] w-fit shadow-md hero-reveal opacity-0">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
               <span className="font-sans font-bold text-[10px] md:text-xs uppercase tracking-widest text-brand-gold">
-                Floor Screeding Specialists
+                Specialist Trade Contractor
               </span>
             </div>
 
             <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-xl leading-relaxed tracking-wide hero-reveal opacity-0">
-              Blume Technical Services L.L.C. delivers end-to-end floor
-              screeding, interior fit-out and MEP solutions for commercial
-              offices, residential developments and hospitality spaces across
-              Dubai and the wider United Arab Emirates.
+              Floor screeding, block work, plastering, gypsum and false
+              ceilings, interior fit-out and MEP — delivered as one
+              coordinated package for commercial offices, residential
+              developments and hospitality spaces across the UAE.
             </p>
 
             {/* Giant Title */}
             <h1 className="font-sans font-black text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-tighter text-white drop-shadow-xl mt-4 overflow-hidden">
-              <span className="block hero-title-line opacity-0">FLAT</span>
+              <span className="block hero-title-line opacity-0">EVERY</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#cbd5e1] block hero-title-line opacity-0">
-                &amp; SOUND
+                TRADE
               </span>
             </h1>
           </div>
@@ -330,8 +330,8 @@ export default function Home() {
                   Delivered &amp; Ongoing
                 </h3>
                 <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-                  75 team members on the ground, resourced for volume floors
-                  across residential, commercial and hospitality sites.
+                  75 team members on the ground across residential, commercial
+                  and hospitality sites in Dubai, Abu Dhabi and Fujairah.
                 </p>
               </div>
             </div>
@@ -350,19 +350,19 @@ export default function Home() {
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('/img/capsule-a.jpg')`,
               }}
             ></span>
-            corporate offices, retail and malls to hospitality, our focus starts
-            with the floor and extends to
+            corporate offices, retail and malls to hospitality, we take a space
+            from bare structure to
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('/img/capsule-b.jpg')`,
               }}
             ></span>
-            complete fit-out, driven by senior technical staff and a dedicated
-            screeding division.
+            finished handover, driven by senior technical staff and dedicated
+            crews in every trade.
           </h2>
 
           {/* Stats grid section with divider lines */}
@@ -386,23 +386,23 @@ export default function Home() {
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Interior Fit-Out
+                Block Work
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Epoxy & Resin Flooring
+                Plastering & Painting
+              </span>
+              <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
+                Gypsum & False Ceilings
+              </span>
+              <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                Interior Fit-Out
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
                 MEP Services
-              </span>
-              <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Renovation Works
-              </span>
-              <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Block Work & Plastering
               </span>
             </React.Fragment>
           ))}
@@ -422,7 +422,7 @@ export default function Home() {
                 Our Story
               </span>
               <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                The Floor Every Finish Depends On
+                Craftsmanship In Every Detail
               </h2>
             </div>
 
@@ -624,12 +624,12 @@ export default function Home() {
           <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-16 about-reveal opacity-0">
             <div className="flex flex-col gap-6">
               <p className="text-[#475569] text-sm md:text-base leading-relaxed">
-                At Blume Technical Services, floor screeding is our core
-                specialisation — flat, sound, correctly cured floors placed at
-                volume and to programme. Our dedicated team of engineers,
-                supervisors and trained screeding crews then carries that
-                same precision through interior fit-out, MEP and renovation
-                works, delivered on time and within budget.
+                At Blume Technical Services, each specialist trade is run by
+                its own crews and supervision — screeding, block work,
+                plastering, gypsum and false ceilings, painting and MEP. That
+                depth is what lets us take a space from bare structure to
+                finished handover under one contract, with fewer interfaces,
+                fewer delays and one accountable party.
               </p>
 
               <Link
@@ -657,7 +657,7 @@ export default function Home() {
             <div
               className="aspect-[16/9] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800')`,
+                backgroundImage: `url('/img/office-interior.jpg')`,
               }}
             />
           </div>
@@ -670,7 +670,7 @@ export default function Home() {
             <div
               className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=300')`,
+                backgroundImage: `url('/img/mission-interior.jpg')`,
               }}
             />
             <div className="flex flex-col gap-2">
@@ -693,7 +693,7 @@ export default function Home() {
             <div
               className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=300')`,
+                backgroundImage: `url('/img/vision-interior.jpg')`,
               }}
             />
             <div className="flex flex-col gap-2">
@@ -720,7 +720,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
+            backgroundImage: `url('/img/office-interior.jpg')`,
           }}
         />
         {/* Soft frosted gradient overlay */}
@@ -732,7 +732,7 @@ export default function Home() {
               What We Do
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-              Floor Screeding, Fit-Out &amp; MEP Solutions
+              Specialised Trade Works, Start To Finish
             </h2>
           </div>
 
@@ -747,32 +747,32 @@ export default function Home() {
               },
               {
                 num: "02",
-                title: "Interior Fit-Out",
-                desc: "Turning empty spaces into functional, aesthetically pleasing environments — space planning, layout design, furniture installation and finishing.",
-                link: "/services/fit-out",
-              },
-              {
-                num: "03",
-                title: "Renovation Works",
-                desc: "Structural modifications, floor re-screeding, aesthetic enhancements and functional upgrades for outdated or dilapidated spaces.",
-                link: "/services/renovation",
-              },
-              {
-                num: "04",
-                title: "Block Work & Gypsum",
-                desc: "Concrete block walls, partitions and structural elements, custom gypsum ceilings, wall panels, partitions and mouldings.",
+                title: "Block Work & Masonry",
+                desc: "Concrete block walls, internal partitions, boundary walls and structural elements, with reinforced lintels cast to engineering drawings.",
                 link: "/services/block-work",
               },
               {
-                num: "05",
+                num: "03",
                 title: "Plastering & Painting",
-                desc: "Smooth, flawless surface preparation and finishing, plus a full range of colours, finishes and decorative painting techniques.",
+                desc: "Internal and external cement plastering, three-coat render and Q4 gypsum skim, finished with a full range of colours and decorative techniques.",
                 link: "/services/plastering",
+              },
+              {
+                num: "04",
+                title: "Gypsum & False Ceilings",
+                desc: "Custom gypsum ceilings, wall panels, partitions, cornicing and ornate mouldings — from sleek modern to traditional, crafted in-house.",
+                link: "/services/gypsum",
+              },
+              {
+                num: "05",
+                title: "Interior Fit-Out & Renovation",
+                desc: "Space planning, layouts, finishes and furniture installation for new fit-outs — plus structural modification and refurbishment of existing spaces.",
+                link: "/services/fit-out",
               },
               {
                 num: "06",
                 title: "MEP Services",
-                desc: "Electrical, plumbing, HVAC, firefighting and low current systems — coordinated with the screeding and fit-out programme.",
+                desc: "Electrical, plumbing, HVAC, firefighting and low current systems — coordinated with the civil and fit-out programme.",
                 link: "/services/mep",
               },
             ].map((serv, index) => (
@@ -830,7 +830,7 @@ export default function Home() {
               <div
                 className="aspect-[4/3] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=800')`,
+                  backgroundImage: `url('/img/site-team.jpg')`,
                 }}
               />
             </div>
@@ -962,7 +962,7 @@ export default function Home() {
                 category: "Resin & Protective Coatings",
                 client: "Target Engineering (Emaar)",
                 location: "Downtown Dubai",
-                img: "/projects/screed-finished-corridor.jpg",
+                img: "/img/carpark-coating.jpg",
                 desc: "Supply and application of traffic deck coating on the Boulevard Heights main contract works, approved by Holfords Project Management / GCI.",
                 tags: ["Traffic Deck Coating", "Emaar", "Approved Applicator"],
                 colSpan: "lg:col-span-8 min-h-[450px]",
