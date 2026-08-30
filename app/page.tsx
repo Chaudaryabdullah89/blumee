@@ -343,7 +343,7 @@ export default function Home() {
                 <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                   Over{" "}
                   <span className="font-bold text-white">AED 25 Million</span> in
-                  delivered value for developers and main contractors across
+                  delivered value, with 75 team members on the ground across
                   Dubai, Abu Dhabi and Fujairah.
                 </p>
               </div>
@@ -358,7 +358,7 @@ export default function Home() {
       <section className="bg-white border-b border-black/[0.04]">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <dl className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-black/[0.06]">
-            {[STATS.projects, STATS.value, STATS.villas, STATS.trades].map(
+            {[STATS.projects, STATS.value, STATS.villas, STATS.team].map(
               (stat) => (
                 <div
                   key={stat.label}
@@ -392,7 +392,7 @@ export default function Home() {
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('/projects/screed-mesh-level.jpg')`,
+                backgroundImage: `url('/img/capsule-a.jpg')`,
               }}
             ></span>
             corporate offices, retail and malls to hospitality, we take a space
@@ -400,7 +400,7 @@ export default function Home() {
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('/img/plastering-wall.jpg')`,
+                backgroundImage: `url('/img/capsule-b.jpg')`,
               }}
             ></span>
             finished handover, driven by senior technical staff and dedicated
@@ -697,7 +697,7 @@ export default function Home() {
 
             {/* Premium finished office interior image */}
             <BackgroundImage
-                src="/img/site-under-construction.jpg"
+                src="/img/office-interior.jpg"
                 className="aspect-[16/9] w-full rounded-3xl shadow-lg border border-black/[0.04]"
               />
           </div>
@@ -708,7 +708,7 @@ export default function Home() {
           {/* Mission Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
             <BackgroundImage
-                src="/projects/screed-mesh-level.jpg"
+                src="/img/mission-interior.jpg"
                 className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
               />
             <div className="flex flex-col gap-2">
@@ -729,7 +729,7 @@ export default function Home() {
           {/* Vision Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
             <BackgroundImage
-                src="/projects/gypsum-ceiling-ornate.jpg"
+                src="/img/vision-interior.jpg"
                 className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
               />
             <div className="flex flex-col gap-2">
@@ -754,7 +754,7 @@ export default function Home() {
       <section className="relative py-28 overflow-hidden">
         {/* Full-width dramatic building outline context background */}
         <BackgroundImage
-            src="/img/site-under-construction.jpg"
+            src="/img/office-interior.jpg"
             className="md:bg-fixed"
           />
         {/* Soft frosted gradient overlay */}
@@ -862,7 +862,7 @@ export default function Home() {
               </div>
 
               <BackgroundImage
-                  src="/img/screeding-levelling.jpg"
+                  src="/img/site-team.jpg"
                   className="aspect-[4/3] w-full rounded-3xl shadow-lg border border-black/[0.04]"
                 />
             </div>
@@ -961,7 +961,7 @@ export default function Home() {
                 category: "Floor Screeding & Fit-Out",
                 client: "Mr. Peng Hung",
                 location: "Dubai, UAE",
-                img: "/img/fitout-in-progress.jpg",
+                img: "/img/apartment-interior.jpg",
                 desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
                 tags: ["80 Apartments", "Floor Screeding", "Demolition"],
                 colSpan: "lg:col-span-8 min-h-[450px]",
@@ -972,7 +972,7 @@ export default function Home() {
                 category: "Floor Screeding",
                 client: "Al Barari",
                 location: "Al Barari, Dubai",
-                img: "/projects/screed-mesh-level.jpg",
+                img: "/projects/screed-rebar-columns.jpg",
                 desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
                 tags: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
                 colSpan: "lg:col-span-4 min-h-[450px]",
@@ -983,7 +983,7 @@ export default function Home() {
                 category: "Interior Fit-Out",
                 client: "Ellington Properties",
                 location: "Dubai, UAE",
-                img: "/projects/gypsum-ceiling-ornate.jpg",
+                img: "/projects/gypsum-ceiling-medallion.jpg",
                 desc: "Interior work across a G+2P+12 residential building — floor screeding, plaster, tile, ceiling and paint.",
                 tags: ["Plaster", "Tile", "Ceiling & Paint"],
                 colSpan: "lg:col-span-4 min-h-[450px]",

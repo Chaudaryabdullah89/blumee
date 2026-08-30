@@ -34,7 +34,7 @@ export default function ProjectsPage() {
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
         <BackgroundImage
-            src="/img/site-under-construction.jpg"
+            src="/img/office-interior.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />

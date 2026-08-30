@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopOnNavigate from "./components/ScrollToTopOnNavigate";
 import Preloader from "./components/Preloader";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { HERO_POSTER_URL } from "@/lib/hero-video";
 import { COMPANY, SITE_URL } from "@/lib/site";
 import { services } from "@/lib/services";
 
@@ -150,6 +151,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" as="image" href={HERO_POSTER_URL} />
         <meta name="geo.region" content="AE-DU" />
         <meta name="geo.placename" content={COMPANY.address.city} />
         <script

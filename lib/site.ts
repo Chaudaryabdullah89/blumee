@@ -52,7 +52,7 @@ export const STATS = {
   projects: { value: "50+", label: "Projects Delivered", sub: "& ongoing across the UAE" },
   value: { value: "AED 25M+", label: "Delivered Value", sub: "in completed contracts" },
   villas: { value: "110", label: "Villas Screeded", sub: "Chorisia 1 & 2, Al Barari" },
-  trades: { value: "6", label: "In-House Trades", sub: "delivered under one contract" },
+  team: { value: "75", label: "Team On The Ground", sub: "engineers, supervisors, crews" },
 } as const;
 
 /** Full postal address on one line. */
