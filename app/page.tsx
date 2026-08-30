@@ -972,7 +972,7 @@ export default function Home() {
                 category: "Floor Screeding",
                 client: "Al Barari",
                 location: "Al Barari, Dubai",
-                img: "/projects/screed-rebar-columns.jpg",
+                img: "/img/fitout-living.jpg",
                 desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
                 tags: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
                 colSpan: "lg:col-span-4 min-h-[450px]",

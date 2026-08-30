@@ -46,7 +46,7 @@ export const projects: Project[] = [
     client: "Al Barari",
     location: "Al Barari, Dubai",
     year: "Completed",
-    img: "/projects/screed-rebar-columns.jpg",
+    img: "/img/fitout-living.jpg",
     desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
     works: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
     technicalDetails:
