@@ -696,10 +696,12 @@ export default function Home() {
             </div>
 
             {/* Premium finished office interior image */}
-            <BackgroundImage
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-lg border border-black/[0.04]">
+              <BackgroundImage
                 src="/img/office-interior.jpg"
-                className="aspect-[16/9] w-full rounded-3xl shadow-lg border border-black/[0.04]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
+            </div>
           </div>
         </div>
 
@@ -707,10 +709,12 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 about-reveal opacity-0">
           {/* Mission Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <BackgroundImage
+            <div className="relative w-full md:w-32 aspect-square shrink-0 overflow-hidden rounded-2xl border border-black/[0.04]">
+              <BackgroundImage
                 src="/img/mission-interior.jpg"
-                className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
+                sizes="(max-width: 768px) 100vw, 128px"
               />
+            </div>
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Mission
@@ -728,10 +732,12 @@ export default function Home() {
 
           {/* Vision Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <BackgroundImage
+            <div className="relative w-full md:w-32 aspect-square shrink-0 overflow-hidden rounded-2xl border border-black/[0.04]">
+              <BackgroundImage
                 src="/img/vision-interior.jpg"
-                className="w-full md:w-32 aspect-square rounded-2xl shrink-0 border border-black/[0.04]"
+                sizes="(max-width: 768px) 100vw, 128px"
               />
+            </div>
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Vision
@@ -861,10 +867,12 @@ export default function Home() {
                 </h2>
               </div>
 
-              <BackgroundImage
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg border border-black/[0.04]">
+                <BackgroundImage
                   src="/img/site-team.jpg"
-                  className="aspect-[4/3] w-full rounded-3xl shadow-lg border border-black/[0.04]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+              </div>
             </div>
 
             {/* Right Column: Description & Steps */}
