@@ -2,19 +2,19 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Cpu, Compass, Ruler, Hammer, Award } from "lucide-react";
+import { ArrowLeft, Cpu, Ruler, Hammer, Layers } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function SpecsPage() {
   return (
     <div className="flex-1 w-full bg-[#FCFCFD]">
       {/* Parallax Hero Header */}
       <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/site-drawings.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 w-full z-10 text-center flex flex-col gap-4 items-center">
@@ -29,7 +29,7 @@ export default function SpecsPage() {
             Technical <span className="text-brand-gold">Specifications</span>
           </h1>
           <p className="font-sans font-medium text-xs md:text-sm text-slate-300 tracking-wide uppercase">
-            Blume Technical Services Operational & Material Quality Codes
+            Screed Systems, Tolerances & Manufacturer Accreditation
           </p>
         </div>
       </section>
@@ -41,16 +41,16 @@ export default function SpecsPage() {
             Engineering Standard
           </span>
           <h2 className="font-sans font-black text-3xl md:text-4xl text-brand-navy uppercase tracking-tight">
-            Certified tolerances & material guides
+            Documented tolerances & material guides
           </h2>
           <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-            We operate under exact European (EN) and British (BS) building standards to assure absolute structural and finishing excellence.
+            Our screeding, block work and finishing trades are executed to documented surface-regularity classes and manufacturer-specified systems.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* Box 1: Tiling & Stone Cladding Specs */}
+          {/* Box 1: Floor Screeding Specifications */}
           <div className="bg-white border border-black/[0.05] rounded-3xl p-8 flex flex-col gap-6 shadow-sm">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
@@ -58,33 +58,33 @@ export default function SpecsPage() {
               </div>
               <div>
                 <h3 className="font-sans font-black text-base text-brand-navy uppercase">
-                  Tiling & Marble Specifications
+                  Floor Screeding Specifications
                 </h3>
-                <span className="text-slate-400 text-[10px] font-bold uppercase">Standard Reference: BS 5385</span>
+                <span className="text-slate-400 text-[10px] font-bold uppercase">Surface Regularity Classes: SR1 – SR3</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 text-xs md:text-sm text-slate-600 leading-relaxed">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Flatness Tolerance</span>
-                  <span className="font-sans font-black text-brand-navy">Under +/- 0.5 mm lippage</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Surface Regularity</span>
+                  <span className="font-sans font-black text-brand-navy">SR1 3mm / SR2 5mm / SR3 10mm</span>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Grout Joint Width</span>
-                  <span className="font-sans font-black text-brand-navy">1.5 mm to 2.0 mm laser joints</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Typical Thickness</span>
+                  <span className="font-sans font-black text-brand-navy">25mm – 75mm build-up</span>
                 </div>
               </div>
               <p>
-                <strong>Under-Tile Waterproofing:</strong> We lay a seamless, highly elastic, liquid polyurethane waterproofing membrane with a minimum wet film thickness of 1.2mm across all bathrooms and kitchen zones, followed by standard pressure tests before final marble layouts.
+                <strong>Systems:</strong> Bonded (25–40mm), unbonded (50–70mm), floating (65–75mm) and heated screeds (min. 25mm cover over pipes) — traditional sand-cement, semi-dry, fibre-reinforced and self-levelling/liquid screeds, selected to suit the finish above.
               </p>
               <p>
-                <strong>Adhesives & Grouting:</strong> We exclusively utilize class-C2TE high-performance cementitious adhesives and anti-staining chemical-resistant epoxy grout, guaranteeing durable, pristine lines.
+                <strong>Curing & Testing:</strong> Screeds are protected from rapid drying, then dried under controlled conditions — approx. 1mm per day for the first 50mm — with level, soundness (drop-hammer) and moisture testing verified before the finish is laid.
               </p>
             </div>
           </div>
 
-          {/* Box 2: Block Masonry & Plaster Specs */}
+          {/* Box 2: Block Work & Plastering Standards */}
           <div className="bg-white border border-black/[0.05] rounded-3xl p-8 flex flex-col gap-6 shadow-sm">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
@@ -92,67 +92,67 @@ export default function SpecsPage() {
               </div>
               <div>
                 <h3 className="font-sans font-black text-base text-brand-navy uppercase">
-                  Masonry & Plastering Standards
+                  Block Work & Plastering Standards
                 </h3>
-                <span className="text-slate-400 text-[10px] font-bold uppercase">Standard Reference: BS EN 998 & BS 5628</span>
+                <span className="text-slate-400 text-[10px] font-bold uppercase">Concrete Block Walls & Q4 Plaster Finish</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 text-xs md:text-sm text-slate-600 leading-relaxed">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">CMU Density</span>
-                  <span className="font-sans font-black text-brand-navy">Min 2000 kg/m3 (Solid Blocks)</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Wall Systems</span>
+                  <span className="font-sans font-black text-brand-navy">CMU Block, Partitions & Boundary Walls</span>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Plaster Flatness</span>
-                  <span className="font-sans font-black text-brand-navy">Q4 Finish (Under 1mm/2m)</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Plaster Finish</span>
+                  <span className="font-sans font-black text-brand-navy">Q4 Gypsum Skim</span>
                 </div>
               </div>
               <p>
-                <strong>Mortar Proportions:</strong> Meticulous mortar mix of 1:3 OPC cement-to-sand ratio blended with high-tensile mesh strips at columns intersections to neutralize block settlement cracking.
+                <strong>Block Masonry:</strong> Concrete block walls, partitions and structural elements, with reinforced lintels cast for openings and coordinates set out to CAD drawings.
               </p>
               <p>
-                <strong>Plaster Execution:</strong> Three-coat application including: (1) spatter dash base, (2) scratch leveling sand-cement render, and (3) super-fine gypsum skim leveling coat to yield glass-flat surfaces.
+                <strong>Plaster Execution:</strong> Multi-coat application — spatter-dash base, sand-cement render, and a fine gypsum skim finish — with fiberglass joint mesh to control shrinkage cracking.
               </p>
             </div>
           </div>
 
-          {/* Box 3: Carpentry & Custom Joinery Specs */}
+          {/* Box 3: MEP & Gypsum Ceiling Specifications */}
           <div className="bg-white border border-black/[0.05] rounded-3xl p-8 flex flex-col gap-6 shadow-sm">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
-                <Compass className="w-5 h-5" />
+                <Layers className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-sans font-black text-base text-brand-navy uppercase">
-                  Carpentry & Door Specifications
+                  MEP & Gypsum Ceiling Specifications
                 </h3>
-                <span className="text-slate-400 text-[10px] font-bold uppercase">Standard Reference: BS 4787 & BS 476</span>
+                <span className="text-slate-400 text-[10px] font-bold uppercase">Coordinated With Fit-Out Programme</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 text-xs md:text-sm text-slate-600 leading-relaxed">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Timber Classification</span>
-                  <span className="font-sans font-black text-brand-navy">Grade 1 Hardwoods (Ash/Walnut)</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">MEP Systems</span>
+                  <span className="font-sans font-black text-brand-navy">Lighting, Power, Plumbing & A/C</span>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Fire Rating Option</span>
-                  <span className="font-sans font-black text-brand-navy">60 to 90 Minutes Fire-Rated</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Ceiling Systems</span>
+                  <span className="font-sans font-black text-brand-navy">False Ceilings & Custom Mouldings</span>
                 </div>
               </div>
               <p>
-                <strong>Internal Doors:</strong> Heavy-duty core internal doors faced with selected natural wood veneers, hung on solid frames using 3 stainless steel ball-bearing hinges to prevent sagging over time.
+                <strong>MEP Works:</strong> Air conditioning, electrical, plumbing & drainage, firefighting, low current, and fresh air/ventilation works, delivered by trained engineers and technicians.
               </p>
               <p>
-                <strong>Soundproofing:</strong> Every customized door set features integrated compressed neoprene rubber gaskets, achieving an acoustic damping rating of up to 35 dB.
+                <strong>Gypsum Ceilings:</strong> Custom false ceilings, wall panels, partitions and ornate mouldings crafted by our in-house team, sequenced with MEP first fix.
               </p>
             </div>
           </div>
 
-          {/* Box 4: Quality Inspections & Laser Audits */}
+          {/* Box 4: Quality, HSE & Compliance */}
           <div className="bg-white border border-black/[0.05] rounded-3xl p-8 flex flex-col gap-6 shadow-sm">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-4">
               <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shadow-sm shrink-0">
@@ -160,28 +160,28 @@ export default function SpecsPage() {
               </div>
               <div>
                 <h3 className="font-sans font-black text-base text-brand-navy uppercase">
-                  Technical Quality & Laser Audits
+                  Quality, HSE & Compliance
                 </h3>
-                <span className="text-slate-400 text-[10px] font-bold uppercase">Standard Reference: ISO 9001:2015 Compliance</span>
+                <span className="text-slate-400 text-[10px] font-bold uppercase">Trade License No. 959319 — Dubai DET</span>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 text-xs md:text-sm text-slate-600 leading-relaxed">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Laser Audit Frequency</span>
-                  <span className="font-sans font-black text-brand-navy">Daily Site Inspector Sign-Offs</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Manufacturer Accreditation</span>
+                  <span className="font-sans font-black text-brand-navy">Fosroc, MAPEI, Flowcrete, MBS</span>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-2xl flex flex-col gap-1 border border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Safety Rating</span>
-                  <span className="font-sans font-black text-brand-navy">ISO 45001:2018 Zero Incident</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Testing Coverage</span>
+                  <span className="font-sans font-black text-brand-navy">100% of Screeded Areas</span>
                 </div>
               </div>
               <p>
-                <strong>Pre-Handover Review:</strong> Our QA teams inspect active installations using specialized digital moisture gauges for carpentry base woods and laser cross-hair leveling for partition walls.
+                <strong>Quality Policy:</strong> Works conform to the contract specification, approved drawings and applicable standards — verified during execution and evidenced with a documented handover pack, not inspected in afterwards.
               </p>
               <p>
-                <strong>Compliance Document Sharing:</strong> We compile comprehensive technical submittal documents (such as material safety data sheets, lab test reports, and density certifications) for client consultants.
+                <strong>HSE:</strong> Executed in accordance with UAE Federal Labour Law, Dubai Municipality and the main contractor&apos;s project HSE plan, with dust-extracted tools, PPE enforcement and incident reporting on every site.
               </p>
             </div>
           </div>

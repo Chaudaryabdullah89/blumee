@@ -11,6 +11,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function ProcessPage() {
   return (
@@ -19,12 +20,11 @@ export default function ProcessPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=1200')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/site-team.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 w-full z-10 text-center flex flex-col gap-4 items-center">
@@ -57,61 +57,61 @@ export default function ProcessPage() {
             {
               step: "01",
               phase: "Phase One",
-              title: "Digital Survey & Estimating",
+              title: "Consultation & Survey",
               icon: ClipboardList,
-              desc: "Every premium fit-out starts with absolute physical data. Our engineers inspect the site coordinates using digital rotary lasers, checking levels and angles to calculate exact material requirements. This ensures budget transparency and prevents material waste.",
+              desc: "Every screeding and fit-out project starts with understanding your brief, budget, programme and floor loadings. Our engineers survey the site using digital rotary lasers, recording levels and deviations against the finished floor level.",
               actions: [
-                "Digital line-and-level audits",
-                "Precise block count and plaster calculations",
-                "Subfloor flatness checks before stone layouts",
+                "Laser survey of slab levels & datum",
+                "Floor loading & thickness assessment",
+                "Substrate flatness and moisture checks",
                 "Itemized materials quotation within 48 hours",
               ],
-              img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
+              img: "/projects/screed-mesh-membrane.jpg",
               reverse: false,
             },
             {
               step: "02",
               phase: "Phase Two",
-              title: "Detailed Shop Drawings",
+              title: "Design & Drawings",
               icon: Compass,
-              desc: "Our joinery and design draftspeople create precise workshop drawings for custom doors, ash frames, tile layout matrices, and wall plaster terminations. Every coordinate is cross-verified for code compliance and client approvals.",
+              desc: "Our in-house design and AutoCAD draughting team turns ideas into detailed plans and build-ups — screed thickness and fall diagrams, fit-out layouts, and MEP coordination drawings. Every coordinate is cross-verified for authority approval.",
               actions: [
                 "2D/3D fit-out layout planning",
-                "Carpentry workshop drawings for door sets",
-                "Tiling grid coordinate maps",
-                "Dubai Municipality and developer NOC prep",
+                "Screed build-up & fall diagrams",
+                "MEP coordination drawings",
+                "Authority & developer NOC preparation",
               ],
-              img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800",
+              img: "/img/site-drawings.jpg",
               reverse: true,
             },
             {
               step: "03",
               phase: "Phase Three",
-              title: "On-Site Execution & Crafts",
+              title: "Execution",
               icon: ShieldCheck,
-              desc: "Our specialized in-house crews mobilize with laser-guided equipment. Masons align block partitions, finishing teams render plaster to flawless flat profiles, and tiling experts install natural stone with dynamic leveling clips.",
+              desc: "Our specialized in-house crews mobilize with laser-guided equipment. Screeding gangs place and compact floors to datum, masons align block partitions, and finishing teams render plaster to flawless flat profiles — all coordinated with MEP first fix.",
               actions: [
-                "Experienced in-house masons & carpenters",
-                "Laser-guided wall and floor alignments",
-                "Double-coat liquid wet-area waterproofing",
+                "Dedicated screeding crews & plant",
+                "Laser-guided levelling on every pour",
+                "Wet-area waterproofing to falls",
                 "Daily project supervisor site audits",
               ],
-              img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800",
+              img: "/projects/screed-site-pour.jpg",
               reverse: false,
             },
             {
               step: "04",
               phase: "Phase Four",
-              title: "Laser Quality Check & Handover",
+              title: "Handover",
               icon: Award,
-              desc: "Before handover, we conduct strict internal quality audits. We inspect plaster flatness with laser leveling tools, verify door set seals under pressure, audit joint lippage limits, and sign off the completion certificates.",
+              desc: "Before handover, we conduct strict internal quality audits. We inspect surface regularity with a 2m straightedge and laser level, verify soundness and moisture content, and sign off with a documented handover pack for every area released.",
               actions: [
-                "Laser flatness tests with +/- 0.5mm limits",
-                "Pressure tests for plumbing and wet-area seals",
-                "Acoustic gasket and door latch balance audits",
-                "Full clean-up and handover certificate signing",
+                "Level & SR class straightedge testing",
+                "Drop-hammer soundness checks",
+                "Moisture testing before finishes are laid",
+                "Snagging, clean-up & handover pack",
               ],
-              img: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800",
+              img: "/img/resin-floor.jpg",
               reverse: true,
             },
           ].map((phase, idx) => {
@@ -167,12 +167,11 @@ export default function ProcessPage() {
                   <div className="absolute -inset-4 border border-brand-gold/15 rounded-3xl -rotate-1 pointer-events-none" />
 
                   <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 border border-black/[0.04] shadow-lg group">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
-                      style={{
-                        backgroundImage: `url('${phase.img}')`,
-                      }}
-                    />
+                    <BackgroundImage
+                        src={phase.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="group-hover:scale-105 transition-transform duration-[8s]"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/35 to-transparent pointer-events-none" />
                     
                     {/* Big numbers watermark backdrop */}

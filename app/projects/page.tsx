@@ -4,141 +4,17 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   MapPin,
-  Layers,
   ArrowRight,
   Calendar,
-  CheckCircle2,
-  Search,
-  Filter,
   X,
   ZoomIn,
 } from "lucide-react";
+import { projects as projectsData, projectCategories as categories } from "@/lib/projects";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
-// Premium projects dataset mapped to high-end Dubai technical service categories
-const projectsData = [
-  {
-    id: 1,
-    title: "Executive Office Fit-Out",
-    category: "Fit-Out & Renovation",
-    client: "Al Futtaim Offices",
-    location: "Business Bay, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800",
-    desc: "Complete interior fit-out for corporate headquarters. Structured precise drywall partitions, flawless smooth plastering, and custom oak skirting.",
-    works: [
-      "Drywall Partitions",
-      "Plaster Finishes",
-      "Acoustic Ceilings",
-      "Wood Trim Joinery",
-    ],
-  },
-  {
-    id: 2,
-    title: "Luxury Beachfront Villa Tiling",
-    category: "Tiling & Stonework",
-    client: "Private Elite Villa",
-    location: "Palm Jumeirah, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800",
-    desc: "Laid over 650 sqm of premium Italian Calacatta marble tiles with absolute laser-level flatness, micro-joint epoxy grouting, and high-grade wet-area waterproofing.",
-    works: [
-      "Italian Marble Laying",
-      "Epoxy Grouting",
-      "Shower Waterproofing",
-      "Stair Cladding",
-    ],
-  },
-  {
-    id: 3,
-    title: "Bespoke Penthouse Joinery & Doors",
-    category: "Bespoke Joinery & Doors",
-    client: "Marina Heights Penthouse",
-    location: "Dubai Marina, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
-    desc: "Supply and seamless installation of custom fire-rated solid ash doors, architraves, flush internal doors, and walk-in wood closets.",
-    works: [
-      "Solid Ash Door Fitting",
-      "Bespoke Architraves",
-      "Walk-in Wardrobes",
-      "Chrome Hardware",
-    ],
-  },
-  {
-    id: 4,
-    title: "Commercial Showroom Block Work",
-    category: "Block Masonry",
-    client: "Al Barsha Automotive Plaza",
-    location: "Al Barsha 1, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-    desc: "Built precise heavy-duty masonry boundary and partition block walls utilizing reinforced lintels and sound-damping mortar matrices.",
-    works: [
-      "Solid Block Work",
-      "Reinforced Lintels",
-      "Boundary Brick Masonry",
-      "Mortar Line Audits",
-    ],
-  },
-  {
-    id: 5,
-    title: "High-End Retail Store Fit-Out",
-    category: "Fit-Out & Renovation",
-    client: "Vogue Boutique",
-    location: "Downtown Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800",
-    desc: "Premium boutique setup featuring custom brass partition frames, flawless venetian plaster textures, and micro-bevel porcelain floor tiling.",
-    works: [
-      "Brass Framing",
-      "Venetian Plastering",
-      "Porcelain Tiling",
-      "Custom Door Glass",
-    ],
-  },
-  {
-    id: 6,
-    title: "Luxury Residential Plaster Finishes",
-    category: "Plastering & Finishes",
-    client: "Signature Mansion",
-    location: "Jumeirah Golf Estates, Dubai",
-    year: "2024",
-    img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800",
-    desc: "Delivered flawless gypsum skimming and micro-cement plaster wall rendering across a 5-bedroom luxury mansion with laser-straight alignment checks.",
-    works: [
-      "Gypsum Skimming",
-      "Micro-Cement Finish",
-      "Laser Alignment Checks",
-      "Anti-Crack Meshing",
-    ],
-  },
-  {
-    id: 7,
-    title: "Boutique Cafe Space Planning",
-    category: "Interior Design & Space Planning",
-    client: "The Grind Coffee Co.",
-    location: "City Walk, Dubai",
-    year: "2023",
-    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-    desc: "Provided detailed 3D space layouts, building permit blueprints, and mood boards to optimize visual flow and maximize seating capacity.",
-    works: [
-      "3D Space Layouts",
-      "Municipality Approvals",
-      "Mood Boards",
-      "Material Spec Sheets",
-    ],
-  },
-];
 
-const categories = [
-  "All",
-  "Interior Design & Space Planning",
-  "Fit-Out & Renovation",
-  "Block Masonry",
-  "Plastering & Finishes",
-  "Tiling & Stonework",
-  "Bespoke Joinery & Doors",
-];
+
+
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -157,12 +33,11 @@ export default function ProjectsPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
@@ -175,17 +50,17 @@ export default function ProjectsPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            Our Selected{" "}
-            <span className="text-brand-gold font-black">Technical</span> <br />
+            Completed &{" "}
+            <span className="text-brand-gold font-black">Ongoing</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Achievements
+              Projects
             </span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            Explore our portfolio of premium tiling, precise block work,
-            high-end wooden door fittings, plastering, and commercial interior
-            fit-outs delivered across Dubai.
+            50+ projects delivered and ongoing for leading UAE developers and
+            main contractors — floor screeding, interior fit-out, renovation
+            and epoxy flooring works across Dubai, Abu Dhabi and Fujairah.
           </p>
         </div>
       </section>
@@ -234,12 +109,11 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedProject(project)}
                 className="relative aspect-[4/3] overflow-hidden border-b border-black/[0.03] shrink-0 cursor-zoom-in group/img"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center group-hover/img:scale-105 transition-transform duration-500"
-                  style={{
-                    backgroundImage: `url('${project.img}')`,
-                  }}
-                />
+                <BackgroundImage
+                    src={project.img}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="group-hover/img:scale-105 transition-transform duration-500"
+                  />
                 <div className="absolute inset-0 bg-[#0A1128]/45 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="p-3 bg-white/10 backdrop-blur-md border border-white/30 rounded-full text-white shadow-lg transform scale-90 group-hover/img:scale-100 transition-all duration-300">
                     <ZoomIn className="w-5 h-5" />
@@ -270,13 +144,12 @@ export default function ProjectsPage() {
                       {project.year}
                     </span>
                   </div>
-                  <Link
-                    href={`/projects/${project.title.replace(/\s+/g, "-")}`}
+                  <h3
+                    onClick={() => setSelectedProject(project)}
+                    className="font-sans font-black text-lg md:text-xl text-brand-navy hover:text-brand-gold transition-colors duration-200 cursor-zoom-in"
                   >
-                    <h3 className="font-sans font-black text-lg md:text-xl text-brand-navy hover:text-brand-gold transition-colors duration-200 cursor-pointer">
-                      {project.title}
-                    </h3>
-                  </Link>
+                    {project.title}
+                  </h3>
                 </div>
 
                 <p className="text-slate-500 text-xs md:text-sm leading-relaxed flex-1">
@@ -293,16 +166,6 @@ export default function ProjectsPage() {
                       {w}
                     </span>
                   ))}
-                </div>
-
-                <div className="flex justify-end pt-2 mt-auto">
-                  <Link
-                    href={`/projects/${project.title.replace(/\s+/g, "-")}?projectid=${project.id}`}
-                    className="flex items-center gap-1.5 text-xs font-bold text-brand-accent tracking-wider hover:underline group/link"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                  </Link>
                 </div>
               </div>
             </div>
@@ -324,32 +187,32 @@ export default function ProjectsPage() {
             </h2>
             <p className="text-slate-500 text-sm max-w-xl mx-auto">
               We separate ourselves through precise civil execution. Every
-              project is certified to meet absolute structural and finishing
-              benchmarks.
+              project is verified to meet documented surface, structural and
+              finishing benchmarks.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "BS 5385 Tiling Standards",
-                metric: "< 0.5mm Tolerances",
-                desc: "We lay large-format porcelain and Italian marble with absolute flat leveling. Zero floor lippage, precise subfloor screed layouts, and epoxy grouting.",
+                title: "Surface Regularity",
+                metric: "SR1 3mm to SR3 10mm",
+                desc: "Every screeded bay is checked with a 2m straightedge and laser level survey, to the class stated in the project specification.",
               },
               {
                 title: "Q4 Skimming Standard",
-                metric: "Flawless PlasterSkim",
-                desc: "Our plastering crews skim walls to a perfect Q4 mirror-smooth status under cross-lighting, eliminating all visible joints or imperfections.",
+                metric: "Flawless Plaster Skim",
+                desc: "Our plastering crews skim walls to a Q4 mirror-smooth finish, ready for paint or specialty wall textures.",
               },
               {
-                title: "Civil Defense Certified",
-                metric: "60-90 Min Fire Doors",
-                desc: "Every bespoke door set is engineered in-house to DCD fire-safety guidelines, complete with neoprene acoustic drop seals and drop down gaskets.",
+                title: "Manufacturer Accredited",
+                metric: "Fosroc, MAPEI, Flowcrete",
+                desc: "Registered approved applicator for the epoxy, polyurethane, traffic deck and screed systems we install, executed to manufacturer specification.",
               },
               {
-                title: "Reinforced Block Masonry",
-                metric: "High-Tensile Integrity",
-                desc: "All block walls are laid with heavy-duty CMU blocks, structural lintels, expansion joints, and galvanized steel ties for permanent crack-prevention.",
+                title: "Moisture & Soundness Tested",
+                metric: "100% of Screeded Areas",
+                desc: "Level, soundness and moisture testing on every screeded floor before sign-off, with documented handover on every area released.",
               },
             ].map((stat, idx) => (
               <div
@@ -386,12 +249,12 @@ export default function ProjectsPage() {
               Collaborate
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl uppercase leading-tight tracking-tight">
-              Have a Custom Technical Project in Mind?
+              Have a Floor Screeding or Fit-Out Project in Mind?
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Whether you need premium marble tiling, complete office partition
-              block work, custom joinery, or complete fit-outs, our engineers
-              are ready to assist.
+              Whether you need volume floor screeding, complete interior
+              fit-out, renovation works, or epoxy flooring, our engineers are
+              ready to assist.
             </p>
 
             <Link

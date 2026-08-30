@@ -5,15 +5,14 @@ import Link from "next/link";
 import {
   Paintbrush,
   Layers,
-  Grid,
-  DoorOpen,
+  Ruler,
+  Zap,
   Compass,
   CheckCircle,
   ArrowRight,
-  FileText,
-  Briefcase,
   Hammer,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function ServicesPage() {
   return (
@@ -22,12 +21,11 @@ export default function ServicesPage() {
           1. HERO SECTION — Premium Dark Banner
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
@@ -40,19 +38,19 @@ export default function ServicesPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            Interior Design &{" "}
-            <span className="text-brand-gold font-black">Technical</span> <br />
+            Specialised{" "}
+            <span className="text-brand-gold font-black">Trade</span> <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Services
+              Works
             </span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            We are committed to making it simpler and easier for you to access
-            interior design, fit-out, and specialized technical services from
-            one place. Whether you choose a single service or the complete
-            end-to-end package, you can feel confident we will deliver quality
-            work on an accurate, cost-managed budget, every time.
+            Screeding, block work, plastering, gypsum, fit-out and MEP — each
+            run by its own crews and supervision. Whether you choose a single
+            trade or the complete end-to-end package, you can feel confident
+            we will deliver quality work on an accurate, cost-managed budget,
+            every time.
           </p>
         </div>
       </section>
@@ -69,96 +67,96 @@ export default function ServicesPage() {
             Our Services
           </h2>
           <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-            From concept and space planning to masonry, tiling, and bespoke
-            joinery — we combine design and specialized technical execution into
-            one seamless experience.
+            Six specialist disciplines — screeding, block work, plastering,
+            gypsum, fit-out and MEP — combined into one seamless,
+            single-contract experience.
           </p>
         </div>
 
         <div className="flex flex-col gap-24">
           {[
             {
-              title: "Interior Design & Space Planning",
-              subtitle: "Concept, 3D Visualization & Layouts",
-              desc: "We create inspired, functional layouts customized to your space and requirements. From initial concept drawings, mood boards, and photorealistic 3D renders, to CAD layouts and comprehensive material specifications—our design team sets a solid foundation for your project.",
+              title: "Floor Screeding",
+              subtitle: "Bonded, Unbonded, Floating & Heated Systems",
+              desc: "From bonded and unbonded sand-cement screeds to floating, heated and self-levelling systems, we deliver the flat, sound, correctly cured floor base that every finish above it depends on — at volume, and to programme.",
               bullets: [
-                "Concept Development & Mood Boards",
-                "2D/3D Space Layout & Renderings",
-                "Material & Finish Specifications",
-                "Detailed Construction Drawings",
+                "Sand-Cement, Semi-Dry & Fibre-Reinforced Screeds",
+                "Bonded, Unbonded, Floating & Heated Build-Ups",
+                "Laser-Guided Levelling & Datum Control",
+                "SR1 to SR3 Surface Regularity Testing",
               ],
-              icon: Compass,
-              img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
+              icon: Ruler,
+              img: "/img/screeding-powerfloat.jpg",
               reverse: false,
             },
             {
-              title: "Turnkey Fit-Out & Renovation",
-              subtitle: "Seamless Commercial & Residential Transformations",
-              desc: "Complete design-to-build fit-out and renovation solutions. We manage and execute everything from walls and ceilings to MEP and final decorative finishes, delivering custom-tailored environments stress-free, on time, and on budget.",
-              bullets: [
-                "Commercial & Office Fit-Outs",
-                "Residential Renovations & Refurbishments",
-                "MEP & Ceiling Installations",
-                "Drywall, Partitions & Glass Work",
-              ],
-              icon: Layers,
-              img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800",
-              reverse: true,
-            },
-            {
-              title: "Precision Block Masonry",
+              title: "Block Work & Masonry",
               subtitle: "Structural & Non-Structural Wall Construction",
-              desc: "Professional block masonry work executed with precision and structural integrity. From internal partitions and boundary walls to load-bearing structures, our skilled masons ensure straight, level, and clean brickwork according to exact engineering specifications.",
+              desc: "Concrete block walls, internal partitions, boundary walls and structural elements built with precision and structural integrity — straight, level and plumb, to exact engineering specifications.",
               bullets: [
                 "Concrete Block Wall Construction",
-                "Internal Partition & Partitioning Walls",
-                "Boundary Walls & Extensions",
-                "Precise Mortar Ratios & Alignment",
+                "Internal Partitions & Boundary Walls",
+                "Reinforced Cast Lintels Over Openings",
+                "Continuous Line, Level & Plumb Checks",
               ],
               icon: Hammer,
-              img: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800",
-              reverse: false,
-            },
-            {
-              title: "Professional Plastering & Finishes",
-              subtitle: "Smooth, Flawless Internal & External Wall Finishes",
-              desc: "Exceptional wall plastering services that provide the perfect base for your final paint or wallpaper. We specialize in high-quality internal and external cement plastering, gypsum rendering, and architectural texturing with laser-straight flatness.",
-              bullets: [
-                "Internal Gypsum Plastering",
-                "External Cement Plastering & Rendering",
-                "Crack Repair & Wall Leveling",
-                "Decorative & Textured Finishes",
-              ],
-              icon: Paintbrush,
-              img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=800",
+              img: "/img/blockwork-mason.jpg",
               reverse: true,
             },
             {
-              title: "Custom Tiling & Stonework",
-              subtitle: "High-End Flooring, Wall Tiling & Stone Accents",
-              desc: "Premium tile installation services for bathrooms, kitchens, living areas, and commercial spaces. Our team handles everything from standard ceramic tiles to large-format porcelain, marble, granite, and intricate mosaic backsplashes with perfect alignment and minimal joints.",
+              title: "Plastering & Painting",
+              subtitle: "Smooth Finishes, Full Colour Range",
+              desc: "Smooth, flawless surface preparation and finishing across internal and external surfaces, plus a full range of colours, finishes and decorative painting techniques — the base every decoration depends on.",
               bullets: [
-                "Large-Format Porcelain & Ceramic Tiling",
-                "Marble, Granite & Natural Stone Slabs",
-                "Bathroom & Kitchen Wet Area Tiling",
-                "Intricate Mosaic & Backsplash Patterns",
+                "Internal & External Cement Plastering",
+                "Three-Coat Render & Q4 Gypsum Skim",
+                "Fiberglass Anti-Crack Joint Mesh",
+                "Full Range of Colours & Decorative Finishes",
               ],
-              icon: Grid,
-              img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+              icon: Paintbrush,
+              img: "/img/plastering-wall.jpg",
               reverse: false,
             },
             {
-              title: "Bespoke Joinery & Doors",
-              subtitle: "Custom Timber Fabrication & Door Installation",
-              desc: "Expert craftsmanship in woodwork, joinery, and door installations. We manufacture and install custom wardrobes, cabinets, kitchen cupboards, and high-quality timber doors that match your architectural style and offer superior longevity.",
+              title: "Gypsum & False Ceilings",
+              subtitle: "Custom Ceilings, Panels, Partitions & Mouldings",
+              desc: "Custom gypsum ceilings, wall panels, partitions, cornicing and ornate mouldings — from sleek modern ceiling solutions to traditional hand-detailed plasterwork, crafted and installed by our in-house team.",
               bullets: [
-                "Bespoke Timber Door Sets & Frames",
-                "Custom Wardrobes & Kitchen Cabinets",
-                "Wooden Wall Paneling & Cladding",
-                "Precision Fit & Hardware Installation",
+                "Suspended Grid & False Ceiling Systems",
+                "Gypsum Wall Panels & Partitions",
+                "Bulkheads, Coffers & Cove Lighting Details",
+                "Ornate Cast Cornicing & Mouldings",
               ],
-              icon: DoorOpen,
-              img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800",
+              icon: Layers,
+              img: "/projects/gypsum-ceiling-medallion.jpg",
+              reverse: true,
+            },
+            {
+              title: "Interior Fit-Out & Renovation",
+              subtitle: "Space Planning, Finishes & Refurbishment",
+              desc: "Transforming empty spaces into functional, aesthetically pleasing environments — and breathing new life into outdated ones. From space planning and layout design to furniture installation and finishing touches.",
+              bullets: [
+                "Space Planning & Layout Design",
+                "Demolition, Strip-Out & Concrete Repair",
+                "Partitions, Ceilings & MEP Coordination",
+                "Furniture, Fixture & Finish Installation",
+              ],
+              icon: Compass,
+              img: "/img/fitout-office-dubai.jpg",
+              reverse: false,
+            },
+            {
+              title: "MEP Services",
+              subtitle: "Electrical, Plumbing, HVAC & Firefighting",
+              desc: "A full suite of Mechanical, Electrical and Plumbing services, coordinated with the civil and fit-out programme and delivered by trained engineers and technicians in accordance with local and international standards.",
+              bullets: [
+                "Lighting, Small Power & Cable Containment",
+                "Plumbing, Drainage & A/C Systems",
+                "Firefighting & Low Current Systems",
+                "Sustainable, Eco-Friendly MEP Solutions",
+              ],
+              icon: Zap,
+              img: "/img/mep-electrical.jpg",
               reverse: true,
             },
           ].map((item, idx) => {
@@ -212,12 +210,11 @@ export default function ServicesPage() {
                   <div className="absolute -inset-4 border border-brand-gold/20 rounded-3xl -rotate-1 pointer-events-none" />
 
                   <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-slate-50 shadow-lg border border-black/[0.04] group">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                      style={{
-                        backgroundImage: `url('${item.img}')`,
-                      }}
-                    />
+                    <BackgroundImage
+                        src={item.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="group-hover:scale-105 transition-transform duration-500"
+                      />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/35 to-transparent" />
                   </div>
                 </div>
@@ -240,7 +237,7 @@ export default function ServicesPage() {
               Our Technical Process
             </h2>
             <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto">
-              Every tiling, plastering, or masonry project undergoes a
+              Every screeding, fit-out, or block work project undergoes a
               multi-point quality check to guarantee perfect results.
             </p>
           </div>
@@ -250,22 +247,22 @@ export default function ServicesPage() {
               {
                 step: "01",
                 title: "Site Survey & Estimating",
-                desc: "We perform digital line-and-level surveys, calculate accurate mortar block ratios, and check tile joints.",
+                desc: "We perform digital laser level and datum surveys, calculate accurate screed and block quantities, and record floor loadings.",
               },
               {
                 step: "02",
                 title: "Detailed Space Planning",
-                desc: "Our designing team outlines CAD layouts, detailing woodwork joins, door clearances, and wet area waterproofing.",
+                desc: "Our in-house design and AutoCAD team outlines layouts, screed build-ups, MEP routing, and wet-area waterproofing.",
               },
               {
                 step: "03",
                 title: "High-End Execution",
-                desc: "Our in-house masons and carpentry teams install tiling, lay blocks, mount custom doors, and plaster walls flawlessly.",
+                desc: "Our in-house screeding crews, masons and finishing teams place floors, lay blocks, and plaster walls to specification.",
               },
               {
                 step: "04",
                 title: "Quality Sign-Off",
-                desc: "Every surface is checked with laser leveling instruments for perfect flatness and alignment before hand-over.",
+                desc: "Every surface is checked with laser leveling instruments and moisture testing for perfect flatness before hand-over.",
               },
             ].map((p, idx) => (
               <div
@@ -307,8 +304,8 @@ export default function ServicesPage() {
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
               Submit your property layouts, design blueprints, or technical spec
               sheets today. Our team provides highly competitive quotes on
-              premium tiling, block masonry, custom joinery, and fit-out
-              packages.
+              floor screeding, block work, plastering, MEP, and complete
+              fit-out packages.
             </p>
 
             <Link

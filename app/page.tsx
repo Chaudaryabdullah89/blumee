@@ -7,14 +7,15 @@ import {
   Send,
   Phone,
   Mail,
-  ArrowLeft,
   ArrowRight,
-  Star,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroBackground, HeroCardPreview } from "./components/Hero";
 import { submitContactForm } from "@/lib/submit-contact-form";
+import { shouldReduceMotion } from "@/lib/motion";
+import { STATS } from "@/lib/site";
+import BackgroundImage from "./components/BackgroundImage";
 
 export default function Home() {
   // State for FAQ Accordion
@@ -24,18 +25,19 @@ export default function Home() {
   const [estName, setEstName] = useState("");
   const [estEmail, setEstEmail] = useState("");
   const [estPhone, setEstPhone] = useState("");
-  const [estService, setEstService] = useState("fit-out");
-  const [estLocation, setEstLocation] = useState("business-bay");
+  const [estService, setEstService] = useState("screeding");
+  const [estLocation, setEstLocation] = useState("dubai");
   const [estMessage, setEstMessage] = useState("");
   const [estSubmitted, setEstSubmitted] = useState(false);
   const [estIsSubmitting, setEstIsSubmitting] = useState(false);
   const [estError, setEstError] = useState("");
 
-  // State for Testimonials Carousel
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Scroll-linked effects are recalculated every frame on the main thread.
+    // Phones pay for that in dropped frames, so they get the plain layout.
+    const reduceMotion = shouldReduceMotion();
 
     const ctx = gsap.context(() => {
       // 1. Hero Animations (delayed so the preloader can slide up completely)
@@ -66,16 +68,18 @@ export default function Home() {
         },
       );
 
-      gsap.to(".hero-video-card", {
-        y: -40,
-        scale: 1.04,
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      if (!reduceMotion) {
+        gsap.to(".hero-video-card", {
+          y: -40,
+          scale: 1.04,
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
 
       // 2. Editorial Text Inline Capsule Animations — clipPath reveal (no width conflict)
       gsap.fromTo(
@@ -117,8 +121,10 @@ export default function Home() {
         });
       });
 
-      // 4. SVG Blueprint Draw-In
-      const blueprintLines = document.querySelectorAll(".blueprint-path");
+      // 4. SVG Blueprint Draw-In — scrubbed, so desktop pointer devices only.
+      const blueprintLines = reduceMotion
+        ? []
+        : document.querySelectorAll(".blueprint-path");
       blueprintLines.forEach((line) => {
         const pathEl = line as SVGPathElement | SVGLineElement | SVGRectElement;
         let length = 1000;
@@ -245,60 +251,30 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  const testimonials = [
-    {
-      quote:
-        "Blume Technical Services delivered a stunning corporate office fit-out for our new headquarters. Their team managed the entire process from design brief to final handover — on time and within budget. The space truly reflects our brand.",
-      author: "Tariq Al Futtaim",
-      role: "Managing Director",
-      company: "Al Futtaim Group",
-      rating: 5,
-      location: "Business Bay, Dubai",
-    },
-    {
-      quote:
-        "We engaged Blume to design and fit-out our flagship retail boutique. Their attention to detail, material sourcing, and project coordination was exceptional. The store has become a destination in itself — customers love the ambiance.",
-      author: "Elena Petrova",
-      role: "Brand Director",
-      company: "Luxe Retail Group",
-      rating: 5,
-      location: "Downtown Dubai",
-    },
-    {
-      quote:
-        "Blume's design consultancy team helped us reimagine our healthcare facility. They understood our operational needs and translated them into a calming, functional environment. Their end-to-end management was truly stress-free.",
-      author: "Dr. Marcus Vance",
-      role: "Head of Operations",
-      company: "Dubai Medical Centre",
-      rating: 5,
-      location: "Jumeirah, Dubai",
-    },
-  ];
-
   const faqs = [
     {
-      q: "What core technical and finishing services does Blume specialize in?",
-      a: "We specialize in 6 core civil and finishing disciplines: Turnkey Fit-Out & Renovation, Custom Tiling & Stonework, Bespoke Joinery & Doors, Professional Plastering & Finishes, Precision Block Masonry, and Interior Design & Space Planning.",
+      q: "What trades does Blume cover?",
+      a: "We are a specialist trade contractor across six disciplines: floor screeding, block work and masonry, plastering and painting, gypsum works and false ceilings, interior fit-out and renovation, and MEP. Each is run by its own crews and supervision, so a space can go from bare structure to finished handover under one contract.",
     },
     {
-      q: "What quality tolerances do you guarantee for tiling and stonework?",
-      a: "We execute all tiling strictly under BS 5385 British standards. Using digital rotary lasers, we maintain floor and wall flatnesses with a variance tolerance of under +/- 0.5mm to eliminate all lippage across large-format porcelain and marble slabs. We also conduct mandatory 24-hour liquid flood tests before tiling wet zones.",
+      q: "What tolerances do you guarantee on screeded floors?",
+      a: "Surface regularity is measured as the maximum permissible gap beneath a 2m straightedge: SR1 (3mm) for high-specification floors, SR2 (5mm) for normal-specification floors, and SR3 (10mm) for utility-specification floors — verified with a level and SR survey on every bay, plus soundness and moisture testing before handover.",
     },
     {
-      q: "Are your custom joinery and door installations certified?",
-      a: "Yes. All bespoke timber door assemblies can be supplied with certified fire ratings (60-minute and 90-minute options) complying with Dubai Civil Defense (DCD) requirements. We manufacture using solid woods like ash and walnut, complete with drop-down soundproof gaskets and smoke seals.",
+      q: "Are you a licensed and approved contractor?",
+      a: "Yes. Blume Technical Services L.L.C. holds Professional Trade License No. 959319 issued by Dubai's Department of Economy and Tourism, is VAT registered (TRN 100564723300003), and is a reviewed and approved subcontractor / applicator for leading UAE consultants including Arcadis, National Engineering Bureau, Dewan Architects + Engineers and KEO International.",
     },
     {
-      q: "How do you handle developer NOCs and municipality approvals in Dubai?",
-      a: "We provide complete turnkey approval coordination. Our engineering team prepares and submits detailed structural, architectural, and MEP layout drawings to secure NOCs from developers (Emaar, Nakheel, Dubai Properties) and approvals from Dubai Municipality (DM), Civil Defense (DCD), and Concordia/TECOM.",
+      q: "Are you certified by the material manufacturers you install?",
+      a: "Yes. We are a registered approved applicator for Al Gurg Fosroc, MAPEI Construction Chemicals, Master Builders Solutions, Flowcrete Middle East and NYA Technical Services / SBI Industries — for epoxy, polyurethane, traffic deck and screed systems, executed under manufacturer specification and, where required, their site supervision.",
     },
     {
-      q: "How fast can you mobilize for masonry block work and plastering?",
-      a: "Once NOC approvals and work permits are in place, our specialized in-house crews can mobilize to site within 3 to 5 business days. All concrete masonry units (CMU) and plaster binders are sourced from certified regional suppliers to guarantee raw material density and anti-cracking compliance.",
+      q: "How fast can you mobilize crews to site?",
+      a: "Each trade operates with its own crews, supervision and plant — forced-action mixers, screed pumps and rotary laser levels for screeding, plus masonry, plastering and gypsum gangs. Once approvals and access are in place, we mobilise quickly and hold programme on repetitive floor-by-floor and villa-by-villa sequences.",
     },
     {
-      q: "Do you work with third-party designers, architects, and main contractors?",
-      a: "Absolutely. While we provide full design-and-build services, we frequently collaborate as specialist contractors or direct fit-out partners — executing detailed shop drawings, plaster skimming (Q1 to Q4 finishes), and architectural stone details matching design guidelines.",
+      q: "Which locations do you cover?",
+      a: "From our base in Dubai, our teams mobilise across the Emirates — with completed and ongoing work in Dubai, Abu Dhabi and Fujairah — to deliver screeding, fit-out and renovation projects wherever our clients need us.",
     },
   ];
 
@@ -330,22 +306,22 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/[0.12] w-fit shadow-md hero-reveal opacity-0">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
               <span className="font-sans font-bold text-[10px] md:text-xs uppercase tracking-widest text-brand-gold">
-                Premium Interior Standards
+                Specialist Trade Contractor
               </span>
             </div>
 
             <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-xl leading-relaxed tracking-wide hero-reveal opacity-0">
-              Blume Technical Services is an Interior Design and Fit-Out
-              management company that exists to help bring brands and spaces to
-              life — combining planning, design, manufacturing, and renovations
-              into one seamless experience.
+              Floor screeding, block work, plastering, gypsum and false
+              ceilings, interior fit-out and MEP — delivered as one
+              coordinated package for commercial offices, residential
+              developments and hospitality spaces across the UAE.
             </p>
 
             {/* Giant Title */}
             <h1 className="font-sans font-black text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-tighter text-white drop-shadow-xl mt-4 overflow-hidden">
-              <span className="block hero-title-line opacity-0">BUILT</span>
+              <span className="block hero-title-line opacity-0">EVERY</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#cbd5e1] block hero-title-line opacity-0">
-                TOGETHER
+                TRADE
               </span>
             </h1>
           </div>
@@ -359,14 +335,16 @@ export default function Home() {
               <HeroCardPreview />
 
               {/* Card stats text */}
-              <div className="mt-6 flex flex-col gap-2">
-                <h3 className="font-sans font-black text-2xl text-white tracking-tight flex items-center gap-2">
-                  <span className="text-brand-gold">AED 15 Million +</span>{" "}
-                  Delivered Value
+              <div className="mt-6 flex flex-col gap-3">
+                <h3 className="font-sans font-black text-2xl text-white tracking-tight">
+                  <span className="text-brand-gold">50+ Projects</span>{" "}
+                  Delivered &amp; Ongoing
                 </h3>
                 <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-                  Our portfolio represents our unwavering commitment to
-                  redefining urban landscapes with engineering excellence.
+                  Over{" "}
+                  <span className="font-bold text-white">AED 25 Million</span> in
+                  delivered value, with 75 team members on the ground across
+                  Dubai, Abu Dhabi and Fujairah.
                 </p>
               </div>
             </div>
@@ -375,29 +353,58 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────────────────────────
+          1.5 STATS BAND — headline numbers, above the fold on mobile
+      ───────────────────────────────────────── */}
+      <section className="bg-white border-b border-black/[0.04]">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <dl className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-black/[0.06]">
+            {[STATS.projects, STATS.value, STATS.villas, STATS.team].map(
+              (stat) => (
+                <div
+                  key={stat.label}
+                  className="flex flex-col gap-1 px-4 py-8 md:px-8 md:py-10 text-center"
+                >
+                  {/* nowrap keeps "AED 25M+" on one line on narrow screens */}
+                  <dd className="font-sans font-black text-[28px] sm:text-4xl md:text-5xl text-brand-navy tracking-tighter whitespace-nowrap">
+                    {stat.value}
+                  </dd>
+                  <dt className="font-sans font-black text-[10px] md:text-xs uppercase tracking-widest text-brand-gold mt-1">
+                    {stat.label}
+                  </dt>
+                  <p className="text-slate-500 text-[11px] md:text-xs leading-snug">
+                    {stat.sub}
+                  </p>
+                </div>
+              ),
+            )}
+          </dl>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────
           2. INTRO SECTION — Rich Editorial Layout
       ───────────────────────────────────────── */}
-      <section className="bg-white py-24 border-y border-black/[0.04]">
+      <section className="bg-white py-20 md:py-24 border-y border-black/[0.04]">
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center">
           {/* Paragraph with inline rounded capsules like the image */}
           <h2 className="font-sans font-semibold text-2xl md:text-4xl text-brand-navy leading-relaxed md:leading-[1.7] max-w-4xl mx-auto tracking-tight editorial-heading">
-            Starting from corporate offices to hotels, retail shops to
+            Wherever you build, we fit it out — from residential villas to
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('/img/capsule-a.jpg')`,
               }}
             ></span>
-            healthcare environments, our focus is on creating inspired designs
-            to provide our clients with
+            corporate offices, retail and malls to hospitality, we take a space
+            from bare structure to
             <span
               className="capsule-image capsule-img"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=200')`,
+                backgroundImage: `url('/img/capsule-b.jpg')`,
               }}
             ></span>
-            an environment of lasting value, driven by senior staff expertise
-            and unparalleled cross-industry know-how.
+            finished handover, driven by senior technical staff and dedicated
+            crews in every trade.
           </h2>
 
           {/* Stats grid section with divider lines */}
@@ -417,27 +424,27 @@ export default function Home() {
             <React.Fragment key={i}>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Interior Design
+                Floor Screeding
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Turnkey Fit-Out Solutions
+                Block Work
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                FF&E Procurement
+                Plastering & Painting
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Project Management
+                Gypsum & False Ceilings
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-brand-gold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Design Consultancy
+                Interior Fit-Out
               </span>
               <span className="flex items-center gap-2 font-sans font-black text-xs uppercase tracking-widest text-slate-300 whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                Manufacturing & Joinery
+                MEP Services
               </span>
             </React.Fragment>
           ))}
@@ -457,7 +464,7 @@ export default function Home() {
                 Our Story
               </span>
               <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                We Bring Brands & Spaces To Life
+                Craftsmanship In Every Detail
               </h2>
             </div>
 
@@ -601,7 +608,7 @@ export default function Home() {
                   fontSize="3.5"
                   className="font-sans opacity-40"
                 >
-                  TILING REF: ST-04
+                  SCREED: SR2 CLASS
                 </text>
                 <text
                   x="136"
@@ -619,7 +626,7 @@ export default function Home() {
                   fontSize="3.5"
                   className="font-sans opacity-40"
                 >
-                  BLOCK WORK: 200MM
+                  FALL TO DRAIN: 1:80
                 </text>
                 {/* Dimension measurement lines */}
                 {/* Horizontal dimension */}
@@ -659,12 +666,12 @@ export default function Home() {
           <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-16 about-reveal opacity-0">
             <div className="flex flex-col gap-6">
               <p className="text-[#475569] text-sm md:text-base leading-relaxed">
-                At Blume Technical Services, we combine creative spatial
-                planning, fine interior partitions, high-density block work, and
-                master plaster finishes. Our dedicated team of space planners,
-                detail managers, and skilled tradespeople ensure that every
-                project is delivered on time, strictly within budget, and with
-                uncompromising aesthetic quality.
+                At Blume Technical Services, each specialist trade is run by
+                its own crews and supervision — screeding, block work,
+                plastering, gypsum and false ceilings, painting and MEP. That
+                depth is what lets us take a space from bare structure to
+                finished handover under one contract, with fewer interfaces,
+                fewer delays and one accountable party.
               </p>
 
               <Link
@@ -689,12 +696,12 @@ export default function Home() {
             </div>
 
             {/* Premium finished office interior image */}
-            <div
-              className="aspect-[16/9] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800')`,
-              }}
-            />
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-lg border border-black/[0.04]">
+              <BackgroundImage
+                src="/img/office-interior.jpg"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
 
@@ -702,44 +709,44 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 about-reveal opacity-0">
           {/* Mission Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <div
-              className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=300')`,
-              }}
-            />
+            <div className="relative w-full md:w-32 aspect-square shrink-0 overflow-hidden rounded-2xl border border-black/[0.04]">
+              <BackgroundImage
+                src="/img/mission-interior.jpg"
+                sizes="(max-width: 768px) 100vw, 128px"
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Mission
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                To win the hearts and trust of all our clients by offering
-                operational and strategic support at all stages of the project.
-                From concept to execution — we aim for strict control on
-                time-line, budget and quality to ensure repeat customers and
-                avenues to making new clients.
+                &ldquo;In our industry, there is no substitute for experience. We
+                combine an experienced team with extensive resources to
+                consistently deliver superior project results.&rdquo; We pursue a
+                philosophy of perfectionism at every stage — from substrate
+                preparation to final finish — within strictly controlled
+                time and budgetary parameters.
               </p>
             </div>
           </div>
 
           {/* Vision Card */}
           <div className="group rounded-3xl bg-white border border-black/[0.06] p-8 flex flex-col md:flex-row gap-6 items-center shadow-sm hover-float shimmer-hover transition-all duration-300">
-            <div
-              className="w-full md:w-32 aspect-square rounded-2xl bg-cover bg-center shrink-0 border border-black/[0.04]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80&w=300')`,
-              }}
-            />
+            <div className="relative w-full md:w-32 aspect-square shrink-0 overflow-hidden rounded-2xl border border-black/[0.04]">
+              <BackgroundImage
+                src="/img/vision-interior.jpg"
+                sizes="(max-width: 768px) 100vw, 128px"
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <h3 className="font-sans font-extrabold text-lg text-brand-navy flex items-center gap-2">
                 <span className="text-brand-gold">▪</span> Our Vision
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                To redefine the very essence of living spaces, founded on the
-                principles of creativity, innovation, and a deep appreciation
-                for aesthetics — transforming houses into homes, offices into
-                inspiring workspaces, and every space into a reflection of
-                individuality.
+                To be the partner developers and main contractors call first
+                for floor screeding — and to grow that trust into complete
+                fit-out, MEP and renovation delivery, one accountable party
+                under one contract, on every site we operate.
               </p>
             </div>
           </div>
@@ -752,12 +759,10 @@ export default function Home() {
       <span id="services" className="block -mt-20 pt-20" />
       <section className="relative py-28 overflow-hidden">
         {/* Full-width dramatic building outline context background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            className="md:bg-fixed"
+          />
         {/* Soft frosted gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#FCFCFD]/95 via-[#FCFCFD]/90 to-[#FCFCFD]/75 backdrop-blur-sm" />
 
@@ -767,7 +772,7 @@ export default function Home() {
               What We Do
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-              One-Stop Interior Design &amp; Fit-Out Solutions
+              Specialised Trade Works, Start To Finish
             </h2>
           </div>
 
@@ -776,39 +781,39 @@ export default function Home() {
             {[
               {
                 num: "01",
-                title: "Interior Design & Space Planning",
-                desc: "Strategic 2D/3D layouts, structural floor plans, material specs, and complete developer/authority approvals management (DM, DCD, Concordia).",
-                link: "/services#interior-design",
+                title: "Floor Screeding",
+                desc: "Bonded, unbonded, floating and heated screeds — sand-cement, semi-dry, fibre-reinforced and self-levelling systems, laser-guided to SR1–SR3 tolerance.",
+                link: "/services/screeding",
               },
               {
                 num: "02",
-                title: "Turnkey Fit-Out & Renovation",
-                desc: "Complete interior fit-out execution for commercial and high-end residential spaces, drywalls, ceilings, MEP, and fast-track NOC delivery.",
-                link: "/services#fit-out",
+                title: "Block Work & Masonry",
+                desc: "Concrete block walls, internal partitions, boundary walls and structural elements, with reinforced lintels cast to engineering drawings.",
+                link: "/services/block-work",
               },
               {
                 num: "03",
-                title: "Precision Block Masonry",
-                desc: "Laser-aligned laying of concrete blocks, partition walls, and boundary structures utilizing heavy-duty CMU units and reinforced lintels.",
-                link: "/services#block-masonry",
+                title: "Plastering & Painting",
+                desc: "Internal and external cement plastering, three-coat render and Q4 gypsum skim, finished with a full range of colours and decorative techniques.",
+                link: "/services/plastering",
               },
               {
                 num: "04",
-                title: "Professional Plastering & Finishes",
-                desc: "Flawless multi-layer interior and exterior plastering skewing to Q4 levels, ready for custom paint or specialty Venetian wall textures.",
-                link: "/services#plastering",
+                title: "Gypsum & False Ceilings",
+                desc: "Custom gypsum ceilings, wall panels, partitions, cornicing and ornate mouldings — from sleek modern to traditional, crafted in-house.",
+                link: "/services/gypsum",
               },
               {
                 num: "05",
-                title: "Custom Tiling & Stonework",
-                desc: "Laser-leveled large-format marble, natural stone, and porcelain installations with BS 5385 alignment limits and complete wet zone sealing.",
-                link: "/services#tiling",
+                title: "Interior Fit-Out & Renovation",
+                desc: "Space planning, layouts, finishes and furniture installation for new fit-outs — plus structural modification and refurbishment of existing spaces.",
+                link: "/services/fit-out",
               },
               {
                 num: "06",
-                title: "Bespoke Joinery & Doors",
-                desc: "Craftsmanship joinery fabrication, fire-rated ashwood doors, architraves, flush wall panels, custom wardrobes, and high-end wood fitting.",
-                link: "/services#doors",
+                title: "MEP Services",
+                desc: "Electrical, plumbing, HVAC, firefighting and low current systems — coordinated with the civil and fit-out programme.",
+                link: "/services/mep",
               },
             ].map((serv, index) => (
               <Link
@@ -858,44 +863,52 @@ export default function Home() {
                   Our Process
                 </span>
                 <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                  Our Simple, Transparent Design & Build Process
+                  A Clear, Structured Project Process
                 </h2>
               </div>
 
-              <div
-                className="aspect-[4/3] w-full rounded-3xl bg-cover bg-center shadow-lg border border-black/[0.04]"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&q=80&w=800')`,
-                }}
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg border border-black/[0.04]">
+                <BackgroundImage
+                  src="/img/site-team.jpg"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
 
             {/* Right Column: Description & Steps */}
             <div className="lg:col-span-6 flex flex-col gap-8 lg:mt-6">
               <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-                We are committed to making it simpler and easier for you to
-                access the information and services you need — from one place.
-                Whether you choose a single service or the complete end-to-end
-                package, you can feel confident we will deliver quality work on
-                an accurate, cost-managed budget, every time.
+                A clear, structured process keeps every project on time, on
+                budget and true to the client&apos;s vision — from first
+                conversation to final handover.
               </p>
 
               <div className="flex flex-col gap-6">
                 {[
                   {
                     step: "01",
-                    title: "Discovery & Briefing",
-                    desc: "We start by understanding your vision, requirements, budget and timeline. Our consultants perform a detailed site survey and produce a comprehensive design brief.",
+                    title: "Consultation",
+                    desc: "Understanding your brief, budget, programme and floor loadings.",
                   },
                   {
                     step: "02",
-                    title: "Design & Material Selection",
-                    desc: "Our designers develop concepts, mood boards, 2D/3D layouts and material palettes tailored to your brand. We present value-added options at every price point.",
+                    title: "Design & Drawings",
+                    desc: "In-house design and AutoCAD draughting turn ideas into detailed plans and build-ups.",
                   },
                   {
                     step: "03",
-                    title: "Build & Handover",
-                    desc: "Our project managers coordinate all trades, manufacturing and custom fit-out installation. We maintain strict quality control throughout, delivering your space on time and on budget.",
+                    title: "Approval & Planning",
+                    desc: "Authority approvals, mix design, procurement and resource scheduling.",
+                  },
+                  {
+                    step: "04",
+                    title: "Execution",
+                    desc: "Site mobilisation, screeding, construction and MEP works to specification.",
+                  },
+                  {
+                    step: "05",
+                    title: "Handover",
+                    desc: "Testing, quality inspection, snagging and final handover of your space.",
                   },
                 ].map((step, idx) => (
                   <div
@@ -935,7 +948,7 @@ export default function Home() {
                 Featured Projects
               </h2>
               <p className="text-slate-500 text-sm max-w-xl">
-                Explore our selection of premier technical, fit-out, and civil execution works delivered across Dubai&apos;s most prestigious locations.
+                Explore a selection of our screeding, fit-out and civil execution works delivered for developers and main contractors across the UAE.
               </p>
             </div>
             <Link
@@ -952,61 +965,59 @@ export default function Home() {
             {[
               {
                 id: 1,
-                title: "Executive Office Fit-Out",
-                category: "Fit-Out",
-                client: "Al Futtaim Offices",
-                location: "Business Bay, Dubai",
-                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
-                desc: "Complete interior fit-out for corporate headquarters, featuring precise drywall partitions, acoustically optimized ceilings, and high-end timber door sets.",
-                tags: ["Acoustic Ceilings", "Timber Doors", "Drywalls"],
+                title: "Dragon Palace Hotel",
+                category: "Floor Screeding & Fit-Out",
+                client: "Mr. Peng Hung",
+                location: "Dubai, UAE",
+                img: "/img/apartment-interior.jpg",
+                desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
+                tags: ["80 Apartments", "Floor Screeding", "Demolition"],
                 colSpan: "lg:col-span-8 min-h-[450px]",
               },
               {
                 id: 2,
-                title: "Luxury Beachfront Villa Tiling",
-                category: "Tiling & Stonework",
-                client: "Private Elite Villa",
-                location: "Palm Jumeirah, Dubai",
-                img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800",
-                desc: "Laser-leveled installation of large-format Italian Calacatta marble slab tiles with micro-joint epoxy grouting and complete wet area waterproofing.",
-                tags: ["Italian Marble", "Epoxy Grout", "Waterproofing"],
+                title: "Chorisia 1 & Chorisia 2",
+                category: "Floor Screeding",
+                client: "Al Barari",
+                location: "Al Barari, Dubai",
+                img: "/img/fitout-living.jpg",
+                desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
+                tags: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
                 colSpan: "lg:col-span-4 min-h-[450px]",
               },
               {
                 id: 3,
-                title: "Bespoke Penthouse Joinery",
-                category: "Bespoke Joinery",
-                client: "Marina Heights Penthouse",
-                location: "Dubai Marina, Dubai",
-                img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
-                desc: "Craftsmanship wood joinery including fire-rated solid ash doors, customized walk-in wardrobes, and veneered feature wall panels.",
-                tags: ["Solid Ash", "Fire-Rated Doors", "Wardrobes"],
+                title: "Wilton Park Residence",
+                category: "Interior Fit-Out",
+                client: "Ellington Properties",
+                location: "Dubai, UAE",
+                img: "/projects/gypsum-ceiling-medallion.jpg",
+                desc: "Interior work across a G+2P+12 residential building — floor screeding, plaster, tile, ceiling and paint.",
+                tags: ["Plaster", "Tile", "Ceiling & Paint"],
                 colSpan: "lg:col-span-4 min-h-[450px]",
               },
               {
-                id: 5,
-                title: "High-End Retail Store Fit-Out",
-                category: "Fit-Out & Execution",
-                client: "Vogue Boutique",
+                id: 7,
+                title: "Boulevard Heights",
+                category: "Resin & Protective Coatings",
+                client: "Target Engineering (Emaar)",
                 location: "Downtown Dubai",
-                img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1200",
-                desc: "Premium commercial setup showcasing custom brass structural framings, flawless venetian wall rendering, and micro-bevel porcelain floor tiling.",
-                tags: ["Brass Framings", "Venetian Plaster", "Porcelain Tile"],
+                img: "/img/carpark-coating.jpg",
+                desc: "Supply and application of traffic deck coating on the Boulevard Heights main contract works, approved by Holfords Project Management / GCI.",
+                tags: ["Traffic Deck Coating", "Emaar", "Approved Applicator"],
                 colSpan: "lg:col-span-8 min-h-[450px]",
               },
             ].map((project, idx) => (
-              <Link
+              <div
                 key={idx}
-                href={`/projects/${project.id}`}
-                className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer ${project.colSpan}`}
+                className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 ${project.colSpan}`}
               >
                 {/* Visual Background Frame */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-[8s]"
-                  style={{
-                    backgroundImage: `url('${project.img}')`,
-                  }}
-                />
+                <BackgroundImage
+                    src={project.img}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="group-hover:scale-105 transition-transform duration-[8s]"
+                  />
                 
                 {/* Visual Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A18] via-[#050A18]/45 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
@@ -1049,11 +1060,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bottom Right Corner Interactive Arrow */}
-                <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white/10 group-hover:bg-brand-gold border border-white/[0.12] group-hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 z-10">
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -1081,7 +1088,7 @@ export default function Home() {
                   Ready to transform your space?
                 </h2>
                 <p className="text-slate-400 text-sm leading-relaxed max-w-md">
-                  Submit your brief or layout file directly to our estimation engineers. We provide comprehensive, itemized pricing and timeline audits within 48 hours.
+                  Submit your brief, floor plan or layout file directly to our estimating desk. We provide comprehensive, itemized pricing and timeline audits within 48 hours.
                 </p>
               </div>
 
@@ -1090,20 +1097,20 @@ export default function Home() {
                   {
                     icon: MapPin,
                     label: "Headquarters",
-                    val: "Exchange Tower Business Bay, Dubai, UAE",
+                    val: "Al Zarooni Building, Office 412, Frij Murar, Deira, Dubai, UAE",
                     link: null,
                   },
                   {
                     icon: Phone,
                     label: "Direct Estimation Desk",
-                    val: "+971 58 5252114",
+                    val: "+971 58 525 2114",
                     link: "tel:+971585252114",
                   },
                   {
                     icon: Mail,
                     label: "Engineering & Estimating",
-                    val: "info@blume.ae",
-                    link: "mailto:info@blume.ae",
+                    val: "blumetec0@gmail.com",
+                    link: "mailto:blumetec0@gmail.com",
                   },
                 ].map((item, idx) => {
                   const ItemIcon = item.icon;
@@ -1167,20 +1174,19 @@ export default function Home() {
                   setEstError("");
 
                   const serviceLabels: Record<string, string> = {
-                    "interior-design": "Interior Design & Space Planning",
-                    "fit-out": "Turnkey Fit-Out & Renovation",
-                    "block-masonry": "Precision Block Masonry",
-                    plastering: "Professional Plastering & Finishes",
-                    tiling: "Custom Tiling & Stonework",
-                    doors: "Bespoke Joinery & Doors",
+                    screeding: "Floor Screeding",
+                    "fit-out": "Interior Fit-Out",
+                    renovation: "Renovation Works",
+                    "block-work": "Block Work & Gypsum",
+                    plastering: "Plastering & Painting",
+                    mep: "MEP Services",
                   };
 
                   const locationLabels: Record<string, string> = {
-                    "business-bay": "Business Bay",
-                    "palm-jumeirah": "Palm Jumeirah",
-                    "downtown-dubai": "Downtown Dubai",
-                    "al-quoz": "Al Quoz Site",
-                    other: "Other District",
+                    dubai: "Dubai",
+                    "abu-dhabi": "Abu Dhabi",
+                    fujairah: "Fujairah",
+                    other: "Other Emirate",
                   };
 
                   try {
@@ -1267,23 +1273,23 @@ export default function Home() {
                       onChange={(e) => setEstService(e.target.value)}
                       className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white focus:outline-none transition-all duration-300 cursor-pointer"
                     >
-                      <option value="interior-design" className="bg-[#070D1D] text-white">
-                        Interior Design &amp; Space Planning
+                      <option value="screeding" className="bg-[#070D1D] text-white">
+                        Floor Screeding
                       </option>
                       <option value="fit-out" className="bg-[#070D1D] text-white">
-                        Turnkey Fit-Out &amp; Renovation
+                        Interior Fit-Out
                       </option>
-                      <option value="block-masonry" className="bg-[#070D1D] text-white">
-                        Precision Block Masonry
+                      <option value="renovation" className="bg-[#070D1D] text-white">
+                        Renovation Works
+                      </option>
+                      <option value="block-work" className="bg-[#070D1D] text-white">
+                        Block Work &amp; Gypsum
                       </option>
                       <option value="plastering" className="bg-[#070D1D] text-white">
-                        Professional Plastering &amp; Finishes
+                        Plastering &amp; Painting
                       </option>
-                      <option value="tiling" className="bg-[#070D1D] text-white">
-                        Custom Tiling &amp; Stonework
-                      </option>
-                      <option value="doors" className="bg-[#070D1D] text-white">
-                        Bespoke Joinery &amp; Doors
+                      <option value="mep" className="bg-[#070D1D] text-white">
+                        MEP Services
                       </option>
                     </select>
                   </div>
@@ -1299,20 +1305,17 @@ export default function Home() {
                       onChange={(e) => setEstLocation(e.target.value)}
                       className="bg-white/[0.03] border border-white/[0.08] focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 rounded-xl py-3.5 px-4 text-xs md:text-sm text-white focus:outline-none transition-all duration-300 cursor-pointer"
                     >
-                      <option value="business-bay" className="bg-[#070D1D] text-white">
-                        Business Bay
+                      <option value="dubai" className="bg-[#070D1D] text-white">
+                        Dubai
                       </option>
-                      <option value="palm-jumeirah" className="bg-[#070D1D] text-white">
-                        Palm Jumeirah
+                      <option value="abu-dhabi" className="bg-[#070D1D] text-white">
+                        Abu Dhabi
                       </option>
-                      <option value="downtown-dubai" className="bg-[#070D1D] text-white">
-                        Downtown Dubai
-                      </option>
-                      <option value="al-quoz" className="bg-[#070D1D] text-white">
-                        Al Quoz Site
+                      <option value="fujairah" className="bg-[#070D1D] text-white">
+                        Fujairah
                       </option>
                       <option value="other" className="bg-[#070D1D] text-white">
-                        Other District
+                        Other Emirate
                       </option>
                     </select>
                   </div>
@@ -1357,113 +1360,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ─────────────────────────────────────────
-          7.5 CLIENT TESTIMONIALS — Sleek Carousel (Light Slate Theme)
-      ───────────────────────────────────────── */}
-      {/* <section className="py-24 bg-slate-50 text-brand-navy overflow-hidden relative border-b border-black/[0.04]">
-
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3">
-            <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-              Client Feedback
-            </span>
-            <h2 className="font-sans font-black text-3xl md:text-5xl uppercase tracking-tight text-brand-navy">
-              Trusted by Dubai's Visionaries
-            </h2>
-            <p className="text-slate-500 text-xs md:text-sm max-w-lg mx-auto">
-              Read how Blume Technical Services brings brands and spaces to
-              life across offices, hotels, retail shops, and healthcare
-              environments throughout Dubai and the UAE.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative px-6 md:px-12">
-           
-            <div className="bg-white border border-slate-100 p-8 md:p-12 rounded-3xl shadow-lg flex flex-col gap-6 relative transition-all duration-500 transform hover:scale-[1.01]">
-             
-              <div className="flex gap-1">
-                {Array.from({
-                  length: testimonials[activeTestimonial].rating,
-                }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-brand-gold text-brand-gold animate-pulse"
-                  />
-                ))}
-              </div>
-
-           
-              <p className="font-serif italic text-lg md:text-xl text-slate-700 leading-relaxed">
-                "{testimonials[activeTestimonial].quote}"
-              </p>
-
- 
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-4 pt-6 border-t border-slate-100">
-                <div className="flex flex-col">
-                  <span className="font-sans font-black text-sm md:text-base text-brand-navy">
-                    {testimonials[activeTestimonial].author}
-                  </span>
-                  <span className="text-slate-500 text-xs mt-0.5">
-                    {testimonials[activeTestimonial].role},{" "}
-                    <strong className="text-brand-navy font-bold">
-                      {testimonials[activeTestimonial].company}
-                    </strong>
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] uppercase font-bold tracking-wider text-slate-500 w-fit">
-                  <MapPin className="w-3.5 h-3.5 text-brand-gold" />
-                  <span>{testimonials[activeTestimonial].location}</span>
-                </div>
-              </div>
-            </div>
-
-    
-            <div className="flex justify-between items-center mt-8">
-              
-              <div className="flex gap-2">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveTestimonial(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      activeTestimonial === idx
-                        ? "bg-brand-gold w-8"
-                        : "bg-slate-200"
-                    }`}
-                  />
-                ))}
-              </div>
-
-    
-              <div className="flex gap-3">
-                <button
-                  onClick={() =>
-                    setActiveTestimonial((prev) =>
-                      prev === 0 ? testimonials.length - 1 : prev - 1,
-                    )
-                  }
-                  className="p-3 rounded-full bg-white border border-slate-150 text-brand-navy hover:bg-[#0A1128] hover:text-white transition-all shadow-sm"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() =>
-                    setActiveTestimonial((prev) =>
-                      prev === testimonials.length - 1 ? 0 : prev + 1,
-                    )
-                  }
-                  className="p-3 rounded-full bg-white border border-slate-150 text-brand-navy hover:bg-[#0A1128] hover:text-white transition-all shadow-sm"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* ─────────────────────────────────────────
           8. FAQ SECTION — Dynamic Accordions

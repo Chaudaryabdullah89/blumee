@@ -3,18 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Lock, Eye, FileText } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function PrivacyPage() {
   return (
     <div className="flex-1 w-full bg-[#FCFCFD]">
       {/* Parallax Hero Header */}
       <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/85 to-[#FCFCFD]" />
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-8 w-full z-10 text-center flex flex-col gap-4 items-center">
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
                 3. On-Site Safety Surveillance
               </h3>
               <p>
-                To comply with the strict health and safety frameworks (ISO 45001) enforced across Dubai Municipality building sites, our active locations (including Al Quoz, Palm Jumeirah, and DIFC sites) utilize secure close-circuit television (CCTV) cameras. Footage is retained purely for security, safety compliance reviews, and incident audits, and is auto-deleted every 30 days.
+                To comply with the health, safety and site-security requirements enforced by Dubai Municipality and main contractors, our active job sites across Dubai, Abu Dhabi and Fujairah may utilize secure close-circuit television (CCTV) cameras. Footage is retained purely for security, safety compliance reviews, and incident audits, and is auto-deleted every 30 days.
               </p>
             </div>
 
@@ -111,8 +111,8 @@ export default function PrivacyPage() {
               </p>
               <p className="text-brand-navy font-bold text-xs md:text-sm mt-1">
                  Blume Technical Services Compliance<br />
-                 Exchange Tower Business Bay, Dubai, UAE<br />
-                Email: <a href="mailto:privacy@blume.ae" className="text-brand-gold hover:underline">privacy@blume.ae</a>
+                 Al Zarooni Building, Office 412, Frij Murar, Deira, Dubai, UAE<br />
+                Email: <a href="mailto:blumetec0@gmail.com" className="text-brand-gold hover:underline">blumetec0@gmail.com</a>
               </p>
             </div>
 

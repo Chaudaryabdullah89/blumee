@@ -24,11 +24,11 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-xs font-medium">
-              A premier Interior Design, Fit-Out, and Technical Services company that exists to help bring brands and spaces to life. We combine design, space planning, precision block masonry, professional plastering, custom tiling, bespoke joinery, and turnkey fit-out management to deliver pragmatic, end-to-end solutions.
+              Blume Technical Services L.L.C. is a specialist trade contractor delivering floor screeding, block work, plastering, gypsum and false ceilings, interior fit-out and MEP for commercial offices, residential developments and hospitality spaces across the UAE — every trade under one contract.
             </p>
             <div className="flex flex-col gap-1 mt-1 text-[10px] uppercase font-bold tracking-wider text-slate-500">
               <span>Our Promise</span>
-              <span className="text-brand-gold">Inspired Design • Technical Excellence • On Budget</span>
+              <span className="text-brand-gold">Craftsmanship • Technical Precision • On Programme</span>
             </div>
           </div>
 
@@ -39,12 +39,12 @@ const Footer = () => {
             </h4>
             <nav className="flex flex-col gap-2.5">
               {[
-                { name: "Interior Design & Space Planning", slug: "interior-design" },
-                { name: "Turnkey Fit-Out & Renovation", slug: "fit-out" },
-                { name: "Precision Block Masonry", slug: "block-masonry" },
-                { name: "Professional Plastering & Finishes", slug: "plastering" },
-                { name: "Custom Tiling & Stonework", slug: "tiling" },
-                { name: "Bespoke Joinery & Doors", slug: "doors" }
+                { name: "Floor Screeding", slug: "screeding" },
+                { name: "Block Work & Masonry", slug: "block-work" },
+                { name: "Plastering & Painting", slug: "plastering" },
+                { name: "Gypsum & False Ceilings", slug: "gypsum" },
+                { name: "Interior Fit-Out & Renovation", slug: "fit-out" },
+                { name: "MEP Services", slug: "mep" }
               ].map((l) => (
                 <Link 
                   key={l.name} 
@@ -90,20 +90,20 @@ const Footer = () => {
               <div className="flex gap-2.5 items-start">
                 <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <span>
-                  Exchange Tower Business Bay,<br />
-                  Dubai, United Arab Emirates
+                  Al Zarooni Building, Office 412,<br />
+                  Frij Murar, Deira, Dubai, UAE
                 </span>
               </div>
               <div className="flex gap-2.5 items-center">
                 <Phone className="w-4 h-4 text-brand-gold shrink-0" />
                 <a href="tel:+971585252114" className="text-white hover:text-brand-gold transition-colors font-black">
-                  +971 58 5252114
+                  +971 58 525 2114
                 </a>
               </div>
               <div className="flex gap-2.5 items-center">
                 <Mail className="w-4 h-4 text-brand-gold shrink-0" />
-                <a href="mailto:info@blume.ae" className="hover:text-white transition-colors">
-                  info@blume.ae
+                <a href="mailto:blumetec0@gmail.com" className="hover:text-white transition-colors">
+                  blumetec0@gmail.com
                 </a>
               </div>
             </div>

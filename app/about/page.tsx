@@ -11,6 +11,7 @@ import {
   Award,
   Calendar,
 } from "lucide-react";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
 export default function AboutPage() {
   return (
@@ -20,12 +21,11 @@ export default function AboutPage() {
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
         {/* Background office interior */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')`,
-          }}
-        />
+        <BackgroundImage
+            src="/img/office-interior.jpg"
+            priority
+            className="transition-transform duration-[10s] scale-105"
+          />
         {/* Navy dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/80 to-[#FCFCFD]" />
 
@@ -38,20 +38,16 @@ export default function AboutPage() {
           </div>
 
           <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tighter text-white uppercase drop-shadow-lg max-w-4xl">
-            We Shape <span className="text-brand-gold font-black">Spaces</span>{" "}
-            & <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400">
-              Standards
-            </span>
+            Craftsmanship In{" "}
+            <span className="text-brand-gold font-black">Every Detail</span>
           </h1>
 
           <p className="font-sans font-medium text-sm md:text-base text-slate-300 max-w-2xl leading-relaxed tracking-wide">
-            Blume Technical Services is a premier Interior Design, Fit-Out, and
-            Technical Services company that exists to help bring brands and
-            spaces to life. We combine design, space planning, precision block
-            masonry, professional plastering, custom tiling, bespoke joinery,
-            and turnkey fit-out management to deliver pragmatic, end-to-end
-            solutions.
+            Blume Technical Services L.L.C. is a specialist trade contractor
+            delivering floor screeding, block work, plastering, gypsum and
+            false ceilings, interior fit-out and MEP turnkey solutions for
+            commercial offices, residential developments and hospitality
+            spaces across Dubai and the wider United Arab Emirates.
           </p>
         </div>
       </section>
@@ -66,30 +62,31 @@ export default function AboutPage() {
             <div className="lg:col-span-7 flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-                  Our Journey
+                  Our Experience
                 </span>
                 <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-                  Founded on Vision, Driven by Design
+                  Specialist Trades, End-to-End Delivery
                 </h2>
               </div>
 
               <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                Blume Technical Services is a premier Interior Design, Fit-Out,
-                and Technical Services company that exists to help bring brands
-                and spaces to life. Uniquely, we combine design, space planning,
-                precision block masonry, professional plastering, custom tiling,
-                bespoke joinery, and turnkey fit-out management to deliver
-                pragmatic, end-to-end solutions. Our cross-industry experience
-                means all our services are based on an unparalleled
-                understanding of real-world success.
+                Blume Technical Services provides end-to-end turnkey solutions
+                for commercial offices, residential developments and
+                hospitality spaces across Dubai and the wider United Arab
+                Emirates. Our work spans six specialist disciplines — floor
+                screeding, block work and masonry, plastering and painting,
+                gypsum works and false ceilings, interior fit-out and
+                renovation, and MEP — each run by its own crews and
+                supervision.
               </p>
               <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                Our senior technical staff brings extensive industry experience
-                in value-engineering and space management. We offer proven expertise
-                in design consultations and material selection, ensuring smooth
-                project delivery within tight budgets and challenging timelines.
-                Working on diverse projects has honed our ability to find creative,
-                high-quality solutions within set parameters.
+                With an extensive track record and a dedicated team of
+                engineers, supervisors and skilled tradespeople, we serve a
+                diverse client base of developers, main contractors and
+                private owners. That depth lets us take a space from bare
+                structure to finished handover under one contract. At Blume,
+                full client satisfaction is our standard — delivered through
+                high-quality craftsmanship and on-time project completion.
               </p>
             </div>
 
@@ -99,12 +96,9 @@ export default function AboutPage() {
               <div className="absolute -inset-4 border border-brand-gold/30 rounded-3xl -rotate-1 pointer-events-none" />
 
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-black/[0.04]">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800')`,
-                  }}
-                />
+                <BackgroundImage
+                    src="/img/mission-interior.jpg"
+                  />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
 
                 {/* Floating glass overlay card inside the image */}
@@ -112,12 +106,13 @@ export default function AboutPage() {
                   <div className="flex items-center gap-2 mb-1.5">
                     <Award className="w-5 h-5 text-brand-gold" />
                     <span className="font-sans font-black text-xs text-brand-navy uppercase tracking-wider">
-                      Quality Certified
+                      Approved Applicator
                     </span>
                   </div>
                   <p className="text-slate-700 text-[11px] md:text-xs leading-relaxed">
-                    Every project is managed under ISO 9001 and ISO 45001
-                    international building standards.
+                    Registered approved applicator for Fosroc, MAPEI,
+                    Flowcrete and Master Builders Solutions flooring &amp;
+                    coating systems.
                   </p>
                 </div>
               </div>
@@ -143,23 +138,23 @@ export default function AboutPage() {
           {[
             {
               title: "Integrity",
-              desc: "Honesty, integrity and humility are our key strengths. They help us build a reputation that in turn will help us achieve our mission of repeat clientele and long-term relationships that make us key players in the market.",
+              desc: "Honest, transparent dealings with every client and partner — the reputation that wins us repeat clientele and long-term relationships across the UAE construction industry.",
               icon: ShieldCheck,
             },
             {
-              title: "Creativity",
-              desc: "We approach every project with fresh eyes, searching for design solutions and material options that deliver exceptional value — even within tight budgets and challenging parameters.",
+              title: "Excellence",
+              desc: "Meticulous craftsmanship and high standards on every project — from substrate preparation to final finish, executed within strictly controlled time and budgetary parameters.",
+              icon: HardHat,
+            },
+            {
+              title: "Collaboration",
+              desc: "Open communication that keeps clients involved at every stage. Your input shapes each stage of the process, from consultation through to handover.",
               icon: Ruler,
             },
             {
               title: "Innovation",
-              desc: "We bring innovative design thinking and structural expertise to every space, combining cutting-edge spatial concepts with proven engineering, installation, and renovation techniques.",
+              desc: "Fresh design thinking paired with practical, buildable solutions — bringing cutting-edge spatial concepts together with proven engineering and installation techniques.",
               icon: Cpu,
-            },
-            {
-              title: "Excellence",
-              desc: "From corporate offices to hotels, retail shops to healthcare environments, our focus is on creating inspired designs that provide our clients with an environment of lasting value.",
-              icon: HardHat,
             },
           ].map((val, idx) => {
             const Icon = val.icon;
@@ -186,79 +181,54 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────────────────────────────
-          4. LEADERSHIP TEAM — Portraits Grid
+          4. OUR TEAM & MANPOWER — Real resourced figures
       ───────────────────────────────────────── */}
-      {/* <section className="bg-slate-50/70 border-y border-black/[0.04] py-24">
+      <section className="bg-slate-50/70 border-y border-black/[0.04] py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col gap-3">
+          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3">
             <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-              Leadership
+              Our Strength
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-              Meet Our Visionaries
+              Our Team &amp; Manpower
             </h2>
+            <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+              Blume fields a dedicated, on-the-ground workforce for fast,
+              reliable execution across every active site — backed by hands-on
+              engineering supervision from planning through handover.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
-              {
-                name: "Tariq Mahmood",
-                role: "CEO & Founder",
-                img: "photo-1560250097-0b93528c311a",
-                desc: "A visionary leader with 20+ years of experience in Interior Design and Fit-Out management across the UAE, bringing brands and spaces to life with an unparalleled eye for design and execution."
-              },
-              {
-                name: "Sara Rahman",
-                role: "Lead Interior Designer",
-                img: "photo-1573496359142-b8d87734a5a2",
-                desc: "Specializes in concept development, spatial planning, mood boards and material selection — crafting spaces that perfectly reflect client brand identities and operational needs."
-              },
-              {
-                name: "Zain Malik",
-                role: "Head of Fit-Out & Execution",
-                img: "photo-1519085360753-af0119f7cbe7",
-                desc: "Expert in end-to-end fit-out delivery, managing contractors, timelines, and quality control across corporate, retail, hospitality, and healthcare environments."
-              }
-            ].map((member, idx) => (
+              { count: "70", label: "Skilled Labourers", desc: "Screed, epoxy and finishing trades" },
+              { count: "3", label: "Site Supervisors", desc: "Daily toolbox talks and site control" },
+              { count: "2", label: "Project Engineers", desc: "Method statements and quality control" },
+            ].map((stat, idx) => (
               <div
                 key={idx}
-                className="group rounded-3xl bg-white border border-black/[0.06] shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full"
+                className="bg-white rounded-3xl border border-black/[0.05] p-8 flex flex-col gap-2 items-center text-center shadow-sm hover-float transition-all duration-300"
               >
-                <div className="relative aspect-[4/5] overflow-hidden shrink-0 border-b border-black/[0.03]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                    style={{
-                      backgroundImage: `url('https://images.unsplash.com/${member.img}?auto=format&fit=crop&q=80&w=600')`,
-                    }}
-                  />
-                  <span className="absolute top-4 left-4 px-3 py-1 text-[10px] font-sans font-bold uppercase tracking-widest text-white bg-brand-navy rounded-full border border-white/[0.08]">
-                    {member.role}
-                  </span>
-                </div>
-
-                <div className="p-6 md:p-8 flex flex-col flex-1 gap-3">
-                  <h3 className="font-sans font-black text-xl text-brand-navy">
-                    {member.name}
-                  </h3>
-                  <p className="text-slate-500 text-xs md:text-sm leading-relaxed flex-1">
-                    {member.desc}
-                  </p>
-                  
-
-                  <div className="flex gap-3 mt-4 border-t border-slate-100 pt-4">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs font-bold text-brand-accent tracking-wider hover:underline">
-                      <svg className="w-4 h-4 text-brand-accent fill-current" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                      </svg>
-                      <span>LinkedIn Profile</span>
-                    </a>
-                  </div>
-                </div>
+                <span className="font-sans font-black text-5xl text-brand-gold">
+                  {stat.count}
+                </span>
+                <h3 className="font-sans font-black text-base text-brand-navy uppercase tracking-tight">
+                  {stat.label}
+                </h3>
+                <p className="text-slate-500 text-xs leading-relaxed">
+                  {stat.desc}
+                </p>
               </div>
             ))}
           </div>
+
+          <p className="text-center text-slate-500 text-xs md:text-sm max-w-2xl mx-auto mt-10 leading-relaxed">
+            A total deployed workforce of <strong className="text-brand-navy">75</strong>, allocated
+            flexibly across residential, commercial and hospitality sites throughout the UAE.
+            Project-specific allocation is confirmed on award.
+          </p>
         </div>
-      </section> */}
+      </section>
 
       {/* ─────────────────────────────────────────
           5. MILESTONES — Chronological Timeline
@@ -266,38 +236,38 @@ export default function AboutPage() {
       <section className="py-24 max-w-5xl mx-auto px-6 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col gap-3">
           <span className="font-sans font-black text-xs uppercase tracking-widest text-brand-gold">
-            Milestones
+            Our Journey
           </span>
           <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-            Our Historic Path
+            Comprehensive Service, Start to Finish
           </h2>
         </div>
 
         <div className="relative border-l border-slate-200 ml-4 md:ml-32 flex flex-col gap-16">
           {[
             {
-              year: "2017",
-              title: "Blume Technical Services is Founded",
-              desc: "Opened our design studio in Dubai, UAE, with a dedicated team of design and fit-out professionals — prioritizing Interior Design, Fit-Out, and specialized technical services for premium commercial spaces.",
+              year: "01",
+              title: "Foundation Established",
+              desc: "Launched with a vision to transform spaces across the region, licensed as Blume Technical Services under Dubai's Department of Economy and Tourism.",
             },
             {
-              year: "2019",
-              title: "Cross-Industry Expansion",
-              desc: "Expanded our portfolio to serve hotels, retail chains, and healthcare facilities — developing deep cross-industry expertise in design-led, end-to-end fit-out solutions.",
+              year: "02",
+              title: "First Major Project",
+              desc: "Successfully completed our first commercial fit-out project, building the track record that would grow into a diverse portfolio of developers and main contractors.",
             },
             {
-              year: "2021",
-              title: "Technical Services & Renovations",
-              desc: "Expanded our scope to offer specialized technical services — including precision block masonry, professional plastering, and custom large-format tiling to deliver complete design and refurbishment packages.",
+              year: "03",
+              title: "Screeding Division Formed",
+              desc: "Dedicated screeding crews and plant established as a standalone specialist capability — with forced-action mixers, screed pumps and rotary laser levels for fast, flat, high-volume floor placement.",
             },
             {
-              year: "2024",
-              title: "Portfolio Excellence",
-              desc: "Established a leading position as a premier technical contractor in Dubai, executing high-profile commercial and residential projects with a reputation for inspired design and disciplined execution.",
+              year: "04",
+              title: "Expanded Service Offering",
+              desc: "Integrated comprehensive MEP services into our design and fit-out solutions, becoming an approved applicator for leading manufacturers including Fosroc, MAPEI and Flowcrete.",
             },
           ].map((mil, idx) => (
             <div key={idx} className="relative pl-8 md:pl-12 group">
-              {/* Year flag floating on left (only visible on medium screens and up) */}
+              {/* Phase flag floating on left (only visible on medium screens and up) */}
               <div className="absolute hidden md:block -left-36 top-1.5 w-24 text-right">
                 <span className="font-sans font-black text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-200">
                   {mil.year}
@@ -310,9 +280,9 @@ export default function AboutPage() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                {/* Year flag fallback for mobile */}
+                {/* Phase flag fallback for mobile */}
                 <span className="font-sans font-black text-sm text-brand-gold md:hidden">
-                  {mil.year}
+                  Phase {mil.year}
                 </span>
                 <h4 className="font-sans font-black text-lg md:text-xl text-brand-navy">
                   {mil.title}

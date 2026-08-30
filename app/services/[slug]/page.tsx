@@ -8,156 +8,12 @@ import {
   ShieldCheck,
   Clock,
   Layers,
-  Ruler,
-  Hammer,
-  Compass,
-  DoorOpen,
-  Paintbrush,
   ArrowRight,
   Award,
 } from "lucide-react";
+import { findService } from "@/lib/services";
+import BackgroundImage from "@/app/components/BackgroundImage";
 
-// Robust services data catalog
-const servicesData = {
-  "fit-out": {
-    title: "Premium Interior Fit-Out",
-    subtitle: "Turn-Key Commercial & Residential Solutions",
-    heroImg:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
-    desc: "Our interior fit-out team delivers turnkey renovations for corporate offices, high-end boutiques, and luxury villas across Dubai. We integrate spatial layouts, customized partitions, false ceilings, and premium finishes into a single, seamless delivery timeline.",
-    icon: Paintbrush,
-    timeframe: "30 - 60 Days (Project Scale Dependent)",
-    compliance: "Dubai Municipality & Civil Defense Approved",
-    standard: "Q4 Superior Fit-Out Standard",
-    materials:
-      "Premium gypsum panels, acoustic isolation layers, customized brass details, and low-VOC paints.",
-    technicalGuide:
-      "We manage structural partition planning, suspended metal ceiling framing, high-performance gypsum board installations, electrical routing coordination, and detailed decorative trims under laser-level tolerances.",
-    keyMetrics: [
-      { label: "Level Accuracy", value: "Under +/- 1.0mm tolerance" },
-      { label: "Acoustic Rating", value: "Up to 48 dB wall dampening" },
-      { label: "Fire Resistance", value: "Fully BS 476 compliant" },
-    ],
-    milestones: [
-      "Spatial Layout & CAD Coordination",
-      "Metal Frame Sub-Structure Erection",
-      "Concealed Services (MEP) Routing",
-      "Insulation & Double-Gypsum Cladding",
-      "Plaster Prep & Multi-Coat Painting",
-    ],
-  },
-  tiling: {
-    title: "Custom Tiling & Stonework",
-    subtitle: "High-End Porcelain, Marble & Ceramic Laying",
-    heroImg:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200",
-    desc: "Our tiling specialists execute flawless large-format porcelain, custom stone layouts, and fine marble cladding. We ensure perfectly flat subfloor screeds and micro-joint alignments that yield visually seamless floors.",
-    icon: Ruler,
-    timeframe: "10 - 25 Days",
-    compliance: "ISO 9001 Material Quality Compliant",
-    standard: "Lippage-Free Flatness (BS 5385)",
-    materials:
-      "Imported Italian Calacatta marble, large-format porcelain, chemical epoxy grouts, and flexible polymer-modified adhesives.",
-    technicalGuide:
-      "Prior to tile laying, we check subfloor level using digital rotary lasers, correct inconsistencies with self-leveling compounds, install polyurethane wet-area waterproofing, and utilize dynamic tile-leveling clips to avoid lippage completely.",
-    keyMetrics: [
-      { label: "Lippage Limit", value: "Less than 0.5mm max" },
-      { label: "Waterproofing", value: "Class-A Liquid Membrane" },
-      { label: "Grout Width", value: "1.5mm - 2.0mm joints" },
-    ],
-    milestones: [
-      "Subfloor Level & Flatness Audits",
-      "Polyurethane Waterproofing Application",
-      "Dry-Lay Layout Selection & Alignment",
-      "Laser-Guided Adhesive Comb Troweling",
-      "Concealed Tiling Clip Alignment",
-      "Epoxy Grout Filling & Acid Washing",
-    ],
-  },
-  masonry: {
-    title: "Precision Block Masonry",
-    subtitle: "Heavy-Duty Structural & Internal Partitions",
-    heroImg:
-      "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=1200",
-    desc: "Wall partition accuracy determines the success of all subsequent plastering and cabinetry. Our masonry crews build solid concrete walls, boundary walls, and insulated partition block works with uncompromising straightness.",
-    icon: Layers,
-    timeframe: "14 - 30 Days",
-    compliance: "Dubai Civil Engineering Approved",
-    standard: "Vertical Plumb Standard (BS 5628)",
-    materials:
-      "200mm solid concrete blocks, insulated thermal blocks, galvanized steel wall ties, and high-strength OPC mortars.",
-    technicalGuide:
-      "We layout coordinates based on dynamic CAD drawings, mount high-tensile carbon steel anchors to columns, cast on-site concrete lintels for door clearances, and incorporate technical thermal expansion joints to neutralize regional temperature movements.",
-    keyMetrics: [
-      { label: "Plumb Tolerance", value: "Under 2.0mm per 3 meters" },
-      { label: "Block Density", value: "Min 2000 kg/m3 solid load" },
-      { label: "Tie Frequency", value: "Every third block course" },
-    ],
-    milestones: [
-      "Floor Coordinate Chalk Lining",
-      "Galvanized Wall-Tie Anchor Pinning",
-      "Level Masonry block lay (1:3 Mortar)",
-      "Reinforced Steel Lintel Castings",
-      "Thermal Expansion Joint Detailing",
-    ],
-  },
-  doors: {
-    title: "High-End Door Installations",
-    subtitle: "Custom Wood Joinery & Fire-Rated Door Sets",
-    heroImg:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
-    desc: "We supply and fit high-end wooden doors, architraves, frames, and premium ironmongery. Our joinery experts ensure doors lock smoothly with tight gaskets that block sound and drafts.",
-    icon: DoorOpen,
-    timeframe: "7 - 20 Days",
-    compliance: "Dubai Civil Defense Certified",
-    standard: "Grade 1 Wood Joinery Standards",
-    materials:
-      "Seasoned solid ash, oak veneers, sound-proof internal particle fillers, neoprene seals, and heavy-duty steel ironmongery.",
-    technicalGuide:
-      "We audit door structural frame plumb, install heavy-duty wood casing anchors, fit door panels using 3 ball-bearing hinges, mount architectural locksets, and compress secure neoprene gaskets.",
-    keyMetrics: [
-      { label: "Gap Tolerance", value: "Uniform 2.0mm border gap" },
-      { label: "Acoustic Rating", value: "Up to 35 dB secure sound damping" },
-      { label: "Hinges Number", value: "3 Ball-bearing hinges per door" },
-    ],
-    milestones: [
-      "Door Frame Openings Plumb Audit",
-      "Structural Hardwood Sub-Frame Anchor",
-      "Door Leaf Mortising & Hinge Layout",
-      "Panel Hanging & Balance Alignments",
-      "Architrave Skirting Fitting",
-      "Hardware & Neoprene Seal Compression",
-    ],
-  },
-  plaster: {
-    title: "Partition Walls & Plastering",
-    subtitle: "Flawless Flat Leveling & Gypsum Skimming",
-    heroImg:
-      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=1200",
-    desc: "Perfect plastering provides the base for elite decoration. Our finishing masons render, level, and skim walls until they achieve a glass-like Q4 surface profile.",
-    icon: Hammer,
-    timeframe: "10 - 20 Days",
-    compliance: "Dubai Municipality Finishing Certified",
-    standard: "Q4 Flawless Flat Standard (BS EN 998)",
-    materials:
-      "Premium bonding agents, rust-proof corner beads, fiberglass joint mesh, and multi-coat leveling plasters.",
-    technicalGuide:
-      "We prime masonry walls, mount metal corner beads to reinforce edges, apply spatter-dash base layers to maximize mortar bonding, layout level screed guides, render walls, and complete the skimming process with premium fine-gypsum layers.",
-    keyMetrics: [
-      { label: "Surface Flatness", value: "Under 1.0mm deviation per 2m" },
-      { label: "Coats Applied", value: "3-Coat rendering & skimming" },
-      { label: "Corner Angle", value: "Exact 90-degree bead setups" },
-    ],
-    milestones: [
-      "Wall Primer & Bonding Agent Spatter",
-      "Corner Bead & Level Screed Guide Setup",
-      "Render Layer Throwing & Screed Level",
-      "Fiberglass Mesh Joint Overlay",
-      "Gypsum Finish Skimming (Multi-coat)",
-      "Fine Sanding & Dust-free Primer base",
-    ],
-  },
-};
 
 export default function ServiceDetailPage({
   params,
@@ -166,7 +22,7 @@ export default function ServiceDetailPage({
 }) {
   const resolvedParams = use(params);
   const slug = resolvedParams.slug;
-  const service = servicesData[slug as keyof typeof servicesData];
+  const service = findService(slug);
 
   if (!service) {
     return (
@@ -197,12 +53,10 @@ export default function ServiceDetailPage({
           1. PARALLAX HERO BANNER
       ───────────────────────────────────────── */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden pt-28 pb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] scale-105"
-          style={{
-            backgroundImage: `url('${service.heroImg}')`,
-          }}
-        />
+        <BackgroundImage
+            src={service.heroImg}
+            className="transition-transform duration-[10s] scale-105"
+          />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FCFCFD] via-[#0A1128]/75 to-[#0A1128]/45" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-8 w-full z-10 flex flex-col gap-4">
@@ -355,8 +209,8 @@ export default function ServiceDetailPage({
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
               Submit your property details or drawing specification file today.
-              Our engineers provide detailed block counts, tiling materials
-              estimates, and complete turnkey fit-out proposals.
+              Our engineers provide detailed screed build-up recommendations,
+              material estimates, and complete turnkey fit-out proposals.
             </p>
 
             <Link
