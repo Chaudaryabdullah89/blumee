@@ -1008,10 +1008,9 @@ export default function Home() {
                 colSpan: "lg:col-span-8 min-h-[450px]",
               },
             ].map((project, idx) => (
-              <Link
+              <div
                 key={idx}
-                href={`/projects/${project.id}`}
-                className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer ${project.colSpan}`}
+                className={`project-card group relative rounded-3xl overflow-hidden flex flex-col justify-end border border-black/[0.04] shadow-sm hover:shadow-xl transition-all duration-500 ${project.colSpan}`}
               >
                 {/* Visual Background Frame */}
                 <BackgroundImage
@@ -1061,11 +1060,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bottom Right Corner Interactive Arrow */}
-                <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-white/10 group-hover:bg-brand-gold border border-white/[0.12] group-hover:border-brand-gold text-white flex items-center justify-center transition-all duration-300 z-10">
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-                </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

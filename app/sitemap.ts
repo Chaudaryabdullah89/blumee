@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { serviceSlugs } from "@/lib/services";
-import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -36,11 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...projects.map((project) => ({
-      url: `${SITE_URL}/projects/${project.id}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
+    // Per-project detail URLs are omitted while the /projects/[id] route is
+    // disabled — listing pages that 404 in the sitemap is a negative signal.
   ];
 }

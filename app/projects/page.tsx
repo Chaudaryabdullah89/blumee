@@ -144,13 +144,12 @@ export default function ProjectsPage() {
                       {project.year}
                     </span>
                   </div>
-                  <Link
-                    href={`/projects/${project.title.replace(/\s+/g, "-")}`}
+                  <h3
+                    onClick={() => setSelectedProject(project)}
+                    className="font-sans font-black text-lg md:text-xl text-brand-navy hover:text-brand-gold transition-colors duration-200 cursor-zoom-in"
                   >
-                    <h3 className="font-sans font-black text-lg md:text-xl text-brand-navy hover:text-brand-gold transition-colors duration-200 cursor-pointer">
-                      {project.title}
-                    </h3>
-                  </Link>
+                    {project.title}
+                  </h3>
                 </div>
 
                 <p className="text-slate-500 text-xs md:text-sm leading-relaxed flex-1">

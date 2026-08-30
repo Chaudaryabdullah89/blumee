@@ -1,3 +1,16 @@
+/*
+ * PROJECT DETAIL PAGE — DISABLED FOR NOW
+ *
+ * This folder is named `_id` rather than `[id]`. Next treats a leading
+ * underscore as a private folder and leaves it out of routing entirely, so
+ * /projects/1, /projects/2 ... no longer resolve. The code below is kept
+ * intact and is not deleted.
+ *
+ * To switch the detail pages back on: rename this folder back to `[id]`,
+ * restore the card link on the home page and the title link on the projects
+ * page, and put the per-project entries back in app/sitemap.ts.
+ */
+
 import type { Metadata } from "next";
 import { findProject, projects } from "@/lib/projects";
 
