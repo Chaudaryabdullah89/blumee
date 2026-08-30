@@ -25,7 +25,7 @@ export const projects: Project[] = [
     client: "Mr. Peng Hung",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/img/apartment-interior.jpg",
+    img: "/img/fitout-in-progress.jpg",
     desc: "Demolition, floor screeding and full interior fit-out of 80 apartments — one of our largest single-site mobilisations to date.",
     works: ["Demolition", "Floor Screeding", "Interior Fit-Out"],
     technicalDetails:
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     client: "Al Barari",
     location: "Al Barari, Dubai",
     year: "Completed",
-    img: "/projects/screed-rebar-columns.jpg",
+    img: "/projects/screed-mesh-level.jpg",
     desc: "Floor screeding and interior fit-out across 110 villas, resourced with dedicated screeding crews for villa-by-villa sequencing.",
     works: ["110 Villas", "Floor Screeding", "Interior Fit-Out"],
     technicalDetails:
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     client: "Ellington Properties",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/gypsum-ceiling-medallion.jpg",
+    img: "/projects/gypsum-ceiling-ornate.jpg",
     desc: "Interior work across a G+2P+12 residential building — floor screeding, plaster, tile, ceiling and paint.",
     works: ["Floor Screeding", "Plaster & Tile", "Ceiling & Paint"],
     technicalDetails:
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     client: "Damac Property",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/gypsum-ceiling-unfinished.jpg",
+    img: "/projects/gypsum-ceiling-dome.jpg",
     desc: "Interior work across 78 villas (G+1 & G+2) — floor screeding, plaster, tile, paint and ceiling.",
     works: ["78 Villas", "Floor Screeding", "Plaster, Tile & Paint"],
     technicalDetails:
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     client: "Mr. Omar Essa Seed Essa Al Falasi",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/projects/screed-rebar-night.jpg",
+    img: "/projects/screed-mesh-membrane.jpg",
     desc: "Demolition, floor screeding and renovation work for a private residential building.",
     works: ["Demolition", "Floor Screeding", "Renovation"],
     technicalDetails:
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     client: "Pinnacle Interior",
     location: "Abu Dhabi, UAE",
     year: "Completed",
-    img: "/projects/screed-site-pour.jpg",
+    img: "/projects/screed-mesh-level.jpg",
     desc: "Floor screeding and interior fit-out work for the IKEA Center at Delma Mall.",
     works: ["Floor Screeding", "Interior Fit-Out"],
     technicalDetails:
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/img/fitout-living.jpg",
+    img: "/img/blockwork-mason.jpg",
     desc: "Screed, block, plaster, tile, painting and ceiling works delivered for Ducto Interior.",
     works: ["Screed & Block", "Plaster & Tile", "Painting & Ceiling"],
     technicalDetails:
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Completed",
-    img: "/img/office-interior.jpg",
+    img: "/img/site-under-construction.jpg",
     desc: "Demolition, floor screeding and interior fit-out for an Al Futtaim executive office, delivered via Ducto Interior.",
     works: ["Demolition", "Floor Screeding", "Interior Fit-Out"],
     technicalDetails:
@@ -246,7 +246,7 @@ export const projects: Project[] = [
     client: "CRC — Construction & Reconstruction Eng. Co.",
     location: "Al Jadaf, Dubai",
     year: "Completed",
-    img: "/projects/screed-mesh-membrane.jpg",
+    img: "/projects/screed-shuttered-bay.jpg",
     desc: "Approved applicator for floor finishes works to basements on a Commercial & Residential 2B+G+14+HC development.",
     works: ["Approved Applicator", "Floor Finishes", "Basements"],
     technicalDetails:
@@ -267,7 +267,7 @@ export const projects: Project[] = [
     client: "CRC — Construction & Reconstruction Eng. Co.",
     location: "Al Jadaf, Dubai",
     year: "Completed",
-    img: "/projects/screed-rebar-night.jpg",
+    img: "/projects/screed-mesh-membrane.jpg",
     desc: "Approved flooring applicator for a Commercial & Residential 2B+G+9+HC development.",
     works: ["Approved Applicator", "Flooring Works"],
     technicalDetails:
@@ -283,7 +283,7 @@ export const projects: Project[] = [
     client: "Al Kaitoob Building Contracting",
     location: "Al Satwa, Dubai",
     year: "Completed",
-    img: "/img/industrial-building.jpg",
+    img: "/img/carpark-coating.jpg",
     desc: "Epoxy floor coating — Fosroc approved applicator — for a 3B+G+9+Gym residential building.",
     works: ["Epoxy Floor Coating", "Fosroc Applicator"],
     technicalDetails:
@@ -321,7 +321,7 @@ export const projects: Project[] = [
     client: "Fujairah National Construction Co.",
     location: "Fujairah, UAE",
     year: "Completed",
-    img: "/projects/screed-site-pour.jpg",
+    img: "/projects/screed-mesh-level.jpg",
     desc: "Epoxy flooring over screeded concrete works.",
     works: ["Screeded Concrete", "Epoxy Flooring"],
     technicalDetails:
@@ -338,7 +338,7 @@ export const projects: Project[] = [
     client: "Ducto Interior",
     location: "Dubai, UAE",
     year: "Ongoing",
-    img: "/img/site-team.jpg",
+    img: "/img/screeding-levelling.jpg",
     desc: "Plaster, screed, painting and demolition works currently in progress at the Mall of the Emirates.",
     works: ["Plaster & Screed", "Painting", "Demolition"],
     technicalDetails:

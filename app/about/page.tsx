@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
         {/* Background office interior */}
         <BackgroundImage
-            src="/img/office-interior.jpg"
+            src="/img/site-under-construction.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-slate-100 shadow-xl border border-black/[0.04]">
                 <BackgroundImage
-                    src="/img/mission-interior.jpg"
+                    src="/projects/screed-mesh-level.jpg"
                   />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
 
@@ -181,7 +181,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─────────────────────────────────────────
-          4. OUR TEAM & MANPOWER — Real resourced figures
+          4. ACCREDITATIONS — credibility without headcount claims
       ───────────────────────────────────────── */}
       <section className="bg-slate-50/70 border-y border-black/[0.04] py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -190,42 +190,44 @@ export default function AboutPage() {
               Our Strength
             </span>
             <h2 className="font-sans font-black text-3xl md:text-5xl text-brand-navy leading-tight tracking-tight uppercase">
-              Our Team &amp; Manpower
+              Approved &amp; Accredited
             </h2>
             <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-              Blume fields a dedicated, on-the-ground workforce for fast,
-              reliable execution across every active site — backed by hands-on
-              engineering supervision from planning through handover.
+              We are a registered approved applicator for the flooring and
+              coating systems we install, and a reviewed subcontractor for
+              leading UAE consultants and main contractors — with works
+              executed to manufacturer specification and, where required,
+              under their site supervision.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-5xl mx-auto">
             {[
-              { count: "70", label: "Skilled Labourers", desc: "Screed, epoxy and finishing trades" },
-              { count: "3", label: "Site Supervisors", desc: "Daily toolbox talks and site control" },
-              { count: "2", label: "Project Engineers", desc: "Method statements and quality control" },
-            ].map((stat, idx) => (
+              { name: "Al Gurg Fosroc", scope: "Nitoflor & Trafficguard" },
+              { name: "MAPEI", scope: "Mapefloor & Primer systems" },
+              { name: "Master Builders", scope: "Industrial flooring" },
+              { name: "Flowcrete", scope: "Isocrete screeding" },
+              { name: "NYA / SBI", scope: "Car park flooring" },
+            ].map((m) => (
               <div
-                key={idx}
-                className="bg-white rounded-3xl border border-black/[0.05] p-8 flex flex-col gap-2 items-center text-center shadow-sm hover-float transition-all duration-300"
+                key={m.name}
+                className="bg-white rounded-2xl border border-black/[0.05] p-5 md:p-6 flex flex-col gap-1.5 text-center shadow-sm hover-float transition-all duration-300"
               >
-                <span className="font-sans font-black text-5xl text-brand-gold">
-                  {stat.count}
-                </span>
-                <h3 className="font-sans font-black text-base text-brand-navy uppercase tracking-tight">
-                  {stat.label}
+                <h3 className="font-sans font-black text-sm text-brand-navy leading-tight">
+                  {m.name}
                 </h3>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  {stat.desc}
+                <p className="text-slate-500 text-[11px] leading-snug">
+                  {m.scope}
                 </p>
               </div>
             ))}
           </div>
 
           <p className="text-center text-slate-500 text-xs md:text-sm max-w-2xl mx-auto mt-10 leading-relaxed">
-            A total deployed workforce of <strong className="text-brand-navy">75</strong>, allocated
-            flexibly across residential, commercial and hospitality sites throughout the UAE.
-            Project-specific allocation is confirmed on award.
+            Reviewed and approved by consultants including Arcadis, National
+            Engineering Bureau, Dewan Architects + Engineers and KEO
+            International. Current certificates are issued with every project
+            submittal.
           </p>
         </div>
       </section>

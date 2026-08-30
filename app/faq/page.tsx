@@ -40,7 +40,7 @@ export default function FAQPage() {
       {/* Hero Header */}
       <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
         <BackgroundImage
-            src="/img/office-workspace.jpg"
+            src="/img/site-under-construction.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />

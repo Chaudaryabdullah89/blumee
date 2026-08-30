@@ -11,7 +11,7 @@ export default function TermsPage() {
       {/* Parallax Hero Header */}
       <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
         <BackgroundImage
-            src="/img/industrial-building.jpg"
+            src="/img/carpark-coating.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />

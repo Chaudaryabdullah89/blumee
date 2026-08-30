@@ -21,7 +21,7 @@ export default function ProcessPage() {
       ───────────────────────────────────────── */}
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-28 pb-16">
         <BackgroundImage
-            src="/img/site-team.jpg"
+            src="/img/screeding-levelling.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />
@@ -66,7 +66,7 @@ export default function ProcessPage() {
                 "Substrate flatness and moisture checks",
                 "Itemized materials quotation within 48 hours",
               ],
-              img: "/projects/screed-mesh-membrane.jpg",
+              img: "/projects/screed-shuttered-bay.jpg",
               reverse: false,
             },
             {
@@ -96,7 +96,7 @@ export default function ProcessPage() {
                 "Wet-area waterproofing to falls",
                 "Daily project supervisor site audits",
               ],
-              img: "/projects/screed-site-pour.jpg",
+              img: "/projects/screed-mesh-level.jpg",
               reverse: false,
             },
             {

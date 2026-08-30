@@ -22,7 +22,7 @@ export default function ServicesPage() {
       ───────────────────────────────────────── */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-28 pb-20">
         <BackgroundImage
-            src="/img/office-interior.jpg"
+            src="/img/site-under-construction.jpg"
             priority
             className="transition-transform duration-[10s] scale-105"
           />
@@ -128,7 +128,7 @@ export default function ServicesPage() {
                 "Ornate Cast Cornicing & Mouldings",
               ],
               icon: Layers,
-              img: "/projects/gypsum-ceiling-medallion.jpg",
+              img: "/projects/gypsum-ceiling-ornate.jpg",
               reverse: true,
             },
             {
@@ -142,7 +142,7 @@ export default function ServicesPage() {
                 "Furniture, Fixture & Finish Installation",
               ],
               icon: Compass,
-              img: "/img/fitout-office-dubai.jpg",
+              img: "/img/fitout-in-progress.jpg",
               reverse: false,
             },
             {
