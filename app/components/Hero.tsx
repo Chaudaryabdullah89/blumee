@@ -4,7 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import { Play } from "lucide-react";
 import { HERO_POSTER_URL, HERO_VIDEO_WEBM_URL, HERO_VIDEO_MP4_URL } from "@/lib/hero-video";
 
-function useLazyHeroVideo() {
+/**
+ * Starts the hero video.
+ *
+ * `eager` is used for the full-bleed hero background, which is above the fold
+ * on every visit — it fetches straight away so the motion is already running
+ * when the preloader lifts. Everything else waits for the element to scroll
+ * into view before spending the bandwidth.
+ */
+function useHeroVideo(eager: boolean) {
   const [ready, setReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -12,17 +20,26 @@ function useLazyHeroVideo() {
     const video = videoRef.current;
     if (!video) return;
 
+    const start = () => {
+      video.querySelectorAll("source").forEach((source) => {
+        const s = source as HTMLSourceElement;
+        if (s.dataset.src && !s.src) {
+          s.src = s.dataset.src;
+        }
+      });
+      video.load();
+      video.play().catch(() => {});
+    };
+
+    if (eager) {
+      start();
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.querySelectorAll("source").forEach((source) => {
-            const s = source as HTMLSourceElement;
-            if (s.dataset.src) {
-              s.src = s.dataset.src;
-            }
-          });
-          video.load();
-          video.play().catch(() => {});
+          start();
           observer.disconnect();
         }
       },
@@ -31,7 +48,7 @@ function useLazyHeroVideo() {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, []);
+  }, [eager]);
 
   return { ready, setReady, videoRef };
 }
@@ -40,14 +57,16 @@ function HeroVideoLayer({
   posterClassName,
   videoClassName,
   posterAlt = "",
+  eager = false,
   showPlayOverlayUntilReady = false,
 }: {
   posterClassName: string;
   videoClassName: string;
   posterAlt?: string;
+  eager?: boolean;
   showPlayOverlayUntilReady?: boolean;
 }) {
-  const { ready, setReady, videoRef } = useLazyHeroVideo();
+  const { ready, setReady, videoRef } = useHeroVideo(eager);
 
   return (
     <>
@@ -65,7 +84,7 @@ function HeroVideoLayer({
         muted
         loop
         playsInline
-        preload="none"
+        preload={eager ? "auto" : "none"}
         onCanPlay={() => setReady(true)}
         className={`${videoClassName} transition-opacity duration-700 ${
           ready ? "opacity-100" : "opacity-0"
@@ -89,6 +108,7 @@ export function HeroBackground() {
   return (
     <div className="absolute inset-0">
       <HeroVideoLayer
+        eager
         posterClassName="absolute inset-0 h-full w-full scale-105 object-cover"
         videoClassName="absolute inset-0 h-full w-full scale-105 object-cover"
       />

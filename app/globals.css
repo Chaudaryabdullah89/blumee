@@ -206,3 +206,30 @@ html {
 .hover-zoom-container:hover .zoom-target {
   transform: scale(1.08);
 }
+
+/* ── Preloader ────────────────────────────────────────────────────────────
+   Wordmark letters rise into place one after another. Each letter carries
+   its own animation-delay, set inline in the component.                    */
+@keyframes preloader-letter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preloader-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: preloader-letter-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-letter {
+    animation-duration: 0.01ms;
+    animation-delay: 0ms !important;
+  }
+}

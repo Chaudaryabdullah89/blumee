@@ -168,16 +168,6 @@ export default function ProjectsPage() {
                     </span>
                   ))}
                 </div>
-
-                <div className="flex justify-end pt-2 mt-auto">
-                  <Link
-                    href={`/projects/${project.title.replace(/\s+/g, "-")}?projectid=${project.id}`}
-                    className="flex items-center gap-1.5 text-xs font-bold text-brand-accent tracking-wider hover:underline group/link"
-                  >
-                    <span>View Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                  </Link>
-                </div>
               </div>
             </div>
           ))}
